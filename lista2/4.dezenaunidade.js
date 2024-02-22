@@ -12,9 +12,9 @@ function main() {
     const unidade = numero % 10
 
     if (dezena === unidade) {
-        console.log('O algarismo da dezena é igual ao algarismo da unidade.')
+        console.log('O algarismo da dezena é igual ao algarismo da unidade')
     } else {
-        console.log('O algarismo da dezena é diferente do algarismo da unidade.')
+        console.log('O algarismo da dezena é diferente do algarismo da unidade')
     }
 }
 
