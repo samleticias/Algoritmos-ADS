@@ -7,7 +7,7 @@ function main(){
     const n2 = get_number('digite o segundo numero: ')
     const n3 = get_number('digite o terceiro numero: ')
 
-    let numeros = lordenar_numeros(n1, n2, n3)
+    let numeros = ordenar_numeros(n1, n2, n3)
 
 }
 
