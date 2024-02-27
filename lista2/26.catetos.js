@@ -1,5 +1,5 @@
 // Leia os 3 (três) lados de um triângulo e identifique sua hipotenusa e seus catetos.
-import { question } from 'readline-sync'
+import { question } from 'readline-sync' 
 
 function main() {
     const lado1 = get_number('Lado 1: ')
