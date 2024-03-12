@@ -37,6 +37,7 @@ import { get_positive_number, print } from '../utils/io_utils.js'
     Em que ano/semestre o aluno Iniciará e Concluirá o pagamento do FIES
 
     `
+    print(meu_fies)
 
  }
 
