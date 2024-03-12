@@ -19,7 +19,6 @@ function main() {
     const inscricao_fies = verificar_inscricao_fies(renda_per_capita, salario_min)
     const total_a_pagar = valor_financiado + valor_descontado + pg_carencia + valor_parcelas + parcela_fies
     const total_juros = calcular_valor_contratado_fies(mensalidade, taxa_selic) * duracao_curso - valor_financiado
-    const renda_minima_inicio_pagamento = calcular_renda_minima_inicio_pagamento(parcela_fies, other_expenses)
 
     const meu_fies = `
     >>>>> AVALIAÇÃO FIES <<<<<
