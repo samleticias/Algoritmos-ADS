@@ -14,10 +14,10 @@ function main() {
 
     while (contador_vendas < qtd_max_vendas && somatorio_descontos_concedidos < limite_desconto_rs) {
         const valor_compra = get_positive_number('Valor R$: ')
-        const desconto_compra = valor_compra * (cupom_perc / 100)
+        let desconto_compra = valor_compra * (cupom_perc / 100)
 
         // Verificacao de limite de desconto residual
-        const desconto_total_disponivel = limite_desconto_rs - somatorio_descontos_concedidos
+        let desconto_total_disponivel = limite_desconto_rs - somatorio_descontos_concedidos
         if (desconto_compra > desconto_total_disponivel) {
             desconto_compra = desconto_total_disponivel
         }
