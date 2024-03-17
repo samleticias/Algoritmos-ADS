@@ -7,6 +7,7 @@ function main() {
     const salario_min = get_positive_number('Salário Mínimo Vigente R$: ')
     const renda_familiar = get_positive_number('Renda Familiar R$: ')
     const qtd_membros_familia = get_positive_number('Quantidade de Membros da Família: ')
+    
 
     const renda_per_capita = renda_familiar / qtd_membros_familia
     const valor_contratado_anual = calcular_valor_contratado_fies(mensalidade, taxa_selic)
@@ -23,14 +24,14 @@ function main() {
     const meu_fies = `
     >>>>> AVALIAÇÃO FIES <<<<<
     Habilitação FIES: ${inscricao_fies}
-    Valor a ser Financiado R$: ${valor_financiado}
-    Valor Total dos juros R$: ${total_juros}
-    Valor Total a pagar R$: ${total_a_pagar}
-    Valor a ser pago durante Curso R$: ${valor_descontado}
-    Valor a ser pago na Carência R$: ${pg_carencia}
-    Valor da Parcela do Financiamento (após carência) R$: ${parcela_fies}
+    Valor a ser Financiado R$: ${valor_financiado.toFixed(2)}
+    Valor Total dos juros R$: ${total_juros.toFixed(2)}
+    Valor Total a pagar R$: ${total_a_pagar.toFixed(2)}
+    Valor a ser pago durante Curso R$: ${total_a_pagar.toFixed(2)}
+    Valor a ser pago na Carência R$: ${pg_carencia.toFixed(2)}
+    Valor da Parcela do Financiamento (após carência) R$: ${parcela_fies.toFixed(2)}
     Renda mínima ao iniciar o Pagamento do Financiamento R$: 
-    Em que ano/semestre o aluno Iniciará e Concluirá o pagamento do FIES
+    Em que ano/semestre o aluno Iniciará e Concluirá o pagamento do FIES :
     `
     print(meu_fies)
 }
