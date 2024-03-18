@@ -12,12 +12,13 @@ function main(){
 
     while(resposta !== 'N'){
         const numero_decimal = get_number('Digite um número decimal de até 3 dígitos: ')
+
         const C = obter_centena_numeracao_romana(numero_decimal)
         const D = obter_dezena_numeracao_romana(numero_decimal)
         const U = obter_unidade_numeracao_romana(numero_decimal)
-
-        const numero_romano = `${C}`+`${D}`+`${U}`
         
+        const numero_romano = `${C}`+`${D}`+`${U}`
+
         print('************ CONVERSOR NÚMEROS ROMANOS ************ ')
         print('--------------------------------------------------')
         print(`Número em decimal: ${numero_decimal}`)
