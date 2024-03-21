@@ -10,6 +10,10 @@ function main(){
     if (valor > 0 && valor <= 100){
       contador_valores++
 
+      if (valor === 0){
+        break
+      }
+
       valor = get_number('Valor (entre 0 e 100): ')
 
       // Score 1 = valor criterio A * 2.6
