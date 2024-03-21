@@ -13,10 +13,10 @@ function main(){
       valor = get_number('Valor (entre 0 e 100): ')
 
       // Score 1 = valor criterio A * 2.6
-      const score_1 = valor * 2.6
+      const score_1 = valor * 3.6
 
       // Score 2 = valor criterio A * 6.2
-      const score_2 = valor * 6.2
+      const score_2 = valor * 7.2
 
       print(`Avaliação do valor ${valor}:`)
       print(`Score 1: ${score_1.toFixed(2)} - ${obter_perfil_cliente_score_1(score_1)}`)
