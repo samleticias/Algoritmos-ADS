@@ -21,7 +21,6 @@ import { get_number, print } from '../utils/io_utils.js'
 function main() {
     const peso_decolagem_aeronave = 500000
 
-    // Lendo os dados dos containers
     const numero_containers = get_number('Digite o número de containers: ')
     const pesos_containers = []
     for (let i = 0; i < numero_containers; i++) {

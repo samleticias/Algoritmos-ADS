@@ -1,28 +1,43 @@
 // Leia uma lista de números e que para cada número lido, escreva o próprio número e a relação de seus
 // divisores. (flag número = 0).
-import { get_number, print } from '../utils/io_utils.js'
-function encontrar_divisores(numero) {
-    let divisores = []
-    let i = 1
-    while (i <= numero) {
-        if (numero % i === 0) {
-            divisores.push(i)
-        }
-        i++
-    }
-    return divisores
-}
+import { get_number_min, print } from '../../utils/io_utils.js'
 
 function main(){
-var numero
-while (true) {
-    numero = get_number('Digite um número (0 para sair): ')
-    if (numero === 0) {
-        print('Programa encerrado')
-        break
+  // 1. Estado Anterior
+  let numero = get_number_min('Número: ', 0)
+
+  while (numero !== 0){ // 2. Expressao de Continuidade
+
+    // 3. trabalho
+    mostrar_divisores(numero)
+    
+    // 4. Convergenc. de dados 
+    numero = get_number_min('Número: ', 0)
+  }
+
+  print('Fim..')
+}
+
+function mostrar_divisores(numero){
+  print(`Divisores de ${numero}: `)
+  let candidato = numero
+  let contador = 0
+  let divisores = ''
+  
+  while (candidato > 0){
+    if (eh_divisor(numero, candidato)){
+      contador++
+      // print(candidato)
+      divisores += ` ${candidato}` // concatenacao
     }
-    let divisores = encontrar_divisores(numero)
-    print(`Divisores de ${numero}: ${divisores}`)}
+    candidato--
+  }
+  print(divisores)
+  print(`Total de Divisores: ${contador}`)
+}
+
+function eh_divisor(numero, candidato){
+  return numero % candidato === 0
 }
 
 main()

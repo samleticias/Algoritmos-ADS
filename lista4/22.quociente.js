@@ -6,7 +6,8 @@ import { get_number, print } from '../utils/io_utils.js'
 
 function main(){
     const n1 = get_number('Digite um número: ')
-    const n2 = get_number('Digite outro número: ')
+    const n2 = get_number('Digite um número: ')
+    
     let quociente = 0
     let resto = n1 
 
