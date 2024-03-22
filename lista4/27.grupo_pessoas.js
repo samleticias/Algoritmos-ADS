@@ -20,12 +20,9 @@ function main(){
     let quantidade_solteiras = 0
     let quantidade_divorciadas_acima_30 = 0
 
-    while (total_entrevistados < 100 || idade !== -1) {
-        const idade = get_number('Digite a idade (ou -1 para sair): ') 
+    let idade = get_number('Digite a idade (ou -1 para sair): ') 
 
-        if (idade === -1 ){
-            break
-        }
+    while (total_entrevistados < 100 && idade !== -1) {
 
         const sexo = get_number_intervalo('Digite seu gênero (1=Masculino, 2=Feminino): ', 1, 2) 
         const estado_civil = get_number_intervalo('Digite seu estado civil (1=Casado, 2=Solteiro, 3=Divorciado, 4=Viúvo): ', 1, 4) // [1, 4]
@@ -55,7 +52,9 @@ function main(){
         
 
         total_entrevistados++
-    }
+
+        idade = get_number('Digite a idade (ou -1 para sair): ') 
+}
 
     // média das idades das mulheres
     const media_idades_mulheres = soma_idade_mulheres / soma_quantidade_mulheres

@@ -11,11 +11,9 @@ function main(){
     let no_identificacao_boi_mais_magro = 0
     let peso_boi_mais_magro = 0
 
-    while (true) {
-        const no_identificacao = get_number('Digite o número de identificação do animal: ')
-        if (no_identificacao === 0) {
-            break
-        }
+    let no_identificacao = get_number('Digite o número de identificação do animal: ')
+
+    while (no_identificacao !== 0) {
 
         const peso = get_number(`Digite o peso do animal de nº ${no_identificacao} (em Kg): `)
 
@@ -31,6 +29,8 @@ function main(){
             peso_boi_mais_magro = peso
             no_identificacao_boi_mais_magro = no_identificacao
         }
+
+        no_identificacao = get_number('Digite o número de identificação do animal: ')
 
     }
     print('****************************** FRIGORÍFICO *******************************')

@@ -14,13 +14,9 @@ import { get_number, print } from '../utils/io_utils.js'
 function main(){
     let soma_salarios_atuais = 0
     let soma_salarios_reajustados = 0
+    let salario = get_number('Digite o salário atual R$ (ou 0 para sair): ')
 
-    while (true) {
-        const salario = get_number('Digite o salário atual R$ (ou 0 para sair): ')
-        
-        if (salario === 0) { // fim das informações indicado por salário = 0
-            break
-        }
+    while (salario !== 0) {
 
         soma_salarios_atuais += salario
 
@@ -36,13 +32,17 @@ function main(){
         }
 
         soma_salarios_reajustados += novo_salario
+
+        salario = get_number('Digite o salário atual R$ (ou 0 para sair): ')
     }
 
     const diferenca = soma_salarios_reajustados - soma_salarios_atuais
 
+    print('---------------------------------------------------------------')
     print(`Soma dos salários atuais: R$ ${soma_salarios_atuais.toFixed(2)}`)
     print(`Soma dos salários reajustados: R$ ${soma_salarios_reajustados.toFixed(2)}`)
     print(`Diferença entre as somas: R$ ${diferenca.toFixed(2)}`)
+    print('---------------------------------------------------------------')
 }
 
 main()

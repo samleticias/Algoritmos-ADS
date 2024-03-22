@@ -16,78 +16,62 @@ bilhete seja igual a 0. Devem ser mostrados, a quantidade de passageiros, a quan
 de bagagem, o peso dos passageiros, o peso da carga, a quantidade possível de combustível, e uma
 mensagem indicando a liberação da decolagem ou não.
 */
-import { get_number, print } from '../utils/io_utils.js'
+import { get_number, get_number_min, get_positive_number, print } from '../utils/io_utils.js'
 
-function main() {
-    const peso_decolagem_aeronave = 500000
 
-    const numero_containers = get_number('Digite o número de containers: ')
-    const pesos_containers = []
-    for (let i = 0; i < numero_containers; i++) {
-        const peso_container = get_number(`Digite o peso do container ${i + 1} (em kg): `)
-        pesos_containers.push(peso_container)
-    }
+function main(){
+  // Carga
+  const qtd_containers = get_number_min('Qtd Containers: ', 0)
+  const peso_carga = computar_carga(qtd_containers)
 
-    // peso da carga
-    const peso_carga = calcular_peso_carga(pesos_containers)
+  // Passageiros
+  let contador_passageiros = 0
+  let contador_bagagens = 0
+  let bilhete = get_number('Bilhete: ')
 
-    // Lendo os dados dos passageiros
-    let quantidade_passageiros = 0
-    let total_volume_bagagem = 0
-    while (true) {
-        const numero_bilhete = get_number('Digite o número do bilhete do passageiro (ou 0 para sair): ')
-        if (numero_bilhete === 0) {
-            break
-        }
-        const quantidade_bagagens = get_number('Digite a quantidade de bagagens do passageiro: ')
-        quantidade_passageiros++
-        total_volume_bagagem += quantidade_bagagens * 10 // Cada volume de bagagem tem o peso estimado de 10kg
-    }
+  while (bilhete !== 0){
+    contador_passageiros++
+    const bagagens = get_number_min('Qtd de Bagagens: ', 0)
+    // trabalho
+    contador_bagagens += bagagens
 
-    // peso dos passageiros
-    const peso_passageiros = quantidade_passageiros * 70 // Cada passageiro tem o peso estimado de 70kg
+    bilhete = get_number('Bilhete: ')
+  }
 
-    // quantidade de combustível
-    const quantidade_combustivel = get_number('Digite a quantidade de combustível (em litros): ')
+  const peso_passageiros = (contador_passageiros * 70) + (contador_bagagens * 10)
 
-    // peso do combustível
-    const peso_combustivel = calcular_peso_combustivel(quantidade_combustivel)
+  const total_peso_fora_combustivel = peso_passageiros + peso_carga
+  const combustivel_possivel_kg = 500_000 - total_peso_fora_combustivel
+  const combustivel_possivel_litros = combustivel_possivel_kg / 1.5
+  const decolagem_autorizada = combustivel_possivel_litros >= 10_000 ? 'SIM' : 'NÃO'
 
-    // Verificando se a decolagem é autorizada
-    const decolagem_autorizada = verificar_decolagem_autorizada(peso_decolagem_aeronave, peso_carga, peso_passageiros, peso_combustivel)
+  const resultado = `
+  >>>>>>>>> AVIAO <<<<<<<
+  - Passageiros Embarcados: ${contador_passageiros}
+  - total de volume de bagagem: ${contador_bagagens}
+  - Peso dos Passageiros: ${peso_passageiros.toFixed(2)}kg
+  - Peso da carga: ${peso_carga.toFixed(2)}kg
+  - Decolagem Autorizada? --> ${decolagem_autorizada}
+  `
 
-    // Exibindo os resultados
-    print('\n*************** DECOLAGEM ***************')
-    print('-----------------------------------------')
-    print(`Quantidade de passageiros: ${quantidade_passageiros} passageiros`)
-    print(`Quantidade total de volume de bagagem: ${total_volume_bagagem} Kg`)
-    print(`Peso dos passageiros: ${peso_passageiros} Kg`)
-    print(`Peso da carga: ${peso_carga} Kg`)
-    print(`Quantidade possível de combustível: ${quantidade_combustivel} L`)
-    print(`Peso do combustível: ${peso_combustivel} Kg`)
-    print(`Status da Decolagem: ${decolagem_autorizada}`)
-    print('-----------------------------------------')
+  print(resultado)
+
 }
 
-function calcular_peso_combustivel(quantidade_combustivel) {
-    return quantidade_combustivel * 1.5
-}
 
-function verificar_decolagem_autorizada(peso_decolagem_aeronave, peso_carga, peso_passageiros, peso_combustivel, quantidade_combustivel) {
-    // O peso de decolagem é composto pela soma do peso do combustível, do peso da carga, do peso dos passageiros;
-    const peso_decolagem_total = peso_combustivel + peso_carga + peso_passageiros
+function computar_carga(quantidade){
+  let qtd_containers_lidos = 0
+  let peso_total = 0
 
-    // A quantidade mínima de combustível para que a aeronave decole é de 10000 l;
-    if (quantidade_combustivel >= 10000 && peso_decolagem_total <= peso_decolagem_aeronave) {
-        return 'DECOLAGEM AUTORIZADA'
-    } else {
-        return 'DECOLAGEM NEGADA'
-    }
-}
+  while (qtd_containers_lidos < quantidade){
 
-function calcular_peso_carga(pesos_containers) {
-    // O peso da carga é o somatório do peso dos “containers” de cargas em quilogramas.
-    return pesos_containers.reduce((total, peso) => total + peso, 0)
+    const peso = get_positive_number('Peso Container: ')
+    peso_total = peso_total + peso
+
+    qtd_containers_lidos += 1
+  }
+
+  return peso_total
 }
 
 main()

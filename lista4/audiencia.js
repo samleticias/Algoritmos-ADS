@@ -15,12 +15,9 @@ function main(){
     let soma_audiencia_canal_10 = 0
     let total_telespectadores = 0
 
-    while(true){
-        const canal = get_number('Digite o número do canal (ou 0 para sair): ')
+    let canal = get_number('Digite o número do canal (ou 0 para sair): ')
 
-        if (canal === 0){
-            break
-        }
+    while(canal !== 0){
 
         const quantidade_pessoas_assistindo = get_number('Quantas pessoas estavam assitindo ao canal? ')
         total_telespectadores += quantidade_pessoas_assistindo
@@ -36,6 +33,8 @@ function main(){
         } else {
             soma_audiencia_canal_10 += quantidade_pessoas_assistindo
         }
+
+        canal = get_number('Digite o número do canal (ou 0 para sair): ')
     }
 
     const porcentagem_audiencia_canal_2 = (soma_audiencia_canal_2 / total_telespectadores) * 100

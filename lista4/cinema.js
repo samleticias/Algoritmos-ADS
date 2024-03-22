@@ -16,12 +16,9 @@ function main(){
     let quantidade_pessimo = 0
     let quantidade_otimo = 0
 
-    while(true){
-        const idade = get_number('Digite sua idade (ou -1 para sair): ')
+    let idade = get_number('Digite sua idade (ou -1 para sair): ')
 
-        if (idade === -1){
-            break
-        }
+    while(idade !== -1){
 
         const opiniao = get_number('Digite sua opinião ((1=ótimo, 2=bom, 3=regular, 4=péssimo): ')
 
@@ -37,6 +34,8 @@ function main(){
         } else {
             quantidade_pessimo++
         }
+
+        idade = get_number('Digite sua idade (ou -1 para sair): ')
 
     }
 

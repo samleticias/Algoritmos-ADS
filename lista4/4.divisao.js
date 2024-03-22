@@ -3,13 +3,14 @@
 import { get_number, print } from '../utils/io_utils.js'
 
 function main(){
+    // 1. Estado anterior
     const n = get_number('Digite um número: ')
 
-    const resultado = obter_divisao_numero(n)
-    print(`O resultado da última divisão é: ${resultado}`)
+    const resultado = obter_divisao_numero(n) // 3. Trabalho
+    print(`O resultado da última divisão é: ${resultado}`) // 4. Convergenc. de dados
 }
 function obter_divisao_numero(n){
-    while (n >= 1) {
+    while (n >= 1) { // 2. Expressão de continuidade
         n /= 2
     }
     return n * 2

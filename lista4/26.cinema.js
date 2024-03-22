@@ -14,12 +14,9 @@ function main(){
     let quantidade_bom = 0
     let total_entrevistados = 0
 
-    while (true) {
-        const idade = get_number('Digite a idade (ou -1 para sair): ')
-        
-        if (idade === -1) {
-            break
-        }
+    let idade = get_number('Digite a idade (ou -1 para sair): ')
+
+    while (idade !== -1) {
 
         const opiniao = get_number('Opinião (1=ótimo, 2=bom, 3=regular, 4=péssimo): ')
 
@@ -35,6 +32,8 @@ function main(){
         } else {
             // pessimo
         }
+
+        idade = get_number('Digite a idade (ou -1 para sair): ')
     }
 
     // média das idades das pessoas que responderam otimo
@@ -43,12 +42,13 @@ function main(){
     // percentual de pessoas que responderam bom entre os entrevistados
     const percentual_bom = (quantidade_bom / total_entrevistados) * 100
 
-    print('************ AVALIAÇÃO DO FILME ************ ')
-    print('--------------------------------------------------')
+    print('****************** AVALIAÇÃO DO FILME ****************** ')
+    print('---------------------------------------------------------')
     print(`Média das idades das pessoas que responderam ótimo: ${media_idades_otimo.toFixed(2)}`)
     print(`Quantidade de pessoas que respondeu regular: ${quantidade_regular}`)
     print(`Percentual de pessoas que respondeu bom entre os entrevistados: ${percentual_bom.toFixed(2)}%`)
     print(`Total de entrevistados: ${total_entrevistados}`)
+    print('---------------------------------------------------------')
 }
 
 main()

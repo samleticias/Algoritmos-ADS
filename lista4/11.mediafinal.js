@@ -15,12 +15,9 @@ function main(){
     let quantidade_alunos = 0
     let total_aprovados = 0
     let total_reprovados = 0
+    let matricula_aluno = get_number('Digite a matrícula do aluno (ou 0 para sair): ')
 
-    while (true) {
-        const matricula_aluno = get_number('Digite a matrícula do aluno (ou 0 para sair): ')
-        if (matricula_aluno === 0) { // fim das informações indicado por matrícula = 0
-            break
-        }
+    while (matricula_aluno !== 0) {
         const nota1 = get_number('Digite a primeira nota: ')
         const nota2 = get_number('Digite a segunda nota: ')
         const nota3 = get_number('Digite a terceira nota: ')
@@ -36,13 +33,17 @@ function main(){
             total_reprovados++
         }
 
-        print('************ FINAL DE ANO ************')
-        print('--------------------------------------')
-        print(`Total de alunos: ${quantidade_alunos}`)
-        print(`Total de aprovados: ${total_aprovados}`)
-        print(`Total de reprovados: ${total_reprovados}`)
-        print('--------------------------------------')
+        matricula_aluno = get_number('Digite a matrícula do aluno (ou 0 para sair): ')
+
     }
+
+    print('************ FINAL DE ANO ************')
+    print('--------------------------------------')
+    print(`Total de alunos: ${quantidade_alunos}`)
+    print(`Total de aprovados: ${total_aprovados}`)
+    print(`Total de reprovados: ${total_reprovados}`)
+    print('--------------------------------------')
+
 }
 
 main()

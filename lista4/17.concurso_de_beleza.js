@@ -18,12 +18,9 @@ function main(){
     let nome_candidata_mais_gorda = ''
     let peso_candidata_mais_gorda = 0
 
+    let nome = question('Digite o nome da candidata (ou "FIM" para sair): ')
 
-    while (true) {
-        const nome = question('Digite o nome da candidata (ou "FIM" para sair): ')
-        if (nome === 'FIM') {
-            break
-        }
+    while (nome !== 'FIM') {
 
         const altura = get_number(`Digite a altura da candidata ${nome} (em cm): `)
         const peso = get_number(`Digite o peso da candidata ${nome} (em Kg): `)
@@ -52,6 +49,8 @@ function main(){
             peso_candidata_mais_gorda = peso
             nome_candidata_mais_gorda = nome
         }
+
+        nome = question('Digite o nome da candidata (ou "FIM" para sair): ')
     }
 
     print(`Candidata mais alta: ${nome_candidata_mais_alta} (${altura_candidata_mais_alta} cm)`)

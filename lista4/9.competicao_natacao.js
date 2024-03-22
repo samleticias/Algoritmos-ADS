@@ -12,24 +12,24 @@ Ao final, o algoritmo deve escreva os totais de pontos de cada clube, indicando 
 */
 import { question } from 'readline-sync'
 import { print, get_number } from '../utils/io_utils.js'
+
 function main() {
     let pontos_clube_a = 0
     let pontos_clube_b = 0
+    // 1. Estado anterior
+    let numero_prova = get_number('Digite o número da prova: ')
 
-    while (true) {
-        const numero_prova = get_number('Digite o número da prova: ')
-        const qtd_nadadores = get_number('Digite a quantidade de nadadores: ')
+    while (numero_prova !== 0) { // 2. Expressão de continuidade
+        let qtd_nadadores = get_number('Digite a quantidade de nadadores: ')
+        let contador_nadadores = 0
 
-        if (numero_prova === 0 || qtd_nadadores === 0) { // sair do programa
-            break
-        }
+        while (contador_nadadores < qtd_nadadores) {
+            const nome = question(`Digite o nome do nadador ${contador_nadadores + 1}: `)
+            const classificacao = get_number(`Digite a classificação do nadador ${contador_nadadores + 1}: `)
+            const tempo = get_number(`Digite o tempo do nadador ${contador_nadadores + 1}: `)
+            const clube = question(`Digite o clube do nadador ${contador_nadadores + 1} (a ou b): `)
 
-        for (let i = 0; i < qtd_nadadores; i++) { // quantidade de jogadores definida -> usa for
-            const nome = question(`Digite o nome do nadador ${i + 1}: `)
-            const classificacao = get_number(`Digite a classificação do nadador ${i + 1}: `)
-            const tempo = get_number(`Digite o tempo do nadador ${i + 1}: `)
-            const clube = question(`Digite o clube do nadador ${i + 1} (a ou b): `)
-
+            // 4. Convergenc. de dados
             let pontos = 0
             if (classificacao === 1) {
                 pontos = 9
@@ -41,12 +41,17 @@ function main() {
                 pontos = 3
             }
 
-            if (clube === 'a') {
+            // 3. Trabalho
+            if (clube === 'a') { 
                 pontos_clube_a += pontos
             } else if (clube === 'b') {
                 pontos_clube_b += pontos
             }
+
+            contador_nadadores++
         }
+
+        numero_prova = get_number('Digite o número da prova: ')
     }
 
     print(`Pontos do Clube A: ${pontos_clube_a}`)

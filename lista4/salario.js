@@ -15,13 +15,10 @@ function main(){
     let soma_salarios_atuais = 0
     let soma_salarios_reajustados = 0
 
-    while(true){
-        const salario = get_number('Salário R$: ')
+    let salario = get_number('Salário R$: ')
 
-        if (salario === 0){
-            break
-        }
-
+    while(salario !== 0){
+        
         soma_salarios_atuais += salario
 
         let novo_salario = 0
@@ -36,6 +33,8 @@ function main(){
         }
 
         soma_salarios_reajustados += novo_salario
+
+        salario = get_number('Salário R$: ')
 
     }
 

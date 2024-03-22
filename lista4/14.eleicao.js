@@ -21,12 +21,9 @@ function main(){
     let soma_votos_brancos_nulos = 0
     let contador_votos_validos = 0
 
-    while (true) {
-        const voto = get_number('Digite o número do seu candidato (ou -1 para sair): ')
+    let voto = get_number('Digite o número do seu candidato (ou -1 para sair): ')
 
-        if (voto === -1) { // fim da pesquisa indicado por voto = -1 
-            break
-        }
+    while (voto !== -1) {
 
         contador_votos_validos++
 
@@ -43,6 +40,8 @@ function main(){
         } else {
             soma_votos_brancos_nulos++
         }
+
+        voto = get_number('Digite o número do seu candidato (ou -1 para sair): ')
     }
 
     const total_entrevistados = contador_votos_validos + soma_votos_indecisos + soma_votos_outros + soma_votos_brancos_nulos
