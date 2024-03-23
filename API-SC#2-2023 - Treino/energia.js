@@ -18,6 +18,7 @@ function main(){
     ICMS (25%) R$: ${icms.toFixed(2)}
     PIS/CONFIS (15%) R$: ${pis_confis.toFixed(2)}
     Taxa Iluminação Pública R$: ${taxa_iluminacao_publica.toFixed(2)}
+    --------------------------------------------------
     `
 
     print(talao)

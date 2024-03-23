@@ -18,7 +18,16 @@ function main(){
    const capacidade_piscina_litros = obter_capacidade_piscina_em_litros(volume_piscina)
    const capacidade_recomendada_litros = obter_capacidade_recomendada_litros(capacidade_piscina_litros)
    const custo_encher_piscina = obter_valor_agua_paga(capacidade_recomendada_litros, preco_por_parte_inteira)
-   const custo_total_reposicao_litros = obter_nivel_ideal_agua(capacidade_recomendada_litros)
+   const custo_total_reposicao_litros = obter_nivel_ideal_agua(capacidade_recomendada_litros, preco_por_parte_inteira)
+
+   print('>>>>>>>>>>>>>>>>>>>> VERÃO <<<<<<<<<<<<<<<<')
+   print('---------------------------------------------')
+   print(`Volume da piscina: ${volume_piscina.toFixed(2)} cm³`)
+   print(`Capacidade máxima da piscina: ${capacidade_piscina_litros.toFixed(2)} L`)
+   print(`Capacidade recomendada: ${capacidade_recomendada_litros.toFixed(2)} L`)
+   print(`Custo abastecimento de água da piscina: R$ ${custo_encher_piscina.toFixed(2)}`)
+   print(`Custo reposição água mensal: R$${custo_total_reposicao_litros.toFixed(2)}`)
+   print('---------------------------------------------')
 
 }
 
@@ -34,7 +43,7 @@ function obter_capacidade_recomendada_litros(capacidade_piscina_litros){
 }
 
 function obter_valor_agua_paga(capacidade_recomendada_litros, preco_por_parte_inteira){
-   const parte_inteira = Math.floor(capacidade_recomendada_litros / 1000)
+   let parte_inteira = Math.floor(capacidade_recomendada_litros / 1000)
    if (capacidade_recomendada_litros % 1000 !== 0){
         parte_inteira += 1
    }
@@ -42,7 +51,7 @@ function obter_valor_agua_paga(capacidade_recomendada_litros, preco_por_parte_in
     return custo_total
 }
 
-function obter_nivel_ideal_agua(capacidade_recomendada_litros){
+function obter_nivel_ideal_agua(capacidade_recomendada_litros, preco_por_parte_inteira){
     /*
     Mensalmente é necessário repor 10% da água devido a banho e
     evaporação, informe ao usuário também o gasto mensal para manter
@@ -53,7 +62,7 @@ function obter_nivel_ideal_agua(capacidade_recomendada_litros){
    if (reposicao_mensal_agua % 1000 != 0){
     parte_inteira_litros_reposicao_mensal += 1
    }
-   const custo_total_reposicao = parte_inteira_litros_reposicao_mensal * parte_inteira_litros_reposicao_mensal
+   const custo_total_reposicao = parte_inteira_litros_reposicao_mensal * preco_por_parte_inteira
    return custo_total_reposicao
 }
 
