@@ -20,6 +20,7 @@ function main(){
     let soma_votos_candidato_3 = 0
     let soma_votos_nulos = 0
     let soma_votos_brancos = 0
+    let vencedor = ''
 
     while (contador < N_eleitores){
         let voto = get_number('Voto: ')
@@ -36,9 +37,30 @@ function main(){
             soma_votos_brancos++
         }
 
+        if (soma_votos_candidato_1 > soma_votos_candidato_2 && soma_votos_candidato_1 > soma_votos_candidato_3){
+            vencedor = 'Candidato 1 venceu!'
+        } else if (soma_votos_candidato_2 > soma_votos_candidato_1 && soma_votos_candidato_2 > soma_votos_candidato_3){
+            vencedor = 'Candidato 2 venceu!'
+        } else if (soma_votos_candidato_3 > soma_votos_candidato_1 && soma_votos_candidato_3 > soma_votos_candidato_2){
+            vencedor = 'Candidato 3 venceu!'
+        } else {
+            vencedor = 'Votos Nulos ou Brancos foram maiores!'
+        }
 
         contador++
     }
+
+    print('************** RESULTADO **************')
+    print('----------------------------------------')
+    print(`Total de Votos Candidato 1: ${soma_votos_candidato_1}`)
+    print(`Total de Votos Candidato 2: ${soma_votos_candidato_2}`)
+    print(`Total de Votos Candidato 3: ${soma_votos_candidato_3}`)
+    print(`Total de votos nulos: ${soma_votos_nulos}`)
+    print(`Total de votos brancos: ${soma_votos_brancos}`)
+    print(`Total de Eleitores: ${N_eleitores}`)
+    print(`Vencedor: ${vencedor}`)
+    print('-----------------------------------------')
+
 }
 
 main()
