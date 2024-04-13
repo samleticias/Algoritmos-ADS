@@ -13,7 +13,7 @@ function main(){
         const valor = get_number('Valor R$: ')
         soma_precos_produtos += valor
         ordem++
-        pesquisa += `${descricao} (${especificacao})  R$ ${valor.toFixed(2)} \n`
+        pesquisa += `${ordem} - ${descricao} (${especificacao})  R$ ${valor.toFixed(2)} \n`
 
         inclusao = question('Deseja incluir algum produto? (S/N) ')
 
