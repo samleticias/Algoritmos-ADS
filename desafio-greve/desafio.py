@@ -20,13 +20,13 @@ def main():
 
 def converter_horario_ampm_para_militar(time_str):
     hhmmss = time_str[:-2]
-    period = time_str[-2:]
+    periodo = time_str[-2:]
     
     hh, mm, ss = map(int, hhmmss.split(':'))
     
-    if period == "PM" and hh != 12:
+    if periodo == "PM" and hh != 12:
         hh += 12
-    elif period == "AM" and hh == 12:
+    elif periodo == "AM" and hh == 12:
         hh = 0
     
     return f"{hh:02}:{mm:02}:{ss:02}"
