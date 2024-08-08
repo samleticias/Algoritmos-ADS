@@ -21,7 +21,7 @@ function main() {
 
         caso = inverte_texto(caso)
 
-        caso = deslocar_metade_para_tras(caso)
+        caso = deslocar_metade_para_tras(caso)  
 
         console.log(caso)
     }
