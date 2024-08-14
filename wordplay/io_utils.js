@@ -37,6 +37,11 @@ export function get_numero_positivo(texto){
     return numero
 }
 
+// funcao para limapr tela
+export function clear_screen(){
+    console.clear()
+}
+
 export function get_texto(mensagem){
     let texto = question(mensagem)
     return texto

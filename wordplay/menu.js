@@ -22,6 +22,7 @@ export function opcoes() {
         '12 - Palavra(s) com maior valor ASCII',
         '13 - Somatório ASCII das Palavras de Tamanho Múltiplo de N',
         '14 - Contar/listar palavras que começam e terminam com a mesma letra',
+        '15 - Quantas palavras contém mais consoantes que vogais',
         '0 - Sair']
     return opcoes
 } 
@@ -201,6 +202,30 @@ export function obter_palavras_com_mais_vogais(palavras){
         }
     }
 
+    return total_palavras
+}
+
+// funcao para obter quantidade de palavras com mais consoantes que vogais
+export function obter_palavras_com_mais_consoantes(palavras){
+    let total_palavras = 0
+
+    for (let palavra of palavras){
+        let qtd_consoantes = 0
+        let qtd_vogais = 0
+
+        for (let letra of palavra){
+            if (eh_consoante(letra)){
+                qtd_consoantes = qtd_consoantes + 1
+            }
+            if (!eh_consoante(letra)){
+                qtd_vogais = qtd_vogais + 1
+            }
+        }
+
+        if (qtd_consoantes > qtd_vogais){
+            total_palavras = total_palavras + 1
+        }
+    }
     return total_palavras
 }
 
