@@ -37,7 +37,7 @@ export function get_numero_positivo(texto){
     return numero
 }
 
-// funcao para limapr tela
+// funcao para limpar tela
 export function clear_screen(){
     console.clear()
 }
