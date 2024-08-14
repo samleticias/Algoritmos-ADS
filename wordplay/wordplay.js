@@ -7,7 +7,8 @@ import {conteudo_arquivo, obter_total_de_palavras, obter_palavras_min_letras, ob
     obter_total_palavras_abecedarias,
     obter_palavras_com_mais_consoantes,
     obter_palavras_com_mesma_quantidade_vogais_consoantes,
-    contar_palavras_comecam_terminam_letras_informadas
+    contar_palavras_comecam_terminam_letras_informadas,
+    mostrar_palavras_mais_20_letras
 } from './menu.js'
 import {exibir_opcoes, exibe_texto, get_numero_positivo, get_texto, clear_screen, enter_to_go_back} from './io_utils.js'
 
@@ -119,6 +120,8 @@ function mostra_resultado(palavras){
         } else if (opcao == 11){
             clear_screen()
             let qtd_palavras = obter_palavras_mais_vinte_letras(palavras)
+            let palavras_mais_20 = mostrar_palavras_mais_20_letras(palavras)
+            exibe_texto(palavras_mais_20)
             exibe_texto(`O total de palavras com 20+ letras é ${qtd_palavras} palavras.`)
             exibe_texto(`Percentual = ${obter_percentual(qtd_palavras, total_palavras).toFixed(2)}% do total de palavras\n`)
             enter_to_go_back()

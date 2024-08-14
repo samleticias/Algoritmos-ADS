@@ -4,7 +4,6 @@ export function inverte_texto(texto){
     for (let caractere of texto){
         inverso = caractere + inverso
     }
-    
     return inverso
 }
 
@@ -74,4 +73,13 @@ export function texto_para_caixa_baixa(texto){
     }
 
     return texto_caixa_baixa
+}
+
+// meu length 
+export function len(texto){
+    let tamanho = 0
+    for (let caractere of texto){
+        tamanho = tamanho + 1
+    }
+    return tamanho
 }

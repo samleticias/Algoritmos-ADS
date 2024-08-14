@@ -53,7 +53,7 @@ export function obter_palavras_mais_vinte_letras(palavras){
     let total_palavras = 0
 
     for (let palavra of palavras){
-        if (palavra.length > 20){
+        if (palavra.length - 1 > 20){
             total_palavras = total_palavras + 1
         } 
     }
@@ -230,15 +230,22 @@ export function obter_palavras_com_mais_consoantes(palavras){
     return total_palavras
 }
 
+export function has_letter_e(palavra){
+    for (let caractere of palavra){
+        if (caractere.charCodeAt() == 101){
+            return true
+        }
+    }
+    return false
+}
+
 // funcao para filtrar contagem de palavras sem a letra e
 export function obter_palavras_sem_letra_e(palavras){
     let total_palavras = 0
 
     for (let palavra of palavras){
-        for (let caractere of palavra){
-            if (caractere.charCodeAt() == 101){
-                total_palavras = total_palavras + 1
-            }
+        if (!has_letter_e(palavra)){
+            total_palavras = total_palavras + 1
         }
     }
     return total_palavras
@@ -262,7 +269,7 @@ export function obter_palavras_n_mais_letras(palavras, qtd_desejada){
     let total_palavras = 0
 
     for (let palavra of palavras){
-        if (palavra.length > qtd_desejada){
+        if (palavra.length - 1 > qtd_desejada){
             total_palavras = total_palavras + 1
         }
     }
@@ -403,6 +410,18 @@ export function contar_palavras_comecam_terminam_letras_informadas(palavras, pri
         }
     }
     return total_palavras
+}
+
+// funcao para listar as palavras com 20+ letras
+export function mostrar_palavras_mais_20_letras(palavras){
+    let palavras_mais_20 = ''
+
+    for (let palavra of palavras){
+        if (palavra.length - 1 > 20){
+            palavras_mais_20 += `Tamanho: ${palavra.length - 1} caracteres --> ${palavra}\n`
+        }
+    }
+    return palavras_mais_20
 }
 
 
