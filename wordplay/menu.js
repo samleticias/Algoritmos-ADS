@@ -1,4 +1,4 @@
-import {eh_consoante, eh_letra_maiuscula, inverte_texto, eh_letra_minuscula, texto_para_caixa_baixa} from './string_utils.js'
+import {eh_consoante, eh_letra_maiuscula, inverte_texto, eh_letra_minuscula, texto_para_caixa_baixa, eh_letra} from './string_utils.js'
 import { readFileSync } from "fs"
 
 export function conteudo_arquivo(){
@@ -23,10 +23,11 @@ export function opcoes() {
         '13 - Somatório ASCII das Palavras de Tamanho Múltiplo de N',
         '14 - Contar/listar palavras que começam e terminam com a mesma letra',
         '15 - Quantas palavras contém mais consoantes que vogais',
+        '16 - Quantas palavras contém a mesma quantidade de vogais e consoantes',
+        '17 - Quantas palavras começam e terminam com as letras informadas',
         '0 - Sair']
     return opcoes
 } 
-
 
 // função para obter quantidade total de palavras
 export function obter_total_de_palavras(palavras){
@@ -274,7 +275,7 @@ export function contar_palavras_mesma_letra(palavras){
     let total_palavras = 0
 
     for (let palavra of palavras){
-        if (palavra[0] == palavra[-1]){
+        if (palavra[0] == palavra[palavra.length - 1]){
             total_palavras += 1
         }
     }
@@ -363,6 +364,42 @@ export function obter_total_palavras_abecedarias(palavras){
     for (let palavra of palavras){
         if (eh_abecedaria(palavra)){
             total_palavras = total_palavras + 1
+        }
+    }
+    return total_palavras
+}
+
+// funcao para obter total de palavras que tem mesma quantidade de vogais e consoantes
+export function obter_palavras_com_mesma_quantidade_vogais_consoantes(palavras){
+    let total_palavras = 0
+
+    for (let palavra of palavras){
+        let qtd_consoantes = 0
+        let qtd_vogais = 0
+
+        for (let letra of palavra){
+            if (eh_consoante(letra)){
+                qtd_consoantes = qtd_consoantes + 1
+            }
+            if (!eh_consoante(letra)){
+                qtd_vogais = qtd_vogais + 1
+            }
+        }
+
+        if (qtd_consoantes == qtd_vogais){
+            total_palavras = total_palavras + 1
+        }
+    }
+    return total_palavras
+}
+
+// funcao para obter quantidade de palavras que começam e terminam com as letras informadas pelo usuario
+export function contar_palavras_comecam_terminam_letras_informadas(palavras, primeira_letra, segunda_letra){
+    let total_palavras = 0
+
+    for (let palavra of palavras){
+        if (palavra[0] == primeira_letra && palavra[palavra.length - 1] == segunda_letra){
+            total_palavras += 1
         }
     }
     return total_palavras
