@@ -1,14 +1,12 @@
 import {conteudo_arquivo, obter_total_de_palavras, obter_palavras_min_letras, obter_percentual, 
-    obter_palavras_n_mais_letras, obter_palavras_sem_letra_e, obter_palavras_nao_contem_letras,
-    conta_palavras_com_todas_letras, obter_total_palavras_contem_apenas_letras,
+    obter_palavras_n_mais_letras, obter_palavras_sem_letra_e, mostrar_palavras_mais_20_letras,
+    conta_palavras_com_todas_letras, contar_palavras_comecam_terminam_letras_informadas,
     obter_palavras_com_mais_vogais, obter_palavras_palindromas, obter_palavras_mais_vinte_letras,
     contar_palavras_mesma_letra, opcoes, obter_palavra_maior_valor_ascii, obter_valor_ascii_palavra,
     obter_somatorio_palavras_ascii_multiplo_n, conta_palavras_somatorio_ascii_multiplo_n,
-    obter_total_palavras_abecedarias,
-    obter_palavras_com_mais_consoantes,
-    obter_palavras_com_mesma_quantidade_vogais_consoantes,
-    contar_palavras_comecam_terminam_letras_informadas,
-    mostrar_palavras_mais_20_letras
+    obter_total_palavras_abecedarias, obter_palavras_nao_contem_letras, listar_palavras_contem_letras,
+    obter_palavras_com_mais_consoantes, obter_palavras_contem_letras, obter_total_palavras_contem_letras,
+    obter_palavras_com_mesma_quantidade_vogais_consoantes
 } from './menu.js'
 import {exibir_opcoes, exibe_texto, get_numero_positivo, get_texto, clear_screen, enter_to_go_back} from './io_utils.js'
 
@@ -52,7 +50,7 @@ function mostra_resultado(palavras){
         // 3 - Palavras com N+ letras
         } else if (opcao == 3){ 
             clear_screen()
-            let qtd_desejada = get_numero_positivo('Você gostaria de visualizar palavras que contenham a partir de quantas letras?\n')
+            let qtd_desejada = get_numero_positivo('Você gostaria de visualizar palavras que contenham mais que quantos caracteres?\n')
             let qtd_palavras = obter_palavras_n_mais_letras(palavras, qtd_desejada)
             exibe_texto(`O total de palavras com ${qtd_desejada}+ letras é ${qtd_palavras} palavras.`)
             exibe_texto(`Percentual = ${obter_percentual(qtd_palavras, total_palavras).toFixed(2)}% do total de palavras\n`)
@@ -69,7 +67,7 @@ function mostra_resultado(palavras){
         // 5 - Palavras que não contém letras
         } else if (opcao == 5){
             clear_screen()
-            let letras = obter_texto('Quais letras você não quer que estejam nas palavras?\n')
+            let letras = get_texto('Quais letras você não quer que estejam nas palavras?\n')
             let qtd_palavras = obter_palavras_nao_contem_letras(palavras, letras)
             exibe_texto(`O total de palavras sem as letras ${letras} é ${qtd_palavras} palavras.`)
             exibe_texto(`Percentual = ${obter_percentual(qtd_palavras, total_palavras).toFixed(2)}% do total de palavras\n`)
@@ -87,7 +85,7 @@ function mostra_resultado(palavras){
         } else if (opcao == 7){
             clear_screen()
             let letras = get_texto('Quais são as letras que você quer nas palavras?\n')
-            let qtd_palavras = obter_total_palavras_contem_apenas_letras(palavras, letras)
+            let qtd_palavras = obter_total_palavras_contem_letras(palavras, letras)
             exibe_texto(`O total de palavras com as letras desejadas é ${qtd_palavras} palavras.`)
             exibe_texto(`Percentual = ${obter_percentual(qtd_palavras, total_palavras).toFixed(2)}% do total de palavras\n`)
             enter_to_go_back()
@@ -175,6 +173,20 @@ function mostra_resultado(palavras){
             let primeira_letra = get_texto('Qual a primeira letra desejada?\n')
             let segunda_letra = get_texto('Qual a segunda letra desejada?\n')
             let qtd_palavras = contar_palavras_comecam_terminam_letras_informadas(palavras, primeira_letra, segunda_letra)
+            exibe_texto(`O total de palavras com as letras desejadas é ${qtd_palavras} palavras.`)
+            exibe_texto(`Percentual = ${obter_percentual(qtd_palavras, total_palavras).toFixed(2)}% do total de palavras\n`)
+            enter_to_go_back()
+
+        // 18 - Quantas palavras começam com a primeira letra informada, tem a segunda letra informada
+        // no meio (depende se palavra.length é par ou ímpar) e a terminam com a terceira letra informada
+        } else if (opcao == 18){
+            clear_screen()
+            let tres_letras = get_texto('Quais as três letras desejadas?\n')
+            let qtd_palavras = obter_palavras_contem_letras(palavras, tres_letras)
+            let palavras_resultado = listar_palavras_contem_letras(palavras, tres_letras)
+            exibe_texto('----------------------------\n') 
+            exibe_texto(palavras_resultado)
+            exibe_texto('----------------------------\n') 
             exibe_texto(`O total de palavras com as letras desejadas é ${qtd_palavras} palavras.`)
             exibe_texto(`Percentual = ${obter_percentual(qtd_palavras, total_palavras).toFixed(2)}% do total de palavras\n`)
             enter_to_go_back()

@@ -25,6 +25,7 @@ export function opcoes() {
         '15 - Quantas palavras contém mais consoantes que vogais',
         '16 - Quantas palavras contém a mesma quantidade de vogais e consoantes',
         '17 - Quantas palavras começam e terminam com as letras informadas',
+        '18 - Quantas palavras começam, tem no meio e terminam com as letras informadas',
         '0 - Sair']
     return opcoes
 } 
@@ -37,15 +38,14 @@ export function obter_total_de_palavras(palavras){
 
 // função para filtrar palavras com quantidade mínima de letras
 export function obter_palavras_min_letras(palavras, minimo){
-    let qtd_palavras = 0
+    let total_palavras = 0
 
     for (let palavra of palavras){
         if (palavra.length >= minimo){
-            qtd_palavras += 1
+            total_palavras += 1
         }
     }
-
-    return qtd_palavras
+    return total_palavras
 }
 
 // função para filtrar palavras com 20+ letras
@@ -113,41 +113,6 @@ export function nao_contem_caracteres(texto, caracteres, ignoreCase = false) {
     }
 
     return true
-}
-
-// funcao para filtrar com operacao de palavras que tem apenas letras
-export function obter_total_palavras_contem_apenas_letras(palavras, letras){
-    let total_palavras = 0
-
-    for (let palavra of palavras){
-        if (usa_somente(palavra, letras)){
-            total_palavras = total_palavras + 1
-        }
-    }
-    return total_palavras
-}
-
-// funcao para verificar se usa caractere
-export function usa_somente(texto, caracteres, ignoreCase = false) {
-    if (ignoreCase) {
-        texto = texto_para_caixa_baixa(texto)
-        caracteres = texto_para_caixa_baixa(caracteres)
-    }
-
-    let contador = 0
-    
-    for (let i = 0; i < texto.length; i++) {
-        for (let caractere of caracteres){
-            if (texto[i] == caractere){
-                contador = contador + 1
-            }
-            if (contador >= texto.length){
-                return true
-            }
-        }
-    }
-
-    return false
 }
 
 // funcao para contar palavras que possuem todas as letras
@@ -424,6 +389,130 @@ export function mostrar_palavras_mais_20_letras(palavras){
     return palavras_mais_20
 }
 
+// funcao para verificar se tem a letra proibida na palavra
+export function contem_letra(palavra, letra_proibida){
+    for (let caractere of palavra){
+        if (caractere == letra_proibida){
+            return true
+        }
+    }
+    return false
+}
+
+// funcao para obter codigo ascii passando a letra ou caracter como parametro
+export function get_ascii_code(caracter){
+    return caracter.charCodeAt()
+}
+
+// funcao para obter letra ou caracter em string passando codigo ascii como parametro
+export function get_caracter(codigo_ascii_caracter){
+    return String.fromCharCode(codigo_ascii_caracter)
+}
+
+function eh_par(numero){
+    return numero % 2 == 0
+}
+
+// ----- extra ------
+// primeira letra = posicao[0], segunda letra = posicao[meio], terceira letra = posicao [tamanho - 1]
+// verificar se o tamanho da palavra é par
+// se for impar pega o a posicao do indice do meio
+// se for par subtrai 1 do tamanho e divide por 2 
+export function obter_palavras_contem_letras(palavras, tres_letras) {    
+    let total_palavras = 0
+
+    for (let palavra of palavras) {
+        palavra = palavra.trim().toLowerCase()
+        tres_letras = tres_letras.trim().toLowerCase()
+
+        let tamanho = palavra.length
+        let indice_meio
+
+        if (!eh_par(tamanho)) {
+            indice_meio = Math.floor(tamanho / 2)
+        } else {
+            indice_meio = Math.floor((0 + (tamanho - 1)) / 2)
+        }
+
+        if (
+            palavra[0] === tres_letras[0] &&           
+            palavra[indice_meio] === tres_letras[1] && 
+            palavra[tamanho - 1] === tres_letras[2]    
+        ) {
+            total_palavras = total_palavras + 1
+        }
+    }
+    return total_palavras
+}
+
+// ----- extra ------
+// funcao para listar as palavras que tem as tres letras nas posicoes
+// primeira letra = posicao[0], segunda letra = posicao[meio], terceira letra = posicao [tamanho - 1]
+export function listar_palavras_contem_letras(palavras, tres_letras) {    
+    let palavras_resultado = ''
+
+    for (let palavra of palavras) {
+        palavra = palavra.trim().toLowerCase()
+        tres_letras = tres_letras.trim().toLowerCase()
+
+        let tamanho = palavra.length
+        let indice_meio
+
+        if (!eh_par(tamanho)) {
+            indice_meio = Math.floor(tamanho / 2)
+        } else {
+            indice_meio = Math.floor((0 + (tamanho - 1)) / 2)
+        }
+
+        if (
+            palavra[0] === tres_letras[0] &&           
+            palavra[indice_meio] === tres_letras[1] && 
+            palavra[tamanho - 1] === tres_letras[2]    
+        ) {
+            palavras_resultado += `${palavra}\n`
+        }
+    }
+    return palavras_resultado
+}
+
+// funcao para filtrar com operacao de palavras que tem apenas letras
+export function obter_total_palavras_contem_letras(palavras, letras){
+    let letras_finais = ''
+
+    for (let letra of letras){
+        if (eh_letra_maiuscula(letra)){
+            letras_finais = letras_finais + texto_para_caixa_baixa(letra)
+        } else {
+            letras_finais = letras_finais + letra
+        }
+    }
+
+    let qtd_palavras_com_letras = 0
+
+    for (let palavra of palavras){
+        if (contem_caracteres(palavra, letras_finais)){
+            qtd_palavras_com_letras += 1
+        }
+    }
+    return qtd_palavras_com_letras
+}
+
+// funcao para verificar se texto contem alguma letra da string informada 
+export function contem_caracteres(texto, caracteres, ignoreCase = false) {
+    if (ignoreCase) {
+        texto = texto_para_caixa_baixa(texto)
+        caracteres = texto_para_caixa_baixa(caracteres)
+    }
+
+    for (let i = 0; i < texto.length; i++) {
+        for (let j = 0; j < caracteres.length; j++) {
+            if (texto[i] === caracteres[j]) {
+                return true
+            }
+        }
+    }
+    return false
+}
 
 
 
