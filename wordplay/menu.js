@@ -17,9 +17,9 @@ export function get_opcoes() {
         '7 - Palavras "Palíndromas"',
         '8 - Palavras "Abecedárias"',
         '9 - Palavras com +20 letras',
-        '10 - Palavra(s) com maior valor ASCII',
-        '11 - Quantas palavras começam, tem no meio e terminam com as letras informadas',
-        '12 - Palavra com três letras duplas consecutivas',
+        '10 - Quantas palavras começam, tem no meio e terminam com as letras informadas',
+        '11 - Palavra com três letras duplas consecutivas',
+        // '12 - Palavra(s) com maior valor ASCII',
         '0 - Sair']
     return opcoes
 } 
@@ -175,30 +175,30 @@ export function obter_palavras_n_mais_letras(palavras, qtd_desejada){
 }
 
 // funcao para obter valor ascii da palavra percorrendo os caracteres e somando o codigo de cada um no valor total da palavra
-export function obter_valor_ascii_palavra(palavra){
-    let valor_ascii = 0
+// export function obter_valor_ascii_palavra(palavra){
+//     let valor_ascii = 0
 
-    for (let caractere of palavra){
-        valor_ascii = valor_ascii + caractere.charCodeAt()
-    }
-    return valor_ascii
-}
+//     for (let caractere of palavra){
+//         valor_ascii = valor_ascii + caractere.charCodeAt()
+//     }
+//     return valor_ascii
+// }
 
 // funcao para obter a palavra com maior valor ascii
-export function obter_palavra_maior_valor_ascii(palavras){
-    let maior_valor = -99999999999999
-    let palavra_maior = ''
+// export function obter_palavra_maior_valor_ascii(palavras){
+//     let maior_valor = -99999999999999
+//     let palavra_maior = ''
     
-    for (let palavra of palavras){
-        let soma_char_code = obter_valor_ascii_palavra(palavra)
+//     for (let palavra of palavras){
+//         let soma_char_code = obter_valor_ascii_palavra(palavra)
 
-        if (soma_char_code > maior_valor){
-            maior_valor = soma_char_code
-            palavra_maior = palavra
-        }
-    }
-    return palavra_maior
-}
+//         if (soma_char_code > maior_valor){
+//             maior_valor = soma_char_code
+//             palavra_maior = palavra
+//         }
+//     }
+//     return palavra_maior
+// }
 
 // funcao para obter percentual de palavras que atendem a requisito tal em relacao ao total de palavras
 export function obter_percentual(qtd_palavras, total_palavras){

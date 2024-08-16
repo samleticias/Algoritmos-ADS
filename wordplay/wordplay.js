@@ -1,8 +1,8 @@
 import {conteudo_arquivo, obter_total_de_palavras, obter_palavras_min_letras, obter_percentual, obter_palavras_n_mais_letras, 
     obter_palavras_sem_letra_e, mostrar_palavras_mais_20_letras, obter_palavra_letras_duplas_consecutivas, obter_palavras_palindromas,
-    obter_palavras_mais_vinte_letras, get_opcoes, obter_palavra_maior_valor_ascii, obter_valor_ascii_palavra, obter_total_palavras_abecedarias, 
+    obter_palavras_mais_vinte_letras, get_opcoes, obter_total_palavras_abecedarias, listar_palavras_abecedarias,
     obter_palavras_nao_contem_letras, listar_palavras_contem_letras, obter_palavras_contem_letras, obter_total_palavras_contem_letras,
-    listar_palavras_palindromas, listar_palavras_abecedarias
+    listar_palavras_palindromas
 } from './menu.js'
 import {exibir_opcoes, exibe_texto, get_numero_positivo, get_texto, clear_screen, enter_to_go_back} from './io_utils.js'
 
@@ -109,15 +109,15 @@ function mostra_resultado(palavras){
             enter_to_go_back()
 
         // 10 - Palavra(s) com maior valor ASCII
-        } else if (opcao == 10){
-            clear_screen()
-            let palavra_maior_valor_ascii = obter_palavra_maior_valor_ascii(palavras)
-            exibe_texto("A palavra com maior valor ASCII é " + palavra_maior_valor_ascii)
-            exibe_texto("Valor ASCII = " + obter_valor_ascii_palavra(palavra_maior_valor_ascii) + "\n")
+        // } else if (opcao == 10){
+        //     clear_screen()
+        //     let palavra_maior_valor_ascii = obter_palavra_maior_valor_ascii(palavras)
+        //     exibe_texto("A palavra com maior valor ASCII é " + palavra_maior_valor_ascii)
+        //     exibe_texto("Valor ASCII = " + obter_valor_ascii_palavra(palavra_maior_valor_ascii) + "\n")
             
-        // 11 - Quantas palavras começam com a primeira letra informada, tem a segunda letra informada
+        // 10 - Quantas palavras começam com a primeira letra informada, tem a segunda letra informada
         // no meio (depende se palavra.length é par ou ímpar) e a terminam com a terceira letra informada
-        } else if (opcao == 11){
+        } else if (opcao == 10){
             clear_screen()
             let tres_letras = get_texto('Quais as três letras desejadas?\n')
             let qtd_palavras = obter_palavras_contem_letras(palavras, tres_letras)
@@ -130,8 +130,8 @@ function mostra_resultado(palavras){
             exibe_texto(`Percentual = ${obter_percentual(qtd_palavras, total_palavras).toFixed(4)}% do total de palavras\n`)
             enter_to_go_back()
 
-        // 12 - Dê uma palavra com três letras duplas consecutivas / ex: jjiikk commttee
-        } else if (opcao == 12){
+        // 11 - Dê uma palavra com três letras duplas consecutivas / ex: jjiikk commttee
+        } else if (opcao == 11){
             clear_screen()
             let palavra_tres_letras_duplas_consecutivas = obter_palavra_letras_duplas_consecutivas(palavras)
             exibe_texto('----------------------------------------------------------------')
