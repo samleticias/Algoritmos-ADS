@@ -83,3 +83,13 @@ export function len(texto){
     }
     return tamanho
 }
+
+// meu startsWith
+export function comeca_com(palavra, letra) {
+    return palavra.startsWith(letra)
+}
+
+// meu endsWith
+export function termina_com(palavra, letra) {
+    return palavra.endsWith(letra)
+}

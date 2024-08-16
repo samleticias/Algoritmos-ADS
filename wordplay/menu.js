@@ -1,4 +1,4 @@
-import {eh_consoante, eh_letra_maiuscula, inverte_texto, eh_letra_minuscula, texto_para_caixa_baixa, eh_letra} from './string_utils.js'
+import {eh_consoante, eh_letra_maiuscula, inverte_texto, eh_letra_minuscula, texto_para_caixa_baixa, eh_letra, comeca_com, termina_com} from './string_utils.js'
 import { readFileSync } from "fs"
 
 export function conteudo_arquivo(){
@@ -7,7 +7,7 @@ export function conteudo_arquivo(){
 }
 
 // funcao para opcoes do menu
-export function opcoes() {
+export function get_opcoes() {
     let opcoes = ['1 - Total de palavras',
         '2 - Palavras com no mínimo X letras',  
         '3 - Palavras com N+ letras',
@@ -24,8 +24,8 @@ export function opcoes() {
         '14 - Contar/listar palavras que começam e terminam com a mesma letra',
         '15 - Quantas palavras contém mais consoantes que vogais',
         '16 - Quantas palavras contém a mesma quantidade de vogais e consoantes',
-        '17 - Quantas palavras começam e terminam com as letras informadas',
-        '18 - Quantas palavras começam, tem no meio e terminam com as letras informadas',
+        '17 - Quantas palavras começam, tem no meio e terminam com as letras informadas',
+        '18 - Palavra com três letras duplas consecutivas',
         '0 - Sair']
     return opcoes
 } 
@@ -216,17 +216,35 @@ export function obter_palavras_sem_letra_e(palavras){
     return total_palavras
 }
 
+// funcao para verificar se a palavra é palindroma comparando com o inverso da palavra
+function eh_palindroma(palavra) {
+    const palavra_limpa = palavra.trim().toLowerCase()
+    const palavra_invertida = inverte_texto(palavra_limpa)
+    return palavra_limpa === palavra_invertida
+}
+
 // funcao para obter quantidade de palavras palindromas
-export function obter_palavras_palindromas(palavras){
+export function obter_palavras_palindromas(palavras) {
     let total_palavras = 0
 
-    for (let palavra of palavras){
-        let palavra_invertida = inverte_texto(palavra)
-        if (palavra == palavra_invertida){
-            total_palavras = total_palavras + 1
+    for (let palavra of palavras) {
+        if (eh_palindroma(palavra)) {
+            total_palavras++
         }
     }
     return total_palavras
+}
+
+// funcao para listar palavras palindromas
+export function listar_palavras_palindromas(palavras) {
+    let palavras_palindromas = ''
+
+    for (let palavra of palavras) {
+        if (eh_palindroma(palavra)) {
+            palavras_palindromas += `${palavra}\n`
+        }
+    }
+    return palavras_palindromas
 }
 
 // funcao para obter quantidade de palavras a partir de N+ letras
@@ -322,6 +340,8 @@ export function eh_multiplo(a, b){
 
 // funcao para verificar se palavra é abecedaria 
 export function eh_abecedaria(palavra) {
+    palavra = palavra.trim().toLowerCase()
+
     for (let i = 0; i < palavra.length - 1; i++) {
         if (palavra[i] > palavra[i + 1]) {
             return false
@@ -339,6 +359,18 @@ export function obter_total_palavras_abecedarias(palavras){
         }
     }
     return total_palavras
+}
+
+// funcao para listar palavras abecedarias
+export function listar_palavras_abecedarias(palavras){
+    let palavras_abecedarias = ''
+
+    for (let palavra of palavras){
+        if (eh_abecedaria(palavra)){
+            palavras_abecedarias += `${palavra}\n`
+        }
+    }
+    return palavras_abecedarias
 }
 
 // funcao para obter total de palavras que tem mesma quantidade de vogais e consoantes
@@ -360,18 +392,6 @@ export function obter_palavras_com_mesma_quantidade_vogais_consoantes(palavras){
 
         if (qtd_consoantes == qtd_vogais){
             total_palavras = total_palavras + 1
-        }
-    }
-    return total_palavras
-}
-
-// funcao para obter quantidade de palavras que começam e terminam com as letras informadas pelo usuario
-export function contar_palavras_comecam_terminam_letras_informadas(palavras, primeira_letra, segunda_letra){
-    let total_palavras = 0
-
-    for (let palavra of palavras){
-        if (palavra[0] == primeira_letra && palavra[palavra.length - 1] == segunda_letra){
-            total_palavras += 1
         }
     }
     return total_palavras
@@ -513,6 +533,26 @@ export function contem_caracteres(texto, caracteres, ignoreCase = false) {
     }
     return false
 }
+
+// funcao para obter palavra com três letras duplas consecutivas
+export function obter_palavra_letras_duplas_consecutivas(palavras) {
+    for (let palavra of palavras) {
+        if (palavra.length < 6) continue
+
+        for (let i = 0; i <= palavra.length - 6; i++) {
+            if (palavra[i] === palavra[i + 1] &&
+                palavra[i + 2] === palavra[i + 3] &&
+                palavra[i + 4] === palavra[i + 5]) {
+                return palavra
+            }
+        }
+    }
+    return null
+}
+
+
+
+
 
 
 
