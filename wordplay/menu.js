@@ -1,4 +1,4 @@
-import {eh_letra_maiuscula, inverte_texto, texto_para_caixa_baixa} from './string_utils.js'
+import {eh_consoante, eh_letra_maiuscula, inverte_texto, eh_letra_minuscula, texto_para_caixa_baixa, eh_letra, comeca_com, termina_com} from './string_utils.js'
 import { readFileSync } from "fs"
 
 export function conteudo_arquivo(){
@@ -8,7 +8,11 @@ export function conteudo_arquivo(){
 
 // funcao para opcoes do menu
 export function get_opcoes() {
-    let opcoes = ['1 - Total de palavras',
+    let opcoes = [
+        '----------------------------------------------------------------------------------',
+        '==================================== WORDPLAY ====================================',
+        '----------------------------------------------------------------------------------',  
+        '1 - Total de palavras',
         '2 - Palavras com no mínimo X letras',  
         '3 - Palavras com N+ letras',
         '4 - Palavras sem letra e',
@@ -17,10 +21,12 @@ export function get_opcoes() {
         '7 - Palavras "Palíndromas"',
         '8 - Palavras "Abecedárias"',
         '9 - Palavras com +20 letras',
-        '10 - Quantas palavras começam, tem no meio e terminam com as letras informadas',
-        '11 - Palavra com três letras duplas consecutivas',
-        // '12 - Palavra(s) com maior valor ASCII',
-        '0 - Sair']
+        '10 - Palavra(s) com maior valor ASCII',
+        '11 - Contar/listar palavras que começam e terminam com a mesma letra',
+        '12 - Quantas palavras começam, tem no meio e terminam com as letras informadas',
+        '13 - Palavra com três letras duplas consecutivas',
+        '0 - Sair',
+        '----------------------------------------------------------------------------------']
     return opcoes
 } 
 
@@ -109,6 +115,86 @@ export function nao_contem_caracteres(texto, caracteres, ignoreCase = false) {
     return true
 }
 
+// funcao para contar palavras que possuem todas as letras
+export function conta_palavras_com_todas_letras(palavras){
+    let letras = 'abcdefghijklmnopqrstuvwxyz'
+    let total_palavras = 0
+
+    for (let palavra of palavras){
+        let possui_todas_letras = true
+
+        for (let letra of letras){
+            let letra_encontrada = false
+             for (let caractere of palavra.toLowerCase()){
+                if (caractere == letra){
+                    letra_encontrada = true
+                    break
+                } 
+             }
+
+             if(!letra_encontrada){
+                possui_todas_letras = false
+                break
+             }
+        }
+
+        if (possui_todas_letras){
+            total_palavras += 1
+        }
+    }
+
+    return total_palavras
+}
+
+// funcao para obter quantidade de palavras com mais vogais que consoantes
+export function obter_palavras_com_mais_vogais(palavras){
+    let total_palavras = 0
+
+    for (let palavra of palavras){
+        let qtd_consoantes = 0
+        let qtd_vogais = 0
+
+        for (let letra of palavra){
+            if (eh_consoante(letra)){
+                qtd_consoantes = qtd_consoantes + 1
+            }
+            if (!eh_consoante(letra)){
+                qtd_vogais = qtd_vogais + 1
+            }
+        }
+
+        if (qtd_vogais > qtd_consoantes){
+            total_palavras += 1
+        }
+    }
+
+    return total_palavras
+}
+
+// funcao para obter quantidade de palavras com mais consoantes que vogais
+export function obter_palavras_com_mais_consoantes(palavras){
+    let total_palavras = 0
+
+    for (let palavra of palavras){
+        let qtd_consoantes = 0
+        let qtd_vogais = 0
+
+        for (let letra of palavra){
+            if (eh_consoante(letra)){
+                qtd_consoantes = qtd_consoantes + 1
+            }
+            if (!eh_consoante(letra)){
+                qtd_vogais = qtd_vogais + 1
+            }
+        }
+
+        if (qtd_consoantes > qtd_vogais){
+            total_palavras = total_palavras + 1
+        }
+    }
+    return total_palavras
+}
+
 export function has_letter_e(palavra){
     for (let caractere of palavra){
         if (caractere.charCodeAt() == 101){
@@ -174,35 +260,96 @@ export function obter_palavras_n_mais_letras(palavras, qtd_desejada){
     return total_palavras
 }
 
-// funcao para obter valor ascii da palavra percorrendo os caracteres e somando o codigo de cada um no valor total da palavra
-// export function obter_valor_ascii_palavra(palavra){
-//     let valor_ascii = 0
+// funcao para filtar e contar palavras que começam e terminam com a mesma letra
+export function contar_palavras_mesma_letra(palavras) {
+    let total_palavras = 0
 
-//     for (let caractere of palavra){
-//         valor_ascii = valor_ascii + caractere.charCodeAt()
-//     }
-//     return valor_ascii
-// }
+    for (let palavra of palavras) {
+        palavra = palavra.trim()
+        if (palavra.length > 0 && palavra[0].toLowerCase() === palavra[palavra.length - 1].toLowerCase()) {
+            total_palavras += 1
+        }
+    }
+    return total_palavras
+}
+
+// funcao para listar palavras que começam e terminam com a mesma letra
+export function listar_palavras_mesma_letra(palavras) {
+    let palavras_desejadas = ''
+
+    for (let palavra of palavras) {
+        palavra = palavra.trim()
+        if (palavra.length > 0 && palavra[0].toLowerCase() === palavra[palavra.length - 1].toLowerCase()) {
+            palavras_desejadas += `${palavra}\n`
+        }
+    }
+    return palavras_desejadas
+}
+
+// funcao para obter valor ascii da palavra percorrendo os caracteres e somando o codigo de cada um no valor total da palavra
+export function obter_valor_ascii_palavra(palavra){
+    let valor_ascii = 0
+
+    for (let caractere of palavra){
+        valor_ascii = valor_ascii + caractere.charCodeAt()
+    }
+    return valor_ascii
+}
 
 // funcao para obter a palavra com maior valor ascii
-// export function obter_palavra_maior_valor_ascii(palavras){
-//     let maior_valor = -99999999999999
-//     let palavra_maior = ''
+export function obter_palavra_maior_valor_ascii(palavras){
+    let maior_valor = -99999999999999
+    let palavra_maior = ''
     
-//     for (let palavra of palavras){
-//         let soma_char_code = obter_valor_ascii_palavra(palavra)
+    for (let palavra of palavras){
+        let soma_char_code = obter_valor_ascii_palavra(palavra)
 
-//         if (soma_char_code > maior_valor){
-//             maior_valor = soma_char_code
-//             palavra_maior = palavra
-//         }
-//     }
-//     return palavra_maior
-// }
+        if (soma_char_code > maior_valor){
+            maior_valor = soma_char_code
+            palavra_maior = palavra
+        }
+    }
+    return palavra_maior
+}
+
+// funcao para obter somatorio ascii das palavras de tamanho multiplo de N
+export function obter_somatorio_palavras_ascii_multiplo_n(palavras, n){
+    let somatorio_ascii = 0
+
+    for (let palavra of palavras){
+        if (obter_tamanho_multiplo(palavra, n)){
+            let valor_ascii_palavra = obter_valor_ascii_palavra(palavra)
+            somatorio_ascii = somatorio_ascii + valor_ascii_palavra
+        }
+    }
+    return somatorio_ascii
+}
+
+// funcao para contar quantidade de palavras no somatório ASCII para palavras com tamanho multiplo de N
+export function conta_palavras_somatorio_ascii_multiplo_n(palavras, n){
+    let total_palavras = 0
+
+    for (let palavra of palavras){
+        if (obter_tamanho_multiplo(palavra, n)){
+            total_palavras = total_palavras + 1
+        }
+    }
+    return total_palavras
+}
+
+// funcao para verificar se o tamanho da palavra é multiplo do numero informado (opcao somatorio ascii)
+export function obter_tamanho_multiplo(palavra, numero) {
+    return palavra.length % numero === 0
+}
 
 // funcao para obter percentual de palavras que atendem a requisito tal em relacao ao total de palavras
 export function obter_percentual(qtd_palavras, total_palavras){
     return (qtd_palavras / total_palavras) * 100
+}
+
+// mesma função para verificar se é divisor
+export function eh_multiplo(a, b){
+    return a % b == 0
 }
 
 // funcao para verificar se palavra é abecedaria 
@@ -238,6 +385,30 @@ export function listar_palavras_abecedarias(palavras){
         }
     }
     return palavras_abecedarias
+}
+
+// funcao para obter total de palavras que tem mesma quantidade de vogais e consoantes
+export function obter_palavras_com_mesma_quantidade_vogais_consoantes(palavras){
+    let total_palavras = 0
+
+    for (let palavra of palavras){
+        let qtd_consoantes = 0
+        let qtd_vogais = 0
+
+        for (let letra of palavra){
+            if (eh_consoante(letra)){
+                qtd_consoantes = qtd_consoantes + 1
+            }
+            if (!eh_consoante(letra)){
+                qtd_vogais = qtd_vogais + 1
+            }
+        }
+
+        if (qtd_consoantes == qtd_vogais){
+            total_palavras = total_palavras + 1
+        }
+    }
+    return total_palavras
 }
 
 // funcao para listar as palavras com 20+ letras

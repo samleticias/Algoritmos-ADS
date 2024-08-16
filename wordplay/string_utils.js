@@ -93,3 +93,4 @@ export function comeca_com(palavra, letra) {
 export function termina_com(palavra, letra) {
     return palavra.endsWith(letra)
 }
+

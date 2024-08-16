@@ -1,10 +1,15 @@
-import {conteudo_arquivo, obter_total_de_palavras, obter_palavras_min_letras, obter_percentual, obter_palavras_n_mais_letras, 
-    obter_palavras_sem_letra_e, mostrar_palavras_mais_20_letras, obter_palavra_letras_duplas_consecutivas, obter_palavras_palindromas,
-    obter_palavras_mais_vinte_letras, get_opcoes, obter_total_palavras_abecedarias, listar_palavras_abecedarias,
-    obter_palavras_nao_contem_letras, listar_palavras_contem_letras, obter_palavras_contem_letras, obter_total_palavras_contem_letras,
-    listar_palavras_palindromas
+import {conteudo_arquivo, obter_total_de_palavras, obter_palavras_min_letras, obter_percentual, 
+    obter_palavras_n_mais_letras, obter_palavras_sem_letra_e, mostrar_palavras_mais_20_letras,
+    conta_palavras_com_todas_letras, obter_palavra_letras_duplas_consecutivas,
+    obter_palavras_com_mais_vogais, obter_palavras_palindromas, obter_palavras_mais_vinte_letras,
+    contar_palavras_mesma_letra, get_opcoes, obter_palavra_maior_valor_ascii, obter_valor_ascii_palavra,
+    obter_somatorio_palavras_ascii_multiplo_n, conta_palavras_somatorio_ascii_multiplo_n,
+    obter_total_palavras_abecedarias, obter_palavras_nao_contem_letras, listar_palavras_contem_letras,
+    obter_palavras_com_mais_consoantes, obter_palavras_contem_letras, obter_total_palavras_contem_letras,
+    obter_palavras_com_mesma_quantidade_vogais_consoantes, listar_palavras_palindromas, listar_palavras_abecedarias,
+    listar_palavras_mesma_letra
 } from './menu.js'
-import {exibir_opcoes, exibe_texto, get_numero_positivo, get_texto, clear_screen, enter_to_go_back} from './io_utils.js'
+import {exibir_opcoes, exibe_texto, get_numero_positivo, get_texto, clear_screen, press_enter_to_continue} from './io_utils.js'
 
 function main(){
     let conteudo_arquivo_txt = conteudo_arquivo()
@@ -32,7 +37,7 @@ function mostra_resultado(palavras){
         } else if (opcao == 1){
             clear_screen()
             exibe_texto(`Total de palavras: ${total_palavras} palavras.\n`)
-            enter_to_go_back()
+            press_enter_to_continue()
 
         // 2 - Palavras com no mínimo X letras
         } else if (opcao == 2){
@@ -41,7 +46,7 @@ function mostra_resultado(palavras){
             let qtd_palavras = obter_palavras_min_letras(palavras, minimo)
             exibe_texto(`O total de palavras com no mínimo ${minimo} letras é ${qtd_palavras} palavras.`)
             exibe_texto(`Percentual = ${obter_percentual(qtd_palavras, total_palavras).toFixed(2)}% do total de palavras\n`)
-            enter_to_go_back()
+            press_enter_to_continue()
 
         // 3 - Palavras com N+ letras
         } else if (opcao == 3){ 
@@ -50,7 +55,7 @@ function mostra_resultado(palavras){
             let qtd_palavras = obter_palavras_n_mais_letras(palavras, qtd_desejada)
             exibe_texto(`O total de palavras com ${qtd_desejada}+ letras é ${qtd_palavras} palavras.`)
             exibe_texto(`Percentual = ${obter_percentual(qtd_palavras, total_palavras).toFixed(2)}% do total de palavras\n`)
-            enter_to_go_back()
+            press_enter_to_continue()
 
         // 4 - Palavras sem letra e
         } else if (opcao == 4){
@@ -58,7 +63,7 @@ function mostra_resultado(palavras){
             let qtd_palavras = obter_palavras_sem_letra_e(palavras)
             exibe_texto(`O total de palavras sem a letra "e" é ${qtd_palavras} palavras.`)
             exibe_texto(`Percentual = ${obter_percentual(qtd_palavras, total_palavras).toFixed(2)}% do total de palavras\n`)
-            enter_to_go_back()
+            press_enter_to_continue()
 
         // 5 - Palavras que não contém letras
         } else if (opcao == 5){
@@ -67,7 +72,7 @@ function mostra_resultado(palavras){
             let qtd_palavras = obter_palavras_nao_contem_letras(palavras, letras)
             exibe_texto(`O total de palavras sem as letras ${letras} é ${qtd_palavras} palavras.`)
             exibe_texto(`Percentual = ${obter_percentual(qtd_palavras, total_palavras).toFixed(4)}% do total de palavras\n`)
-            enter_to_go_back()
+            press_enter_to_continue()
 
         // 6 - Palavras que só contém letras
         } else if (opcao == 6){
@@ -76,7 +81,7 @@ function mostra_resultado(palavras){
             let qtd_palavras = obter_total_palavras_contem_letras(palavras, letras)
             exibe_texto(`O total de palavras com as letras desejadas é ${qtd_palavras} palavras.`)
             exibe_texto(`Percentual = ${obter_percentual(qtd_palavras, total_palavras).toFixed(4)}% do total de palavras\n`)
-            enter_to_go_back()
+            press_enter_to_continue()
 
         // 7 - Palavras "Palíndromas"
         } else if (opcao == 7){
@@ -86,7 +91,7 @@ function mostra_resultado(palavras){
             exibe_texto(palavras_palindromas)
             exibe_texto(`O total de palavras palíndromas é ${qtd_palavras} palavras.`)
             exibe_texto(`Percentual = ${obter_percentual(qtd_palavras, total_palavras).toFixed(6)}% do total de palavras\n`)
-            enter_to_go_back()
+            press_enter_to_continue()
 
         // 8 - Palavras "Abecedárias"
         } else if (opcao == 8){
@@ -96,7 +101,7 @@ function mostra_resultado(palavras){
             exibe_texto(palavras_abecedarias)
             exibe_texto(`O total de palavras abecedárias é ${qtd_palavras} palavras.`)
             exibe_texto(`Percentual = ${obter_percentual(qtd_palavras, total_palavras).toFixed(6)}% do total de palavras\n`)
-            enter_to_go_back()
+            press_enter_to_continue()
 
         // 9 - Palavras com +20 letras
         } else if (opcao == 9){
@@ -106,18 +111,32 @@ function mostra_resultado(palavras){
             exibe_texto(palavras_mais_20)
             exibe_texto(`O total de palavras com 20+ letras é ${qtd_palavras} palavras.`)
             exibe_texto(`Percentual = ${obter_percentual(qtd_palavras, total_palavras).toFixed(6)}% do total de palavras\n`)
-            enter_to_go_back()
+            press_enter_to_continue()
 
         // 10 - Palavra(s) com maior valor ASCII
-        // } else if (opcao == 10){
-        //     clear_screen()
-        //     let palavra_maior_valor_ascii = obter_palavra_maior_valor_ascii(palavras)
-        //     exibe_texto("A palavra com maior valor ASCII é " + palavra_maior_valor_ascii)
-        //     exibe_texto("Valor ASCII = " + obter_valor_ascii_palavra(palavra_maior_valor_ascii) + "\n")
-            
-        // 10 - Quantas palavras começam com a primeira letra informada, tem a segunda letra informada
-        // no meio (depende se palavra.length é par ou ímpar) e a terminam com a terceira letra informada
         } else if (opcao == 10){
+            clear_screen()
+            let palavra_maior_valor_ascii = obter_palavra_maior_valor_ascii(palavras)
+            exibe_texto("A palavra com maior valor ASCII é " + palavra_maior_valor_ascii)
+            exibe_texto("Valor ASCII = " + obter_valor_ascii_palavra(palavra_maior_valor_ascii) + "\n")
+            press_enter_to_continue()
+            
+        // 11 - Contar/listar palavras que começam e terminam com a mesma letra
+        } else if (opcao == 11){
+            clear_screen()
+            let qtd_palavras = contar_palavras_mesma_letra(palavras)
+            let listagem = listar_palavras_mesma_letra(palavras)
+            exibe_texto('\n') 
+            exibe_texto('-------------------\n') 
+            exibe_texto(listagem)
+            exibe_texto('-------------------\n') 
+            exibe_texto(`O total de palavras que começam e terminam com a mesma letra é ${qtd_palavras} palavras.`)
+            exibe_texto(`Percentual = ${obter_percentual(qtd_palavras, total_palavras).toFixed(2)}% do total de palavras\n`)
+            press_enter_to_continue()
+            
+        // 12 - Quantas palavras começam com a primeira letra informada, tem a segunda letra informada
+        // no meio (depende se palavra.length é par ou ímpar) e a terminam com a terceira letra informada
+        } else if (opcao == 12){
             clear_screen()
             let tres_letras = get_texto('Quais as três letras desejadas?\n')
             let qtd_palavras = obter_palavras_contem_letras(palavras, tres_letras)
@@ -128,16 +147,14 @@ function mostra_resultado(palavras){
             exibe_texto('-------------------\n') 
             exibe_texto(`O total de palavras com as letras desejadas é ${qtd_palavras} palavras.`)
             exibe_texto(`Percentual = ${obter_percentual(qtd_palavras, total_palavras).toFixed(4)}% do total de palavras\n`)
-            enter_to_go_back()
+            press_enter_to_continue()
 
-        // 11 - Dê uma palavra com três letras duplas consecutivas / ex: jjiikk commttee
-        } else if (opcao == 11){
+        // 13 - Dê uma palavra com três letras duplas consecutivas / ex: jjiikk commttee
+        } else if (opcao == 13){
             clear_screen()
             let palavra_tres_letras_duplas_consecutivas = obter_palavra_letras_duplas_consecutivas(palavras)
-            exibe_texto('----------------------------------------------------------------')
-            exibe_texto('A palavra com três letras duplicadas consecutivas é: ' + palavra_tres_letras_duplas_consecutivas)
-            exibe_texto('----------------------------------------------------------------')
-            enter_to_go_back()
+            exibe_texto('A palavra com três letras duplicadas consecutivas é: ' + palavra_tres_letras_duplas_consecutivas + '\n')
+            press_enter_to_continue()
         }
     }
 }

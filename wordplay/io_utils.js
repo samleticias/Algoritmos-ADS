@@ -2,7 +2,7 @@
 import { question } from "readline-sync";
 import { texto_para_caixa_alta, texto_para_caixa_baixa } from "./string_utils.js";
 
-export function enter_to_go_back(){
+export function press_enter_to_continue(){
     question("Pressione enter para voltar...")
 }
 
