@@ -3,7 +3,7 @@ import {resetar_vetor, obter_posicao_maior_valor, obter_posicao_menor_valor, obt
     preencher_vetor_automaticamente, preencher_vetor, obter_somatorio_valores, obter_media_valores, conta_quantidade_valores_positivos,
     mostra_valores_positivos, conta_quantidade_valores_negativos, mostra_valores_negativos, multiplicar_valores, exponencia_elementos,
     reduzir_todos_elementos, substituir_valores_negativos_por_aleatorios, ordenar_valores_sort, adiciona_valores, remove_valor, 
-    remove_valor_por_posicao, atualizar_valor, preencher_vetor_min_max, embaralhar_valores
+    remove_valor_por_posicao, atualizar_valor, preencher_vetor_min_max
 } from './vetor_funcionalidades.js'
 import {cria_vetor_numerico_arquivo, escreve_vetor_em_arquivo, exibe_elementos_vetor, get_size, menu, menu_update} from './vetor_utils.js'
 
@@ -183,15 +183,7 @@ function main(){
                     exibe_elementos_vetor(vetor, '\nVetor ordenado:\n')
                     press_enter_to_continue()
                     
-                // 6 - Embaralhar valores
-                } else if (op == 6){
-                    clear_screen()
-                    exibe_elementos_vetor(vetor, '\nVetor atual:\n')
-                    vetor = embaralhar_valores(vetor)
-                    exibe_elementos_vetor(vetor, '\nVetor embaralhado:\n')
-                    press_enter_to_continue()
-
-                }
+                } 
             }
         
         // 14 - Adicionar novos valores

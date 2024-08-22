@@ -237,27 +237,6 @@ export function ordenar_valores_sort(vetor) {
     return vetor
 }
 
-// export function embaralhar_valores(vetor) {
-//     for (let i = vetor.length - 1; i > 0; i--) {
-//         const j = Math.floor(Math.random() * (i + 1))
-        
-//         [vetor[i], vetor[j]] = [vetor[j], vetor[i]]
-//     }
-//     return vetor
-// }
-
-export function embaralhar_valores(vetor) {
-    if (!Array.isArray(vetor) || vetor.length <= 1) {
-        return vetor
-    }
-    for (let i = vetor.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1))
-        [vetor[i], vetor[j]] = [vetor[j], vetor[i]]
-    }
-    return vetor
-}
-
-
 // funcao para adicionar valores ao vetor
 // pede a quantidade de elementos que deseja adicionar e solicita cada valor, adicionando-os ao vetor
 // retorna vetor acrescentando os elementos novos
