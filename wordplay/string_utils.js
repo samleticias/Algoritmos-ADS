@@ -1,3 +1,6 @@
+// String Utils
+
+// funcao para inverter texto, retornando texto invertido
 export function inverte_texto(texto){
     let inverso = ''
 
@@ -7,6 +10,7 @@ export function inverte_texto(texto){
     return inverso
 }
 
+// funcao booleana para verificar se letra é consoante, retornando true ou false
 export function eh_consoante(caractere){
     if (caractere.charCodeAt() >= 66 && caractere.charCodeAt() <= 68 || caractere.charCodeAt() >= 98 && caractere.charCodeAt() <= 100){
         return true
@@ -26,27 +30,31 @@ export function eh_consoante(caractere){
     }
 }
 
+// funcao para duplicar caracteres, retornando texto com caracteres duplicados
 export function duplicar_caractere(texto){
     let texto_novo = ''
     for (let caractere of texto){
         texto_novo += caractere * 2
     }
-
     return texto_novo
 }
 
+// funcao booleana para verificar se caractere é letra minuscula, retornando true ou false
 export function eh_letra_minuscula(caractere){ // 97 a 122
     return caractere.charCodeAt() >= 97 && caractere.charCodeAt() <= 122
 }
 
+// funcao booleana para verificar se caractere é letra maiuscula, retornando true ou false
 export function eh_letra_maiuscula(caractere){ // 65 a 90
     return caractere.charCodeAt() >= 65 && caractere.charCodeAt() <= 90
 }
 
+// funcao booleana para verificar se caractere é letra, retornando true ou false
 export function eh_letra(caractere) {
     return (caractere >= 'a' && caractere <= 'z') || (caractere >= 'A' && caractere <= 'Z')
 }
 
+// funcao para modificar caracteres de um texto para caixa alta, retornando texto em caixa alta
 export function texto_para_caixa_alta(texto){
     let texto_caixa_alta = ''
 
@@ -57,10 +65,10 @@ export function texto_para_caixa_alta(texto){
                 texto_caixa_alta += caractere
             }
         }
-
     return texto_caixa_alta
 }
 
+// funcao para modificar caracteres de um texto para caixa baixa, retornando texto em caixa baixa
 export function texto_para_caixa_baixa(texto){
     let texto_caixa_baixa = ''
 
@@ -71,7 +79,6 @@ export function texto_para_caixa_baixa(texto){
             texto_caixa_baixa += caractere
         }
     }
-
     return texto_caixa_baixa
 }
 
