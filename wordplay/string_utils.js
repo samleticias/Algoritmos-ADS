@@ -94,3 +94,16 @@ export function termina_com(palavra, letra) {
     return palavra.endsWith(letra)
 }
 
+// meu trim
+export function meu_trim(palavra){
+    let nova_palavra = ''
+
+    for (let letra of palavra){
+        if (letra == "\r"){
+            continue
+        }
+        nova_palavra += letra
+    }
+    return nova_palavra
+}
+
