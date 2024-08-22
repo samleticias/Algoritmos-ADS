@@ -37,16 +37,14 @@ function main(){
             let valor_min = get_number('Qual o valor mínimo desejado?\n')
             let valor_max = get_numero_min('Qual o valor máximo desejado?\n', valor_min + 1)
             vetor = preencher_vetor_min_max(vetor, valor_min, valor_max)
-            exibe_elementos_vetor(vetor, '\nVetor preenchido com sucesso!\n')
-            exibe_texto(`\n`)
+            exibe_elementos_vetor(vetor, '\nVetor preenchido com sucesso!\n\n')
             press_enter_to_continue()
 
         // 3 - Preencher vetor manualmente
         } else if (opcao == 3){
             clear_screen()
             vetor = preencher_vetor(vetor)
-            exibe_elementos_vetor(vetor, '\nVetor preenchido com sucesso!\n')
-            exibe_texto(`\n`)
+            exibe_elementos_vetor(vetor, '\nVetor preenchido com sucesso!\n\n')
             press_enter_to_continue()
         
         // 4 - Preencher vetor automaticamente
@@ -55,15 +53,13 @@ function main(){
             let valor_min = get_number('Qual o valor mínimo desejado?\n')
             let valor_max = get_numero_min('Qual o valor máximo desejado?\n', valor_min + 1)
             vetor = preencher_vetor_automaticamente(vetor, valor_min, valor_max)
-            exibe_elementos_vetor(vetor, '\nVetor preenchido com sucesso!\n')
-            exibe_texto(`\n`)
+            exibe_elementos_vetor(vetor, '\nVetor preenchido com sucesso!\n\n')
             press_enter_to_continue()
 
         // 5 - Mostrar vetor
         } else if (opcao == 5){
             clear_screen()
-            exibe_elementos_vetor(vetor, '\nVetor atual:\n')
-            exibe_texto(`\n`)
+            exibe_elementos_vetor(vetor, '\nVetor atual:\n\n')
             press_enter_to_continue()
 
         // 6 - Resetar vetor
@@ -71,8 +67,7 @@ function main(){
             clear_screen()
             let valor_padrao = get_numero_positivo('Qual o valor padrão?\n')
             vetor = resetar_vetor(vetor, valor_padrao)
-            exibe_elementos_vetor(vetor, '\nVetor resetado com valor padrão:\n')
-            exibe_texto(`\n`)
+            exibe_elementos_vetor(vetor, '\nVetor resetado com valor padrão:\n\n')
             press_enter_to_continue()
 
         // 7 - Ver quantidade de itens no vetor
@@ -91,8 +86,7 @@ function main(){
             let posicao_menor = obter_posicao_menor_valor(vetor)
             exibe_texto(`\nMaior valor do vetor = ${maior_valor} -> Posição = ${posicao_maior}\n`)
             exibe_texto(`\nMenor valor do vetor = ${menor_valor} -> Posição = ${posicao_menor}\n`)
-            exibe_elementos_vetor(vetor, '\nVetor:\n')
-            exibe_texto(`\n`)
+            exibe_elementos_vetor(vetor, '\nVetor:\n\n')
             press_enter_to_continue()
 
         // 9 - Somatório dos valores
@@ -149,8 +143,7 @@ function main(){
                     exibe_texto(`\n`)
                     let valor = get_number('Por qual valor você deseja multiplicar cada um dos elementos do vetor?\n') 
                     vetor = multiplicar_valores(vetor, valor)
-                    exibe_elementos_vetor(vetor, '\nVetor multiplicado:\n')
-                    exibe_texto(`\n`)
+                    exibe_elementos_vetor(vetor, '\nVetor multiplicado:\n\n')
                     press_enter_to_continue()
                 
                 // 2 - Elevar a um valor (exponenciação)
@@ -160,52 +153,43 @@ function main(){
                     exibe_texto(`\n`)
                     let expoente = get_number('A qual expoente você deseja elevar cada um dos elementos do vetor?\n')
                     vetor = exponencia_elementos(vetor, expoente)
-                    exibe_elementos_vetor(vetor, '\nVetor exponenciado:\n')
-                    exibe_texto(`\n`)
+                    exibe_elementos_vetor(vetor, '\nVetor exponenciado:\n\n')
                     press_enter_to_continue()
         
                 // 3 - Reduzir a uma fração (pedir a fração fração ex: 1⁄5)
                 } else if (op == 3) {
                     clear_screen()
-                    exibe_elementos_vetor(vetor, '\nVetor atual:\n')
-                    exibe_texto(`\n`)
+                    exibe_elementos_vetor(vetor, '\nVetor atual:\n\n')
                     let numerador = get_number('Qual numerador da fração você deseja reduzir cada um dos elementos do vetor?\n')
                     let denominador = get_number('Qual denominador da fração você deseja reduzir cada um dos elementos do vetor?\n')
                     vetor = reduzir_todos_elementos(vetor, numerador, denominador)
-                    exibe_elementos_vetor(vetor, '\nVetor reduzido:\n')
-                    exibe_texto(`\n`)
+                    exibe_elementos_vetor(vetor, '\nVetor reduzido:\n\n')
                     press_enter_to_continue()
         
                 // 4 - Substituir valores negativos por um número aleatórios da uma faixa(min, max)
                 } else if (op == 4) {
                     clear_screen()
-                    exibe_elementos_vetor(vetor, '\nVetor atual:\n')
-                    exibe_texto(`\n`)
+                    exibe_elementos_vetor(vetor, '\nVetor atual:\n\n')
                     let valor_min = get_number('Qual o valor mínimo desejado?\n')
                     let valor_max = get_numero_min('Qual o valor máximo desejado?\n', valor_min + 1)
                     vetor = substituir_valores_negativos_por_aleatorios(vetor, valor_min, valor_max)
-                    exibe_elementos_vetor(vetor, '\nVetor modificado (se houver valor inicial negativo):\n')
-                    exibe_texto(`\n`)
+                    exibe_elementos_vetor(vetor, '\nVetor modificado (se houver valor inicial negativo):\n\n')
                     press_enter_to_continue()
         
                 // 5 - Ordenar valores 
                 } else if (op == 5) {
                     clear_screen()
-                    exibe_elementos_vetor(vetor, '\nVetor atual:\n')
-                    exibe_texto(`\n`)
+                    exibe_elementos_vetor(vetor, '\nVetor atual:\n\n')
                     vetor = ordenar_valores_sort(vetor)
-                    exibe_elementos_vetor(vetor, '\nVetor ordenado:\n')
-                    exibe_texto(`\n`)
+                    exibe_elementos_vetor(vetor, '\nVetor ordenado:\n\n')
                     press_enter_to_continue()
                     
                 // 6 - Embaralhar valores
                 } else if (op == 6){
                     clear_screen()
-                    exibe_elementos_vetor(vetor, '\nVetor atual:\n')
-                    exibe_texto(`\n`)
+                    exibe_elementos_vetor(vetor, '\nVetor atual:\n\n')
                     vetor = embaralhar_valores(vetor)
-                    exibe_elementos_vetor(vetor, '\nVetor embaralhado:\n')
-                    exibe_texto(`\n`)
+                    exibe_elementos_vetor(vetor, '\nVetor embaralhado:\n\n')
                     press_enter_to_continue()
 
                 }
@@ -216,41 +200,34 @@ function main(){
             clear_screen()
             let qtd_valores = get_numero_positivo('Quantos valores você deseja adicionar ao vetor?\n')
             vetor = adiciona_valores(vetor, qtd_valores)
-            exibe_elementos_vetor(vetor, '\nVetor:\n')
-            exibe_texto(`\n`)
+            exibe_elementos_vetor(vetor, '\nVetor:\n\n')
             press_enter_to_continue()
 
         // 15 - Remover itens por valor exato
         } else if (opcao == 15){
             clear_screen()
-            exibe_elementos_vetor(vetor, '\nVetor atual:\n')
-            exibe_texto(`\n`)
+            exibe_elementos_vetor(vetor, '\nVetor atual:\n\n')
             let valor = get_number('Qual valor você deseja remover do vetor?\n')
             vetor = remove_valor(vetor, valor)
-            exibe_elementos_vetor(vetor, '\nVetor:\n')
-            exibe_texto(`\n`)
+            exibe_elementos_vetor(vetor, '\nVetor:\n\n')
             press_enter_to_continue() 
 
         // 16 - Remover por posição
         } else if (opcao == 16){
             clear_screen()
-            exibe_elementos_vetor(vetor, '\nVetor atual:\n')
-            exibe_texto(`\n`)
+            exibe_elementos_vetor(vetor, '\nVetor atual:\n\n')
             let posicao = get_number('De qual posição você deseja remover o valor?\n')
             vetor = remove_valor_por_posicao(vetor, posicao)
-            exibe_elementos_vetor(vetor, '\nVetor:\n')
-            exibe_texto(`\n`)
+            exibe_elementos_vetor(vetor, '\nVetor:\n\n')
             press_enter_to_continue() 
 
         // 17 - Editar valor específico por posição
         } else if (opcao == 17){
             clear_screen()
-            exibe_elementos_vetor(vetor, '\nVetor atual:\n')
-            exibe_texto(`\n`)
+            exibe_elementos_vetor(vetor, '\nVetor atual:\n\n')
             let posicao = get_number('De qual posição você deseja atualizar o valor?\n')
             vetor = atualizar_valor(vetor, posicao)
-            exibe_elementos_vetor(vetor, '\nVetor:\n')
-            exibe_texto(`\n`)
+            exibe_elementos_vetor(vetor, '\nVetor:\n\n')
             press_enter_to_continue() 
 
         // 18 - Salvar valores em arquivo
