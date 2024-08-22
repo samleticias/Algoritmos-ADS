@@ -4,7 +4,7 @@ import { readFileSync } from "fs"
 
 // funcao para pressionar enter para continuar no jogo
 export function press_enter_to_continue(){
-    question("Pressione enter para voltar...")
+    question("\nPressione enter para voltar...")
 }
 
 // funcao print
@@ -16,7 +16,7 @@ export function exibe_texto(conteudo){
 export function get_numero_min(texto, minimo){
     let numero = get_number(texto)
     while (numero < minimo){
-        console.log(`O número informado é menor que o mínimo permitido ${minimo}!`)
+        console.log(`O número informado é menor que o mínimo permitido!`)
         numero = get_number(texto)
     }
     return numero

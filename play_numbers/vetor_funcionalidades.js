@@ -238,10 +238,6 @@ export function ordenar_valores_sort(vetor) {
 }
 
 // export function embaralhar_valores(vetor) {
-//     if (!Array.isArray(vetor) || vetor.length <= 1) {
-//         return vetor
-//     }
-
 //     for (let i = vetor.length - 1; i > 0; i--) {
 //         const j = Math.floor(Math.random() * (i + 1))
         
@@ -249,6 +245,18 @@ export function ordenar_valores_sort(vetor) {
 //     }
 //     return vetor
 // }
+
+export function embaralhar_valores(vetor) {
+    if (!Array.isArray(vetor) || vetor.length <= 1) {
+        return vetor
+    }
+    for (let i = vetor.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        [vetor[i], vetor[j]] = [vetor[j], vetor[i]]
+    }
+    return vetor
+}
+
 
 // funcao para adicionar valores ao vetor
 // pede a quantidade de elementos que deseja adicionar e solicita cada valor, adicionando-os ao vetor
@@ -299,7 +307,7 @@ export function atualizar_valor(vetor, posicao) {
         console.log('\nPosição inválida!\n')
         return vetor
     }
-    let novo_valor = get_number('Novo valor: ')
+    let novo_valor = get_number('\nNovo valor:\n')
     vetor[posicao] = novo_valor
     return vetor
 }
