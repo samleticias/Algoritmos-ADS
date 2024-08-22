@@ -64,6 +64,7 @@ export function menu_update(){
         '4 - Substituir valores negativos por um número aleatórios da uma faixa(min, max)', 
         '5 - Ordenar valores', 
         '6 - Embaralhar valores',
+        '0 - Sair',
         '--------------------------------------------------------------------------------']
     return opcoes
 }
