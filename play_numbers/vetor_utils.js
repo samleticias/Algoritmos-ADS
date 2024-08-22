@@ -26,27 +26,23 @@ export function meu_push(lista, elemento) {
 export function menu() {
     let opcoes = [
         '-----------------------------------------------',    
-        '================= PLAY NUMBER =================',
+        '|================= PLAY NUMBER ===============|',
         '-----------------------------------------------',    
-        '1 - Gerar vetor de tamanho N',
-        '2 - Preencher vetor manualmente em intervalo',  
-        '3 - Preencher vetor manualmente',  
-        '4 - Preencher vetor automaticamente', 
-        '5 - Mostrar vetor', 
-        '6 - Resetar vetor',
-        '7 - Ver quantidade de itens no vetor',
-        '8 - Ver menor e maior valores e suas posições',  
-        '9 - Somatório dos valores', 
-        '10 - Média dos valores',  
-        '11 - Mostrar valores positivos e quantidade', 
-        '12 - Mostrar valores negativos e quantidade',  
-        '13 - Atualizar todos os valores por regras', 
-        '14 - Adicionar novos valores', 
-        '15 - Remover itens por valor exato',
-        '16 - Remover por posição', 
-        '17 - Editar valor específico por posição', 
-        '18 - Salvar valores em arquivo', 
-        '19 - Ler dados de um arquivo', 
+        '1 - Inicializar vetor numérico', 
+        '2 - Mostrar vetor', 
+        '3 - Resetar vetor',
+        '4 - Ver quantidade de itens no vetor',
+        '5 - Ver menor e maior valores e suas posições',  
+        '6 - Somatório dos valores', 
+        '7 - Média dos valores',  
+        '8 - Mostrar valores positivos e quantidade', 
+        '9 - Mostrar valores negativos e quantidade',  
+        '10 - Atualizar todos os valores por uma regra', 
+        '11 - Adicionar novos valores', 
+        '12 - Remover itens por valor exato',
+        '13 - Remover por posição', 
+        '14 - Editar valor específico por posição', 
+        '15 - Salvar valores em arquivo', 
         '0 - Sair',
         '-----------------------------------------------']
     return opcoes
@@ -56,16 +52,31 @@ export function menu() {
 export function menu_update(){
     let opcoes = [
         '---------------------------------------------------------------------',    
-        '**************************** Atualizações ***************************',
+        '|=========================== Atualizações ===========================|',
         '---------------------------------------------------------------------',    
         '1 - Multiplicar por um valor',
         '2 - Elevar a um valor (exponenciação)',  
         '3 - Reduzir a uma fração',  
         '4 - Substituir valores negativos por número aleatório em uma faixa', 
         '5 - Ordenar valores', 
-        '6 - Embaralhar valores',
         '0 - Sair',
         '---------------------------------------------------------------------']
+    return opcoes
+}
+
+// menu de opcoes para inicializar vetor
+export function menu_inicializacao_vetor(){
+    let opcoes = [
+        '------------------------------------------------',    
+        '|========= Inicializar Vetor Numérico =========|',
+        '------------------------------------------------',    
+        '1 - Gerar vetor de tamanho N',  
+        '2 - Preencher vetor manualmente em uma faixa',  
+        '3 - Preencher vetor automaticamente', 
+        '4 - Preencher vetor manualmente',  
+        '5 - Ler dados de um arquivo', 
+        '0 - Sair',
+        '------------------------------------------------']
     return opcoes
 }
 

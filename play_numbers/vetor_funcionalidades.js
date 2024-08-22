@@ -244,7 +244,7 @@ export function adiciona_valores(vetor, quantidade_valores){
     let contador = 0
 
     while (contador < quantidade_valores){
-        let numero = get_number(`Número ${contador + 1}: `)
+        let numero = get_number(`\nNúmero ${contador + 1}: `)
         meu_push(vetor, numero)
         contador++
     }
