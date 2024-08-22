@@ -25,9 +25,9 @@ export function meu_push(lista, elemento) {
 // menu de opcoes
 export function menu() {
     let opcoes = [
-        '----------------------------------------------------',  
-        '=================== PLAY NUMBER ====================',
-        '----------------------------------------------------',    
+        '-----------------------------------------------',    
+        '================= PLAY NUMBER =================',
+        '-----------------------------------------------',    
         '1 - Gerar vetor de tamanho N',
         '2 - Preencher vetor manualmente em intervalo',  
         '3 - Preencher vetor manualmente',  
@@ -48,24 +48,24 @@ export function menu() {
         '18 - Salvar valores em arquivo', 
         '19 - Ler dados de um arquivo', 
         '0 - Sair',
-        '----------------------------------------------------']
+        '-----------------------------------------------']
     return opcoes
 } 
 
 // menu de opcoes para atualizar numeros do vetor
 export function menu_update(){
     let opcoes = [
-        '--------------------------------------------------------------------------------',
-        '******************************** Atualizações **********************************',
-        '--------------------------------------------------------------------------------',    
+        '---------------------------------------------------------------------',    
+        '**************************** Atualizações ***************************',
+        '---------------------------------------------------------------------',    
         '1 - Multiplicar por um valor',
         '2 - Elevar a um valor (exponenciação)',  
         '3 - Reduzir a uma fração',  
-        '4 - Substituir valores negativos por um número aleatórios da uma faixa(min, max)', 
+        '4 - Substituir valores negativos por número aleatório em uma faixa', 
         '5 - Ordenar valores', 
         '6 - Embaralhar valores',
         '0 - Sair',
-        '--------------------------------------------------------------------------------']
+        '---------------------------------------------------------------------']
     return opcoes
 }
 
