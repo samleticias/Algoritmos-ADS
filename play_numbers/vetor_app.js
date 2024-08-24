@@ -1,9 +1,8 @@
 import {get_numero_positivo, get_numero_min, exibir_opcoes, exibe_texto, clear_screen, press_enter_to_continue, get_number, get_texto } from './io_utils.js'
 import {resetar_vetor, obter_posicao_maior_valor, obter_posicao_menor_valor, obter_maior_valor, obter_menor_valor, gerar_novo_vetor, 
-    preencher_vetor_automaticamente, preencher_vetor, obter_somatorio_valores, obter_media_valores, conta_quantidade_valores_positivos,
-    mostra_valores_positivos, conta_quantidade_valores_negativos, mostra_valores_negativos, multiplicar_valores, exponencia_elementos,
-    reduzir_todos_elementos, substituir_valores_negativos_por_aleatorios, ordenar_valores_sort, adiciona_valores, remove_valor, 
-    remove_valor_por_posicao, atualizar_valor, preencher_vetor_min_max
+    preencher_vetor_automaticamente, preencher_vetor, obter_somatorio_valores, obter_media_valores, preencher_vetor_min_max, remove_valor_por_posicao,
+    mostra_valores_positivos, mostra_valores_negativos, multiplicar_valores, exponencia_elementos, atualizar_valor, remove_valor,
+    reduzir_todos_elementos, substituir_valores_negativos_por_aleatorios, ordenar_valores_sort, adiciona_valores
 } from './vetor_funcionalidades.js'
 import {cria_vetor_numerico_arquivo, escreve_vetor_em_arquivo, exibe_elementos_vetor, get_size, menu, menu_inicializacao_vetor, menu_update} from './vetor_utils.js'
 
@@ -129,19 +128,17 @@ function main(){
         // 8 - Mostrar valores positivos e quantidade
         } else if (opcao == 8){
             clear_screen()
-            let quantidade = conta_quantidade_valores_positivos(vetor)
-            let valores_positivos = mostra_valores_positivos(vetor)
-            exibe_texto(`\nQuantidade de valores positivos = ${quantidade}\n`)
-            exibe_texto(`\nValores positivos: ${valores_positivos}\n`)
+            let vetor_positivos = mostra_valores_positivos(vetor)
+            exibe_texto(`\nQuantidade de valores positivos = ${get_size(vetor_positivos)}\n`)
+            exibe_texto(`\nVetor de valores positivos: ${vetor_positivos}\n`)
             press_enter_to_continue()
 
         // 9 - Mostrar valores negativos e quantidade
         } else if (opcao == 9){
             clear_screen()
-            let quantidade = conta_quantidade_valores_negativos(vetor)
-            let valores_negativos = mostra_valores_negativos(vetor)
-            exibe_texto(`\nQuantidade de valores negativos = ${quantidade}\n`)
-            exibe_texto(`\nValores negativos: ${valores_negativos}\n`)
+            let vetor_negativos = mostra_valores_negativos(vetor)
+            exibe_texto(`\nQuantidade de valores negativos = ${get_size(vetor_negativos)}\n`)
+            exibe_texto(`\nVetor de valores negativos: ${vetor_negativos}\n`)
             press_enter_to_continue()
 
         // 10 - Atualizar todos os valores por uma regra 

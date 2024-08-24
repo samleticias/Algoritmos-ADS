@@ -121,18 +121,6 @@ export function obter_media_valores(vetor){
     return media
 }
 
-// funcao para obter a quantidade de valores positivos no vetor, retornando a contagem
-export function conta_quantidade_valores_positivos(vetor){
-    let quantidade = 0
-
-    for (let i = 0; i < vetor.length; i++){
-        if (eh_numero_positivo(vetor[i])){
-            quantidade = quantidade + 1
-        }
-    }
-    return quantidade
-}
-
 // funcao para listar valores positivos do vetor
 export function mostra_valores_positivos(vetor){
     let valores_positivos = []
@@ -143,18 +131,6 @@ export function mostra_valores_positivos(vetor){
         }
     }
     return valores_positivos
-}
-
-// funcao para obter a quantidade de valores negativos no vetor, retornando a contagem
-export function conta_quantidade_valores_negativos(vetor){
-    let quantidade = 0
-
-    for (let i = 0; i < vetor.length; i++){
-        if (!eh_numero_positivo(vetor[i])){
-            quantidade = quantidade + 1
-        }
-    }
-    return quantidade
 }
 
 // funcao para listar valores negativos do vetor
