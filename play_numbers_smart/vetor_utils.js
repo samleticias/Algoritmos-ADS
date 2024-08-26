@@ -58,7 +58,6 @@ export function menu_update(){
         '2 - Elevar a um valor (exponenciação)',  
         '3 - Reduzir a uma fração',  
         '4 - Substituir valores negativos por número aleatório em uma faixa', 
-        '5 - Ordenar valores', 
         '0 - Sair',
         '---------------------------------------------------------------------']
     return opcoes

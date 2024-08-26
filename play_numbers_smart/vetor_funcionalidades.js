@@ -194,21 +194,6 @@ export function substituir_valores_negativos_por_aleatorios(vetor, valor_min, va
     return novo_vetor
 }
 
-// funcao para ordenar valores de um vetor, retornando vetor com valores em ordem crescente
-export function ordenar_valores_sort(vetor) {
-    const n = vetor.length
-    for (let i = 0; i < n - 1; i++) {
-        let min_index = i
-        for (let j = i + 1; j < n; j++) {
-            if (vetor[j] < vetor[min_index]) {
-                min_index = j
-            }
-        }
-        [vetor[i], vetor[min_index]] = [vetor[min_index], vetor[i]]
-    }
-    return vetor
-}
-
 // funcao para adicionar valores ao vetor
 // pede a quantidade de elementos que deseja adicionar e solicita cada valor, adicionando-os ao vetor
 // retorna vetor acrescentando os elementos novos
