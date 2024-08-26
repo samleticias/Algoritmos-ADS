@@ -74,7 +74,7 @@ export function mostra_valores_negativos(vetor){
 
 // funcao para obter índice do maior valor do vetor, retornando a posicao desse elemento no vetor
 export function obter_posicao_maior_valor(vetor){
-    let maior_valor = -999999999999999
+    let maior_valor = vetor[0]
 
     for (let i = 0; i < vetor.length; i++){
         if (vetor[i] > maior_valor){
@@ -87,7 +87,7 @@ export function obter_posicao_maior_valor(vetor){
 
 // funcao para obter índice do menor valor do vetor, retornando a posicao desse elemento no vetor
 export function obter_posicao_menor_valor(vetor){
-    let menor_valor = 999999999999999
+    let menor_valor = vetor[0]
 
     for (let i = 0; i < vetor.length; i++){
         if (vetor[i] < menor_valor){
