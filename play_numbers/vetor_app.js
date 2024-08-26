@@ -2,7 +2,7 @@ import {get_numero_positivo, get_numero_min, exibir_opcoes, exibe_texto, clear_s
 import {resetar_vetor, obter_posicao_maior_valor, obter_posicao_menor_valor, obter_maior_valor, obter_menor_valor, gerar_novo_vetor, 
     preencher_vetor_automaticamente, preencher_vetor, obter_somatorio_valores, obter_media_valores, preencher_vetor_min_max, remove_valor_por_posicao,
     mostra_valores_positivos, mostra_valores_negativos, multiplicar_valores, exponencia_elementos, atualizar_valor, remove_valor,
-    reduzir_todos_elementos, substituir_valores_negativos_por_aleatorios, ordenar_valores_sort, adiciona_valores
+    reduzir_todos_elementos, substituir_valores_negativos_por_aleatorios, adiciona_valores
 } from './vetor_funcionalidades.js'
 import {cria_vetor_numerico_arquivo, escreve_vetor_em_arquivo, exibe_elementos_vetor, get_size, menu, menu_inicializacao_vetor, menu_update} from './vetor_utils.js'
 
@@ -196,14 +196,6 @@ function main(){
                     exibe_elementos_vetor(vetor, '\nVetor modificado (se houver algum valor inicial negativo):\n')
                     press_enter_to_continue()
         
-                // 5 - Ordenar valores 
-                } else if (op == 5) {
-                    clear_screen()
-                    exibe_elementos_vetor(vetor, '\nVetor atual:\n')
-                    vetor = ordenar_valores_sort(vetor)
-                    exibe_elementos_vetor(vetor, '\nVetor ordenado:\n')
-                    press_enter_to_continue()
-                    
                 } 
             }
         
