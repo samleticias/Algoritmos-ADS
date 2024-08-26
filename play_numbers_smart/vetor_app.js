@@ -238,7 +238,7 @@ function main(){
         } else if (opcao == 15){
             clear_screen()
             escreve_vetor_em_arquivo(vetor)
-            exibe_texto('\Arquivo salvo!\n')
+            exibe_texto('\Arquivo salvo com sucesso!\n')
             press_enter_to_continue()
 
         }
