@@ -8,6 +8,34 @@ export function unir_textos(str1, str2) {
     return str1 + str2
 }
 
+export function eh_consoante(caractere){
+    if (caractere.charCodeAt() >= 66 && caractere.charCodeAt() <= 68 || caractere.charCodeAt() >= 98 && caractere.charCodeAt() <= 100){
+        return true
+    } 
+    if (caractere.charCodeAt() >= 70 && caractere.charCodeAt() <= 72 || caractere.charCodeAt() >= 102 && caractere.charCodeAt() <= 104){
+        return true
+    }
+    if (caractere.charCodeAt() >= 74 && caractere.charCodeAt() <= 78 || caractere.charCodeAt() >= 106 && caractere.charCodeAt() <= 110){
+        return true
+    }
+    if (caractere.charCodeAt() >= 80 && caractere.charCodeAt() <= 84 || caractere.charCodeAt() >= 112 && caractere.charCodeAt() <= 114){
+        return true
+    } else if (caractere.charCodeAt() >= 86 && caractere.charCodeAt() <= 90 || caractere.charCodeAt() >= 118 && caractere.charCodeAt() <= 122){
+        return true
+    } else {
+        return false
+    }
+}
+
+export function duplicar_caractere(texto){
+    let texto_novo = ''
+    for (let caractere of texto){
+        texto_novo += caractere * 2
+    }
+
+    return texto_novo
+}
+
 export function inverte_texto(texto){
     let inverso = ''
 
