@@ -1,35 +1,39 @@
 def main():
+    numero_palavras, numero_max_linhas, numero_max_caracteres = map(int, input().split())
+    conto = input()
     while True:
         try:
-            n_palavras_conto, n_max_linhas_por_pagina, n_max_caracteres_por_linha = [int(x) for x in input().split()]
-            palavra = input()
-            pagina = 1
-            linha = 0
-            caracter = 0
-            tamanho = meu_length(palavra)
-            i = 0
-
-            while i < tamanho:
-                while palavra[i] == ' ' and (caracter == 0 or caracter == n_max_caracteres_por_linha):
-                    i += 1
-                if caracter == n_max_caracteres_por_linha:
-                    linha += 1
-                    caracter = 0
-                if linha == n_max_linhas_por_pagina:
-                    pagina += 1
-                    linha = 0
-                i += 1
-                caracter += 1
-
-            print(pagina)
-
+            qtd_paginas = encontrar_qtd_paginas(conto, numero_max_linhas, numero_max_caracteres)
+            print(qtd_paginas)
+            numero_palavras, numero_max_linhas, numero_max_caracteres = map(int, input().split())
+            conto = input()
         except EOFError:
             break
 
-def meu_length(texto):
-    tamanho = 0
-    for caracter in texto:
-        tamanho = tamanho + 1
-    return tamanho
 
-main()
+def encontrar_qtd_paginas(conto, numero_max_linhas, numero_max_caracteres):
+    qtd_linhas = 1
+    qtd_paginas = 1
+    qtd_caracteres = 0
+
+    palavras = conto.split(' ')
+
+    for palavra in palavras:
+        tamanho_palavra = len(palavra)
+
+        if tamanho_palavra + qtd_caracteres <= numero_max_caracteres:
+            qtd_caracteres += tamanho_palavra
+            if qtd_caracteres < numero_max_caracteres:
+                qtd_caracteres += 1
+        else:
+            qtd_linhas = qtd_linhas + 1
+            qtd_caracteres = tamanho_palavra + 1
+               
+        if qtd_linhas > numero_max_linhas:
+            qtd_paginas += 1
+            qtd_linhas = 1
+
+    return qtd_paginas
+
+if __name__ == '__main__':
+    main()
