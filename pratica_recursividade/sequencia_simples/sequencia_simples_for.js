@@ -1,6 +1,7 @@
 // Função que imprime uma Sequência Simples de A até B.
 import {get_number, get_text, print} from '../../utils/io_utils.js'
-import {meu_push, meu_split, meu_length} from '../../utils/my_collection_utils.js'
+import {meu_push, meu_split, meu_length, mapear} from '../../utils/my_collection_utils.js'
+import {int} from '../../utils/math_utils.js'
 
 function main(){
     let intervalo = meu_split(get_text('\nInforme o intervalo numérico separado por espaço: '), ' ')
@@ -25,17 +26,6 @@ function gerar_sequencia(intervalo){
         meu_push(sequencia_simples, i)
     }
     return sequencia_simples
-}
-
-function int(texto) {
-    return Math.floor(Number(texto))
-}
-
-function mapear(colecao, funcao_transformadora){
-    for (let i = 0; i < meu_length(colecao); i++){
-        colecao[i] = funcao_transformadora(colecao[i])
-    }
-    return colecao
 }
 
 main()
