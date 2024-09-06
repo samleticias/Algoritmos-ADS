@@ -1,5 +1,6 @@
 // Imprimir uma Sequência Fibonacci de comprimento C.
 import {get_number, print} from '../../utils/io_utils.js'
+import {meu_push} from '../../utils/my_collection_utils.js'
 
 function main(){
     let comprimento = get_number('Comprimento: ')
@@ -21,6 +22,7 @@ function main(){
 // 2. Convergencia de dados
 // 3. Trabalho
 // 4. Função chamar a si mesma
+
 function obter_sequencia_fibonacci(comprimento) {
     if (comprimento <= 0) {
         return []
@@ -46,12 +48,6 @@ function obter_sequencia_fibonacci(comprimento) {
         return sequencia_fibonacci
     }
     return gerar_fibonacci(comprimento)
-}
-
-
-function meu_push(lista, elemento){
-    lista.push(elemento)
-    return lista
 }
 
 main()
