@@ -1,5 +1,4 @@
 import { get_text, print } from '../../utils/io_utils.js';
-import { texto_para_caixa_baixa } from '../../utils/my_string_utils.js';
 import { meu_length, meu_push, meu_split } from '../../utils/my_collection_utils.js';
 
 function main() {
