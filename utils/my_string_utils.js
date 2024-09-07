@@ -58,4 +58,33 @@ export function eh_letra(caractere) {
     return (caractere >= 'a' && caractere <= 'z') || (caractere >= 'A' && caractere <= 'Z')
 }
 
+// 97, 101, 105, 111, 117
+// 65, 69, 73, 79, 85
+export function eh_vogal(letra){ 
+    if (ord(letra) == 65 || ord(letra) == 69 || ord(letra) == 73 || ord(letra) == 79 || ord(letra) == 85
+    || ord(letra) == 97 || ord(letra) == 101 || ord(letra) == 105 || ord(letra) == 111 || ord(letra) == 117)
+    {
+        return true
+    }
+    return false
+}
+
+export function ord(letra){
+    return letra.charCodeAt()
+}
+
+export function texto_para_caixa_baixa(texto){
+    let texto_caixa_baixa = ''
+
+    for (let caractere of texto){
+        if (eh_letra_maiuscula(caractere)){
+            texto_caixa_baixa += String.fromCharCode(caractere.charCodeAt(0) - 32)
+        } else {
+            texto_caixa_baixa += caractere
+        }
+    }
+    return texto_caixa_baixa
+}
+
+
 

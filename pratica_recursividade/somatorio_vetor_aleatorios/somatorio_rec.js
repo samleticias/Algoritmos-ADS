@@ -21,18 +21,11 @@ function main(){
     print(`\nSomatório dos valores = ${somatorio_valores_vetor}\n`)
 }
 
-function obter_somatorio_valores(vetor, tamanho_vetor){
-    if (tamanho_vetor === 0) {
-        return []
+function obter_somatorio_valores(vetor, indice = 0) {
+    if (indice === meu_length(vetor)) {
+        return 0
     }
-    let somatorio = obter_somatorio_valores(vetor, tamanho_vetor - 1)
-    return somatorio
-    // let somatorio = 0
-
-    // for (let i = 0; i < meu_length(vetor); i++){
-    //     somatorio = somatorio + vetor[i]
-    // }
-    // return somatorio
+    return vetor[indice] + obter_somatorio_valores(vetor, indice + 1)
 }
 
 function preencher_vetor_aleatorios(vetor, intervalo, tamanho_vetor){

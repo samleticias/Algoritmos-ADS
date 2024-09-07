@@ -12,6 +12,16 @@ export function meu_join(lista, joinador) {
     return texto
 }
 
+export function meu_filter(colecao, predicado){
+    let novo_vetor = []
+    for (let elemento of colecao){
+        if (predicado(elemento)){
+            meu_push(novo_vetor, elemento)
+        }
+    }
+    return novo_vetor
+}
+
 export function exibe_elementos_vetor(vetor, texto){
     if (meu_length(vetor) < 1){
         console.log('\nVetor vazio!\n')
