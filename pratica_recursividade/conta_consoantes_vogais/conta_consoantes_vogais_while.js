@@ -15,8 +15,8 @@ function main() {
     contar_vogais_e_consoantes(vogais, quantidade_consoantes, quantidade_vogais, frase)
 
     print(`\nQuantidade de vogais: ${meu_length(quantidade_vogais)}`)
-    print(`\nQuantidade de consoantes: ${meu_length(quantidade_consoantes)}`)
     print(`\nVogais na frase: ${quantidade_vogais.join(', ')}`)
+    print(`\nQuantidade de consoantes: ${meu_length(quantidade_consoantes)}`)
     print(`\nConsoantes na frase: ${quantidade_consoantes.join(', ')}\n`)
 }
 

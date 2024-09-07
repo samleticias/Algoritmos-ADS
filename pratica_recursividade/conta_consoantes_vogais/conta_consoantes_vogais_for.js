@@ -9,15 +9,16 @@ function main(){
     frase = meu_split(frase, ' ')
 
     let quantidade_vogais = conta_quantidade_vogais(frase)
+
     let quantidade_consoantes = conta_quantidade_consoantes(frase)
 
-    print(`\nQuantidade de vogais: ${quantidade_vogais}`)
-    print(`\nQuantidade de consoantes: ${quantidade_consoantes}`)
-
     let todas_as_vogais = mostrar_vogais(frase)
+
     let todas_as_consoantes = mostrar_consoantes(frase)
 
+    print(`\nQuantidade de vogais: ${quantidade_vogais}`)
     print(`\nVogais na frase: ${todas_as_vogais.join(', ')}`)
+    print(`\nQuantidade de consoantes: ${quantidade_consoantes}`)
     print(`\nConsoantes na frase: ${todas_as_consoantes.join(', ')}\n`)
 
 }
