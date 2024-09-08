@@ -92,6 +92,36 @@ export function inicializar_torres(quantidade_itens, nivel){
     return { torreR, torreG, torreB }
 }
 
+// Função modificada para jogar uma rodada com torres específicas
+export function jogar_rodada_com_torres(torreR, torreG, torreB){
+    let jogadas = 0
+
+    while (!verificar_vitoria(torreR, torreG, torreB)){
+        exibir_torres(torreR, torreG, torreB)
+        let torre_origem = texto_para_caixa_alta(get_texto('\nEscolha a torre de origem (R/G/B): ').trim())
+        let torre_destino = texto_para_caixa_alta(get_texto('\nEscolha a torre de destino (R/G/B): ').trim())
+
+        if (torre_origem == torre_destino){
+            print('\nVocê não pode mover para a mesma torre!\n')
+            continue
+        }
+
+        const origem_torre = { R: torreR, G: torreG, B: torreB }[torre_origem]
+        const destino_torre = { R: torreR, G: torreG, B: torreB }[torre_destino]
+
+        if (!origem_torre || !destino_torre) {
+            print('\nTorre inválida! Tente novamente ...\n')
+            continue
+        }
+
+        mover_item(origem_torre, destino_torre)
+        jogadas = jogadas + 1
+    }
+    exibir_torres(torreR, torreG, torreB)
+    print(`\nVocê concluiu o jogo em ${jogadas} jogadas!\n`)
+    return jogadas
+}
+
 export function jogar_rodada(nivel){
     let qtd_itens = 9
     let { torreR, torreG, torreB } = inicializar_torres(qtd_itens, nivel)
@@ -111,7 +141,7 @@ export function jogar_rodada(nivel){
         const destino_torre = { R: torreR, G: torreG, B: torreB }[torre_destino]
 
         if (!origem_torre || !destino_torre) {
-            print('\nTorre inválida!\n')
+            print('\nTorre inválida! Tente novamente ...\n')
             continue
         }
 

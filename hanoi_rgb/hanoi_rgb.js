@@ -1,5 +1,48 @@
-import { menu_niveis_jogo, jogar_rodada} from './hanoi_rgb_utils.js'
+import { menu_niveis_jogo, jogar_rodada_com_torres, inicializar_torres} from './hanoi_rgb_utils.js'
 import {clear_screen, exibir_opcoes, print, press_enter_to_continue} from './my_entsai_utils.js'
+
+// function main(){
+//     let opcao = -1
+
+//     while(opcao !== 0){
+//         clear_screen()
+//         let nivel = exibir_opcoes(menu_niveis_jogo(), 'Escolha um nível:')
+
+//         // 0 - Sair do jogo
+//         if (nivel == 0){
+//             clear_screen()
+//             print('Saindo do jogo...')
+//             break
+
+//         // 1 - Inicia jogo nível básico
+//         } else if (nivel == 1){
+//             clear_screen()
+//             print('\n|====== INÍCIO DO JOGO ======|\n')
+//             print("Jogador 1, sua vez! Boa sorte!")
+//             let jogadas_jogador1 = jogar_rodada(nivel)
+//             press_enter_to_continue("\nPressione enter para continuar o Jogo..")
+
+//             print('\n|=== INICIANDO RODADAS JOGADOR 2! ===|')
+//             print("\nAgora é a vez do Jogador 2! Boa sorte!")
+//             let jogadas_jogador2 = jogar_rodada(nivel)
+
+//             print("\n=================== RESULTADOS ===================\n")
+//             print(`> Pontuação Jogador 1 = ${jogadas_jogador1} jogadas\n`)
+//             print(`> Pontuação Jogador 2 = ${jogadas_jogador2} jogadas\n`)
+//             print("\n===================================================\n")
+
+//             if (jogadas_jogador1 < jogadas_jogador2){
+//                 print(`\nJogador 1 venceu com ${jogadas_jogador1} jogadas!\n`)
+//             } else if (jogadas_jogador1 > jogadas_jogador2){
+//                 print(`\nJogador 2 venceu com ${jogadas_jogador2} jogadas!\n`)
+//             } else {
+//                 print(`\nEmpate! Ambos os jogadores concluíram o jogo com ${jogadas_jogador1} jogadas!\n`)
+//             }
+//             press_enter_to_continue("\nPressione enter para voltar ao Menu Inicial...")
+
+//         }
+//     }
+// }
 
 function main(){
     let opcao = -1
@@ -18,17 +61,31 @@ function main(){
         } else if (nivel == 1){
             clear_screen()
             print('\n|====== INÍCIO DO JOGO ======|\n')
+
+            // inicializa as torres para o jogador 1
+            let qtd_itens = 9
+            let { torreR, torreG, torreB } = inicializar_torres(qtd_itens, nivel)
+            
+            // copia as torres para reutilizar no jogo do jogador 2
+            let torreR_clone = [...torreR]
+            let torreG_clone = [...torreG]
+            let torreB_clone = [...torreB]
+
             print("Jogador 1, sua vez! Boa sorte!")
-            let jogadas_jogador1 = jogar_rodada(nivel)
+            let jogadas_jogador1 = jogar_rodada_com_torres(torreR, torreG, torreB)
             press_enter_to_continue("\nPressione enter para continuar o Jogo..")
 
             print('\n|=== INICIANDO RODADAS JOGADOR 2! ===|')
             print("\nAgora é a vez do Jogador 2! Boa sorte!")
-            let jogadas_jogador2 = jogar_rodada(nivel)
+            
+            // inicia as torres para o jogador 2 usar com as torres copiadas
+            let jogadas_jogador2 = jogar_rodada_com_torres(torreR_clone, torreG_clone, torreB_clone)
 
             print("\n=================== RESULTADOS ===================\n")
             print(`> Pontuação Jogador 1 = ${jogadas_jogador1} jogadas\n`)
             print(`> Pontuação Jogador 2 = ${jogadas_jogador2} jogadas\n`)
+            print("==================================================\n")
+
             if (jogadas_jogador1 < jogadas_jogador2){
                 print(`\nJogador 1 venceu com ${jogadas_jogador1} jogadas!\n`)
             } else if (jogadas_jogador1 > jogadas_jogador2){
