@@ -52,7 +52,7 @@ export function inicializar_torres(quantidade_itens, nivel){
         embaralhar_elementos(torreR)
 
     } else if (nivel === 2){
-        torreR = gerar_vetor(quantidade_itens)
+        torreR = gerar_vetor(Math.floor(quantidade_itens / 3))
         torreG = gerar_vetor(Math.floor(quantidade_itens / 3))
         torreB = gerar_vetor(Math.floor(quantidade_itens / 3))
 
@@ -92,39 +92,9 @@ export function inicializar_torres(quantidade_itens, nivel){
     return { torreR, torreG, torreB }
 }
 
-// Função modificada para jogar uma rodada com torres específicas
+// funcao modificada para jogar uma rodada com torres especificas
+// facilitar a inicialização de torres no menu para garantir que torres do jogador 1 e do jogador 2 sejam iguais
 export function jogar_rodada_com_torres(torreR, torreG, torreB){
-    let jogadas = 0
-
-    while (!verificar_vitoria(torreR, torreG, torreB)){
-        exibir_torres(torreR, torreG, torreB)
-        let torre_origem = texto_para_caixa_alta(get_texto('\nEscolha a torre de origem (R/G/B): ').trim())
-        let torre_destino = texto_para_caixa_alta(get_texto('\nEscolha a torre de destino (R/G/B): ').trim())
-
-        if (torre_origem == torre_destino){
-            print('\nVocê não pode mover para a mesma torre!\n')
-            continue
-        }
-
-        const origem_torre = { R: torreR, G: torreG, B: torreB }[torre_origem]
-        const destino_torre = { R: torreR, G: torreG, B: torreB }[torre_destino]
-
-        if (!origem_torre || !destino_torre) {
-            print('\nTorre inválida! Tente novamente ...\n')
-            continue
-        }
-
-        mover_item(origem_torre, destino_torre)
-        jogadas = jogadas + 1
-    }
-    exibir_torres(torreR, torreG, torreB)
-    print(`\nVocê concluiu o jogo em ${jogadas} jogadas!\n`)
-    return jogadas
-}
-
-export function jogar_rodada(nivel){
-    let qtd_itens = 9
-    let { torreR, torreG, torreB } = inicializar_torres(qtd_itens, nivel)
     let jogadas = 0
 
     while (!verificar_vitoria(torreR, torreG, torreB)){
