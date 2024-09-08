@@ -34,3 +34,12 @@ Nível 2 - Intermediário tem mais itens inicialmente espalhados nas Torres dive
 Nível 3 - Avançado --> tem o nível máximo de preenchimento inicial que permite ao usuário concluir o jogo. 
 Em anexo, Link sobre o Hanói Original (LEIAM)
 http://clubes.obmep.org.br/blog/torre-de-hanoi/ 
+
+Níveis do jogo:
+- Nível Básico: Torre R inicia com 9 itens aleatórios (R, G ou B) e Torres B e G Vazias
+- Nível Intermediário: itens distribuídos entre as 3 Torres (9 / 3 = 3 itens por Torre)
+- Nível avançado: capacidade máxima de itens alocados nas 3 Torres -> 9 itens em cada Torre x 3 = 27 itens
+
+Iniciar Jogo:
+- Menu perguntando qual nível o usuário deseja iniciar o Jogo
+Obs: sempre vai adicionar da primeira posição e remover da primeira posição também -> LIFO
