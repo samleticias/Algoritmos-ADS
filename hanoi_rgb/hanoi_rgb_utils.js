@@ -111,7 +111,7 @@ export function jogar_rodada(nivel){
         const destino_torre = { R: torreR, G: torreG, B: torreB }[torre_destino]
 
         if (!origem_torre || !destino_torre) {
-            alert('\nTorre inválida!\n')
+            print('\nTorre inválida!\n')
             continue
         }
 
@@ -119,7 +119,7 @@ export function jogar_rodada(nivel){
         jogadas = jogadas + 1
     }
     exibir_torres(torreR, torreG, torreB)
-    print(`\nParabéns! Você concluiu o jogo em ${jogadas} jogadas! :)\n`)
+    print(`\nVocê concluiu o jogo em ${jogadas} jogadas!\n`)
     return jogadas
 }
 

@@ -3,14 +3,9 @@ import { question } from "readline-sync";
 import { readFileSync } from "fs"
 
 // funcao para pressionar enter para continuar no jogo
-export function press_enter_to_continue(){
-    question("\nPressione enter para voltar ao Menu do Jogo...")
+export function press_enter_to_continue(texto){
+    question(texto)
     clear_screen()
-}
-
-// funcao print
-export function exibe_texto(conteudo){
-    console.log(conteudo)
 }
 
 // funcao para obter numero minimo
