@@ -1,0 +1,36 @@
+INSTITUTO FEDERAL DO PIAUÍ
+Curso de Superior de Tecnologia em Análise e Desenvolvimento de Sistemas
+Algoritmos e Programação, Prof. Rogério Silva, ADS I – 2024.1
+
+Hanói RGB: Prática de Vetores
+
+Objetivo:
+Compreender uso de Vetores.
+
+Descrição:
+
+Hanói Rogério Gordinho Bonito --> Hanói RGB
+Implementa um Joguinho baseado na Torre de Hanói com três torres
+Cada item é um dos valores --> R, G ou B. 
+São 3 Torres: A Torre de R, a Torre de G e a Torre de B.  (Com capacidade 9 peças)
+A Torre R, ou seja, a primeira, nasce completamente cheia de itens aleatórios(R, G, B)
+O usuário atual realizará operações de movimentação entre as Torres. 
+Exemplo. Operação "RB" remove de Torre R e leva para Torre B. Conte quantas operações o usuário precisa para completar o Jogo. 
+A Torres obedece a regra rígida de LIFO(Last In First Out), ou seja são Pilhas, só é possível inserir e remover itens no Topo das Torres (pilhas).
+O jogo encerra quando cada torre tiver apenas itens do seu tipo, ou seja, a Torre R tem apenas itens R.
+Seu Programa deve:
+É um Sistema de MENU
+Iniciar com a Torre R preenchida e as Demais Vazias.
+Os itens de R são aleatórios: R, G e B.
+O Usuário fará operações de movimentação entre as Pilhas (Torres)
+A cada jogada mostrar horizontalmente cada uma das Torres do Topo à Base
+Conte quantas Jogadas foram necessárias para Concluir o Jogo.
+Inicie outra rodada com a mesma Torre gerada para o Jogador 2.
+Diga qual venceu. Vence quem fizer menos Jogadas.
+Desafio:
+- Implemente o Conceito de Nível e deixe o usuário escolher qual nível quer jogar.
+Nível Básico ou Nível 1 é o citado acima, 
+Nível 2 - Intermediário tem mais itens inicialmente espalhados nas Torres diversas e não só na primeira.
+Nível 3 - Avançado --> tem o nível máximo de preenchimento inicial que permite ao usuário concluir o jogo. 
+Em anexo, Link sobre o Hanói Original (LEIAM)
+http://clubes.obmep.org.br/blog/torre-de-hanoi/ 
