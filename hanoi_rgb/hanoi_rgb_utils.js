@@ -1,5 +1,6 @@
 // Hanói RGB Utils
-import { get_texto, print } from "./my_entsai_utils.js"
+// Funcionalidades do Jogo
+import { get_texto, print, exibir_opcoes, clear_screen, press_enter_to_continue } from "./my_entsai_utils.js"
 import { exibe_elementos_vetor, gerar_vetor, get_size, meu_push, meu_unshift } from "./my_vetores_utils.js"
 import { texto_para_caixa_alta } from './my_string_utils.js'
 
@@ -7,7 +8,7 @@ import { texto_para_caixa_alta } from './my_string_utils.js'
 export function menu_niveis_jogo() {
     const opcoes = [
         '---------------------------------------------',    
-        '        Bem-vindo ao Hanói RGB!             ',
+        '> > > > >  Bem-vindo ao Hanói RGB!  < < < < <',
         '---------------------------------------------',    
         '1 - Nível Básico', 
         '2 - Nível Intermediário',
@@ -21,18 +22,59 @@ export function menu_niveis_jogo() {
 // funcao para exibir menu de operacoes do jogo 
 export function menu_operacoes_jogo() {
     const opcoes = [
-        '---------------------------------------------',    
+        '----------------------------------------------',    
         '> > > > > >     Operações RGB     < < < < < <',
-        '---------------------------------------------',    
+        '----------------------------------------------',    
         '1 - RB (Remover elemento de R e Adicionar em B)', 
         '2 - RG (Remover elemento de R e Adicionar em G)', 
         '3 - GR (Remover elemento de G e Adicionar em R)', 
         '4 - GB (Remover elemento de G e Adicionar em B)', 
         '5 - BG (Remover elemento de B e Adicionar em G)', 
         '6 - BR (Remover elemento de B e Adicionar em R)', 
-       '---------------------------------------------'
+        '----------------------------------------------'
     ]
     return opcoes
+}
+
+// funcao para exibir resultado do jogo
+export function exibir_resultado_jogo(jogadas_jogador1, jogadas_jogador2){
+    print("\n=================== RESULTADOS ===================\n")
+    print(`> Pontuação Jogador 1 = ${jogadas_jogador1} jogadas\n`)
+    print(`> Pontuação Jogador 2 = ${jogadas_jogador2} jogadas\n`)
+    print("==================================================\n")
+
+    if (jogadas_jogador1 < jogadas_jogador2){
+        print(`\nJogador 1 venceu com ${jogadas_jogador1} jogadas!\n`)
+    } else if (jogadas_jogador1 > jogadas_jogador2){
+        print(`\nJogador 2 venceu com ${jogadas_jogador2} jogadas!\n`)
+    } else {
+        print(`\nEmpate! Ambos os jogadores concluíram o jogo com ${jogadas_jogador1} jogadas!\n`)
+    }
+    press_enter_to_continue("\nPressione enter para voltar ao Menu Inicial...")
+}
+
+// funcao para exibir cabecalho de inicio do jogo avançado
+export function exibe_cabecalho_inicio_jogo_avancado(){
+    print('\n|====== INÍCIO DO JOGO ======|\n')
+    print('|====== Nível Avançado ======|\n')
+}
+
+// funcao para exibir cabecalho de inicio do jogo basico
+export function exibe_cabecalho_inicio_jogo_basico(){
+    print('\n|====== INÍCIO DO JOGO ======|\n')
+    print('|======= Nível Básico =======|\n')
+}
+
+// funcao para exibir cabecalho de inicio do jogo intermediario
+export function exibe_cabecalho_inicio_jogo_intermediario(){
+    print('\n|======= INÍCIO DO JOGO ========|\n')
+    print('|===== Nível Intermediário =====|\n')
+}
+
+// funcao para exibir cabecalho de inicio das rodadas do jogador 2
+export function exibe_cabecalho_rodadas_jogador_2(){
+    print('\n|=== INICIANDO RODADAS JOGADOR 2! ===|')
+    print("\nAgora é a vez do Jogador 2! Boa sorte!")
 }
 
 // funcao para preencher torre com itens aleatorios
@@ -116,23 +158,26 @@ export function jogar_rodada_com_torres(torreR, torreG, torreB){
 
     while (!verificar_vitoria(torreR, torreG, torreB)){
         exibir_torres(torreR, torreG, torreB)
-        let torre_origem = texto_para_caixa_alta(get_texto('\nEscolha a torre de origem (R/G/B): ').trim())
-        let torre_destino = texto_para_caixa_alta(get_texto('\nEscolha a torre de destino (R/G/B): ').trim())
 
-        if (torre_origem == torre_destino){
-            print('\nVocê não pode mover para a mesma torre!\n')
-            continue
+        // mostra menu para usuario escolher as operações que deseja efetuar entre as torres
+        let operacao = exibir_opcoes(menu_operacoes_jogo(), '\nEscolha uma operação:')
+        clear_screen()
+
+        if (operacao === 1){
+            mover_item(torreR, torreB)
+        } else if (operacao === 2){
+            mover_item(torreR, torreG)
+        } else if (operacao === 3){
+            mover_item(torreG, torreR)
+        } else if (operacao === 4){
+            mover_item(torreG, torreB)
+        } else if (operacao === 5){
+            mover_item(torreB, torreG)
+        } else if (operacao === 6){
+            mover_item(torreB, torreR)
+        } else {
+            print('\Operação inválida! Tente novamente ...\n')
         }
-
-        const origem_torre = { R: torreR, G: torreG, B: torreB }[torre_origem]
-        const destino_torre = { R: torreR, G: torreG, B: torreB }[torre_destino]
-
-        if (!origem_torre || !destino_torre) {
-            print('\nTorre inválida! Tente novamente ...\n')
-            continue
-        }
-
-        mover_item(origem_torre, destino_torre)
         jogadas = jogadas + 1
     }
     exibir_torres(torreR, torreG, torreB)

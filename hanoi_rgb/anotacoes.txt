@@ -43,3 +43,7 @@ Níveis do jogo:
 Iniciar Jogo:
 - Menu perguntando qual nível o usuário deseja iniciar o Jogo
 Obs: sempre vai adicionar da primeira posição e remover da primeira posição também -> LIFO
+
+Faltando:
+- Fazer validação de pilhas não ultrapassar o máximo de 9 elementos
+- Exemplo. Operação "RB" remove de Torre R e leva para Torre B. Conte quantas operações o usuário precisa para completar o Jogo. 
