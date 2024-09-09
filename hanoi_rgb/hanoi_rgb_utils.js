@@ -1,6 +1,6 @@
 // Hanói RGB Utils
 import { get_texto, print } from "./my_entsai_utils.js"
-import { exibe_elementos_vetor, gerar_vetor, get_size, meu_push } from "./my_vetores_utils.js"
+import { exibe_elementos_vetor, gerar_vetor, get_size, meu_push, meu_unshift } from "./my_vetores_utils.js"
 import { texto_para_caixa_alta } from './my_string_utils.js'
 
 // funcao para exibir menu de niveis do jogo
@@ -15,7 +15,24 @@ export function menu_niveis_jogo() {
         '0 - Sair do Jogo',
         '---------------------------------------------'
     ]
-    return opcoes;
+    return opcoes
+}
+
+// funcao para exibir menu de operacoes do jogo 
+export function menu_operacoes_jogo() {
+    const opcoes = [
+        '---------------------------------------------',    
+        '> > > > > >     Operações RGB     < < < < < <',
+        '---------------------------------------------',    
+        '1 - RB (Remover elemento de R e Adicionar em B)', 
+        '2 - RG (Remover elemento de R e Adicionar em G)', 
+        '3 - GR (Remover elemento de G e Adicionar em R)', 
+        '4 - GB (Remover elemento de G e Adicionar em B)', 
+        '5 - BG (Remover elemento de B e Adicionar em G)', 
+        '6 - BR (Remover elemento de B e Adicionar em R)', 
+       '---------------------------------------------'
+    ]
+    return opcoes
 }
 
 // funcao para preencher torre com itens aleatorios
@@ -133,15 +150,27 @@ function todos_elementos_iguais(torre, valor) {
     return true
 }
 
-// funcao para mover um item entre torres
+// funcao para mover um item entre torres com pop
+// export function mover_item(origem, destino){
+//     if (get_size(origem) > 0){
+//         let item = origem.pop()
+//         meu_push(destino, item)
+//     } else {
+//         print('\nA torre de origem está vazia!\n')
+//     }
+// }
+
+// funcao para mover um item entre torres com shift -> remover elemento do inicio do vetor de origem
+// e adicioná-lo ao inicio do vetor de destino
 export function mover_item(origem, destino){
     if (get_size(origem) > 0){
-        let item = origem.pop()
-        meu_push(destino, item)
+        let item = origem.shift()
+        meu_unshift(destino, item)
     } else {
         print('\nA torre de origem está vazia!\n')
     }
 }
+
 // O jogo encerra quando cada torre tiver apenas itens do seu tipo, ou seja, a Torre R tem apenas itens R.
 // funcao para verificar se o jogo foi vencido
 export function verificar_vitoria(torreR, torreG, torreB) {
