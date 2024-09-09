@@ -38,7 +38,8 @@ http://clubes.obmep.org.br/blog/torre-de-hanoi/
 Níveis do jogo:
 - Nível Básico: Torre R inicia com 9 itens aleatórios (R, G ou B) e Torres B e G Vazias
 - Nível Intermediário: itens distribuídos entre as 3 Torres (9 / 3 = 3 itens por Torre)
-- Nível avançado: capacidade máxima de itens alocados nas 3 Torres -> 9 itens em cada Torre x 3 = 27 itens
+- Nível avançado: capacidade máxima de itens alocados nas 3 Torres -> Máximo: 9 itens em cada Torre -> coloquei 5, 6, 7
+pois se colocasse 9 em cada Torre, o usuário não conseguiria jogar já que as capacidades máximas estariam ocupadas
 
 Iniciar Jogo:
 - Menu perguntando qual nível o usuário deseja iniciar o Jogo

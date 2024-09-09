@@ -1,5 +1,5 @@
 import { menu_niveis_jogo, jogar_rodada_com_torres, inicializar_torres, exibir_resultado_jogo, exibe_cabecalho_rodadas_jogador_2,
-    exibe_cabecalho_inicio_jogo_basico, exibe_cabecalho_inicio_jogo_intermediario, exibe_cabecalho_inicio_jogo_avancado
+    exibe_cabecalho_niveis
 } from './hanoi_rgb_utils.js'
 import {clear_screen, exibir_opcoes, print, press_enter_to_continue} from './my_entsai_utils.js'
 
@@ -19,7 +19,7 @@ function main(){
         // 1 - Nível básico: apenas torre R preenchida com 9 itens aleatoriamente e as torres B e G vazias
         } else if (nivel == 1){
             clear_screen()
-            exibe_cabecalho_inicio_jogo_basico()
+            exibe_cabecalho_niveis('|======= Iniciando Jogo Nível Básico =======|\n')
 
             // inicializa as torres para o jogador 1
             let qtd_itens = 9
@@ -45,7 +45,7 @@ function main(){
         // 2 - Nível intermediário: mais itens espalhados inicialmente pelas 3 torres e não somente na torre R
         } else if (nivel == 2){
             clear_screen()
-            exibe_cabecalho_inicio_jogo_intermediario()
+            exibe_cabecalho_niveis('|===== Iniciando Jogo Nível Intermediário =====|\n')
 
             let qtd_itens = 9
             let { torreR, torreG, torreB } = inicializar_torres(qtd_itens, nivel)
@@ -65,11 +65,10 @@ function main(){
             let resultado = exibir_resultado_jogo(jogadas_jogador1, jogadas_jogador2)
             print(resultado)
 
-        // 3 - Nível avançado: nível máximo de preenchimento inicial, ou seja, 9 itens em cada torre 
-        // totalizando 27 itens para movimentação
+        // 3 - Nível avançado: nível máximo de preenchimento inicial
         } else if (nivel == 3){
             clear_screen()
-            exibe_cabecalho_inicio_jogo_avancado()
+            exibe_cabecalho_niveis('|====== Iniciando Jogo Nível Avançado ======|\n')
 
             let qtd_itens = 9
             let { torreR, torreG, torreB } = inicializar_torres(qtd_itens, nivel)

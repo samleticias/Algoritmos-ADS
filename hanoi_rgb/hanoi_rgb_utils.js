@@ -1,8 +1,7 @@
 // Hanói RGB Utils
 // Funcionalidades do Jogo
-import { get_texto, print, exibir_opcoes, clear_screen, press_enter_to_continue } from "./my_entsai_utils.js"
-import { exibe_elementos_vetor, gerar_vetor, get_size, meu_push, meu_unshift } from "./my_vetores_utils.js"
-import { texto_para_caixa_alta } from './my_string_utils.js'
+import { print, exibir_opcoes, clear_screen, press_enter_to_continue } from "./my_entsai_utils.js"
+import { exibe_elementos_vetor, gerar_vetor, get_size, meu_unshift } from "./my_vetores_utils.js"
 
 // funcao para exibir menu de niveis do jogo
 export function menu_niveis_jogo() {
@@ -25,12 +24,12 @@ export function menu_operacoes_jogo() {
         '----------------------------------------------',    
         '> > > > > >     Operações RGB     < < < < < <',
         '----------------------------------------------',    
-        '1 - RB (Remover elemento de R e Adicionar em B)', 
-        '2 - RG (Remover elemento de R e Adicionar em G)', 
-        '3 - GR (Remover elemento de G e Adicionar em R)', 
-        '4 - GB (Remover elemento de G e Adicionar em B)', 
-        '5 - BG (Remover elemento de B e Adicionar em G)', 
-        '6 - BR (Remover elemento de B e Adicionar em R)', 
+        '1 - RB (Remove elemento de R e Adiciona em B)', 
+        '2 - RG (Remove elemento de R e Adiciona em G)', 
+        '3 - GR (Remove elemento de G e Adiciona em R)', 
+        '4 - GB (Remove elemento de G e Adiciona em B)', 
+        '5 - BG (Remove elemento de B e Adiciona em G)', 
+        '6 - BR (Remove elemento de B e Adiciona em R)', 
         '----------------------------------------------'
     ]
     return opcoes
@@ -38,10 +37,10 @@ export function menu_operacoes_jogo() {
 
 // funcao para exibir resultado do jogo
 export function exibir_resultado_jogo(jogadas_jogador1, jogadas_jogador2){
-    print("\n=================== RESULTADOS ===================\n")
+    print("\n|=================== RESULTADOS ===================|\n")
     print(`> Pontuação Jogador 1 = ${jogadas_jogador1} jogadas\n`)
     print(`> Pontuação Jogador 2 = ${jogadas_jogador2} jogadas\n`)
-    print("==================================================\n")
+    print("|==================================================|\n")
 
     if (jogadas_jogador1 < jogadas_jogador2){
         print(`\nJogador 1 venceu com ${jogadas_jogador1} jogadas!\n`)
@@ -53,22 +52,9 @@ export function exibir_resultado_jogo(jogadas_jogador1, jogadas_jogador2){
     press_enter_to_continue("\nPressione enter para voltar ao Menu Inicial...")
 }
 
-// funcao para exibir cabecalho de inicio do jogo avançado
-export function exibe_cabecalho_inicio_jogo_avancado(){
-    print('\n|====== INÍCIO DO JOGO ======|\n')
-    print('|====== Nível Avançado ======|\n')
-}
-
-// funcao para exibir cabecalho de inicio do jogo basico
-export function exibe_cabecalho_inicio_jogo_basico(){
-    print('\n|====== INÍCIO DO JOGO ======|\n')
-    print('|======= Nível Básico =======|\n')
-}
-
-// funcao para exibir cabecalho de inicio do jogo intermediario
-export function exibe_cabecalho_inicio_jogo_intermediario(){
-    print('\n|======= INÍCIO DO JOGO ========|\n')
-    print('|===== Nível Intermediário =====|\n')
+// funcao para exibir cabecalho de inicio do jogo de acordo com o nível escolhido
+export function exibe_cabecalho_niveis(mensagem){
+    print(mensagem)
 }
 
 // funcao para exibir cabecalho de inicio das rodadas do jogador 2
@@ -111,9 +97,9 @@ export function inicializar_torres(quantidade_itens, nivel){
         embaralhar_elementos(torreR)
 
     } else if (nivel === 2){
-        torreR = gerar_vetor(Math.floor(quantidade_itens / 3))
-        torreG = gerar_vetor(Math.floor(quantidade_itens / 3))
-        torreB = gerar_vetor(Math.floor(quantidade_itens / 3))
+        torreR = gerar_vetor(quantidade_itens - 5)
+        torreG = gerar_vetor(quantidade_itens - 5)
+        torreB = gerar_vetor(quantidade_itens - 5)
 
         for (let i = 0; i < get_size(torreR); i++) {
             torreR[i] = preencher_torre_com_elementos_aleatorios(itens)
@@ -130,9 +116,9 @@ export function inicializar_torres(quantidade_itens, nivel){
         embaralhar_elementos(torreB)
 
     } else if (nivel === 3){
-        torreR = gerar_vetor(quantidade_itens)
-        torreG = gerar_vetor(quantidade_itens)
-        torreB = gerar_vetor(quantidade_itens)
+        torreR = gerar_vetor(quantidade_itens - 2)
+        torreG = gerar_vetor(quantidade_itens - 3)
+        torreB = gerar_vetor(quantidade_itens - 4)
 
         for (let i = 0; i < get_size(torreR); i++) {
             torreR[i] = preencher_torre_com_elementos_aleatorios(itens)
@@ -181,7 +167,7 @@ export function jogar_rodada_com_torres(torreR, torreG, torreB){
         jogadas = jogadas + 1
     }
     exibir_torres(torreR, torreG, torreB)
-    print(`\nVocê concluiu o jogo em ${jogadas} jogadas!\n`)
+    print(`\nParabéns! Você concluiu o jogo em ${jogadas} jogadas!\n`)
     return jogadas
 }
 
@@ -195,22 +181,14 @@ function todos_elementos_iguais(torre, valor) {
     return true
 }
 
-// funcao para mover um item entre torres com pop
-// export function mover_item(origem, destino){
-//     if (get_size(origem) > 0){
-//         let item = origem.pop()
-//         meu_push(destino, item)
-//     } else {
-//         print('\nA torre de origem está vazia!\n')
-//     }
-// }
-
-// funcao para mover um item entre torres com shift -> remover elemento do inicio do vetor de origem
-// e adicioná-lo ao inicio do vetor de destino
 export function mover_item(origem, destino){
     if (get_size(origem) > 0){
-        let item = origem.shift()
-        meu_unshift(destino, item)
+        if (get_size(destino) < 9){
+            let item = origem.shift()
+            meu_unshift(destino, item)
+        } else {
+            print('\nA torre de destino está com a capacidade máxima preenchida!\n')
+        }
     } else {
         print('\nA torre de origem está vazia!\n')
     }
