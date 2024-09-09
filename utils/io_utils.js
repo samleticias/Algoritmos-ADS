@@ -16,6 +16,13 @@ export function get_positive_number(mensagem){
   return numero
 }
 
+export function press_enter_to_continue(){
+  question('\nPressione enter para continuar...')
+}
+
+export function clear_screen(){
+  console.clear()
+}
 
 export function get_number_in_range(mensagem, min, max){
   const numero = get_number(mensagem)
