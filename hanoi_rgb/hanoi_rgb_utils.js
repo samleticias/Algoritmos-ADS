@@ -181,6 +181,10 @@ function todos_elementos_iguais(torre, valor) {
     return true
 }
 
+// funcao para mover item da torre de origem para a torre de destino
+// item é uma variável resultante do metodo shift, que remove o elemento da primeira posicao do vetor de origem e o retorna
+// no caso item é removido do topo da torre de origem (posição 0) e é adicionado ao topo da torre de destino (posição 0)
+// LIFO: sempre vai adicionar da primeira posição e remover da primeira posição também -> Topo
 export function mover_item(origem, destino){
     if (get_size(origem) > 0){
         if (get_size(destino) < 9){
