@@ -1,0 +1,41 @@
+INSTITUTO FEDERAL DO PIAUÍ
+Curso de Superior de Tecnologia em Análise e Desenvolvimento de Sistemas
+Algoritmos e Programação, Prof. Rogério Silva, ADS I – 2024.1
+
+
+PatroCars - Gestão de Montadoras
+
+V1: Montadoras
+
+
+Objetivo:
+Praticar uso de Registros, Vetores e Arquivos
+
+Registros:
+Montadora 
+(id: ULID, nome: string, pais: string, ano_fundacao: int)
+ULID() → considere que isso vai gerar um id(string). Pesquise sobre.  Quando for implementar a PatroCars
+Biblioteca para gerar ID ULID automaticamente:
+Javascript: https://www.npmjs.com/package/ulidx
+Python: https://github.com/mdomke/python-ulid 
+Sistema:
+Desenvolver Sistema com MENU para Gestão de Cadastro de Montadora de Veículos.
+Requisitos:
+CRUD: 
+Criar, 
+Listar todos
+Atualizar; e
+Remover (listar e então perguntar qual deseja remover)
+Filtrar:
+Parte do Nome
+Parte do Nome País
+Ao listar todas ou filtrar, sempre perguntar se desejar ordenar por qual atributo e ainda se ASC ou DESC (nome, pais, ano_funcacao)
+Status: Mostrar situação do Cadastro, exemplo: Temos 5 Montadoras Cadastradas.
+Gravar dados em Arquivos 
+Ou como opção do Menu, ou ao Alterar o cadastro, ou ainda ao sair do sistema)
+Criar um padrão de String para gravar em cada linha um Montadora
+Ao inicializar o Programar verificar os dados em Arquivos
+Extrair cadastro de cada linha e botar em Memória em uma Vetor de Registros de Montadora
+Organização:
+Arquivo Principal (Menu + Funções de Funcionalidades)
+Utils (diversos arquivos para funcionalidades gerais de entrada/saída de dados, validações, vetores, strings, arquivos, registros e etc)
