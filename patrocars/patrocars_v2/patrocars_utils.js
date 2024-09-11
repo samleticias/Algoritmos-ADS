@@ -55,6 +55,7 @@ export function menu_modelos(){
         '3 - Filtrar modelos por critério',
         '4 - Atualizar modelo',
         '5 - Remover modelo',
+        '6 - Atualizar cadastro de montadora',
         '0 - Sair',
         '------------------------------------------'
     ]
