@@ -1,4 +1,4 @@
-import { clear_screen, press_enter_to_continue, print, get_text } from './util/my_entsai_utils.js'
+import { clear_screen, press_enter_to_continue, print, get_text, get_number } from './util/my_entsai_utils.js'
 import { atualizar_filme, listar_filmes, cadastrar_filme, remover_filme, filtrar_filmes, mostra_quantidade_filmes_pais,
     ordenar_filmes, mostra_quantidade_filmes_genero, calcula_media_avaliacoes_genero, mostra_quantidade_filmes_idioma,
     filme_com_maior_bilheteira, filme_com_menor_bilheteira
@@ -110,7 +110,7 @@ function main(){
         // 11 - Filtrar filmes por ano
         } else if (opcao === 11){
             clear_screen()
-            let ano_desejado = get_text('> Por qual ano você deseja filtrar os filmes?\n')
+            let ano_desejado = get_number('> Por qual ano você deseja filtrar os filmes?\n')
             let filmes_filtrados = filtrar_filmes(filmes, 'ano', ano_desejado)
             if (get_size(filmes_filtrados) < 1){
                 print('\nNenhum filme encontrado!\n')
