@@ -3,8 +3,7 @@ import { atualizar_filme, listar_filmes, cadastrar_filme, remover_filme, filtrar
     ordenar_filmes, mostra_quantidade_filmes_genero, calcula_media_avaliacoes_genero, mostra_quantidade_filmes_idioma,
     filme_com_maior_bilheteira, filme_com_menor_bilheteira
 } from "./movies_features.js"
-import { obter_indice_filme, get_opcoes, menu_filmes_crud, escrever_filmes_arquivo, inicializacao,
-    escreve_vetor_em_arquivo, cria_vetor_arquivo } from './movies_utils.js'
+import { obter_indice_filme, get_opcoes, menu_filmes_crud, escrever_filmes_arquivo, inicializacao, ler_vetor_arquivo } from './movies_utils.js'
 import { get_size, meu_push } from './util/my_collection_utils.js'
 import { texto_para_caixa_baixa, texto_para_caixa_alta } from './util/my_string_utils.js'
 
@@ -17,7 +16,7 @@ function main(){
         let opcao = get_opcoes(menu_filmes_crud())
 
         if (opcao === 0){
-            escreve_vetor_em_arquivo(filmes)
+            escrever_filmes_arquivo(filmes)
             clear_screen()
             print('Saindo ...')
             break
@@ -57,7 +56,7 @@ function main(){
         // 5 - Carregar de um arquivo
         } else if (opcao === 5){
             clear_screen()
-            filmes = cria_vetor_arquivo()
+            filmes = ler_vetor_arquivo()
             print('\nArquivo lido com sucesso!\n')
             press_enter_to_continue()       
             

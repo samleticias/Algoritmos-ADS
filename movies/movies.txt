@@ -1,46 +1,46 @@
-{"nome":"Inception","ano":2010,"imdb":8.8,"bilheteira":829895144,"duracao":148,"idioma":"Inglês","pais":"EUA","data_lancamento":"2010-07-16","genero":"Sci-Fi\r"}
-{"nome":"Avatar","ano":2009,"imdb":7.8,"bilheteira":2847246203,"duracao":162,"idioma":"Inglês","pais":"EUA","data_lancamento":"2009-12-18","genero":"Ação\r"}
-{"nome":"The Matrix","ano":1999,"imdb":8.7,"bilheteira":463517383,"duracao":136,"idioma":"Inglês","pais":"EUA","data_lancamento":"1999-03-31","genero":"Ação\r"}
-{"nome":"The Godfather","ano":1972,"imdb":9.2,"bilheteira":246120974,"duracao":175,"idioma":"Inglês","pais":"EUA","data_lancamento":"1972-03-24","genero":"Drama\r"}
-{"nome":"The Shawshank Redemption","ano":1994,"imdb":9.3,"bilheteira":28341469,"duracao":142,"idioma":"Inglês","pais":"EUA","data_lancamento":"1994-09-23","genero":"Drama\r"}
-{"nome":"Pulp Fiction","ano":1994,"imdb":8.9,"bilheteira":213928762,"duracao":154,"idioma":"Inglês","pais":"EUA","data_lancamento":"1994-10-14","genero":"Crime\r"}
-{"nome":"Forrest Gump","ano":1994,"imdb":8.8,"bilheteira":67816865,"duracao":142,"idioma":"Inglês","pais":"EUA","data_lancamento":"1994-07-06","genero":"Drama\r"}
-{"nome":"The Dark Knight","ano":2008,"imdb":9,"bilheteira":1004558444,"duracao":152,"idioma":"Inglês","pais":"EUA","data_lancamento":"2008-07-18","genero":"Ação\r"}
-{"nome":"Fight Club","ano":1999,"imdb":8.8,"bilheteira":100853753,"duracao":139,"idioma":"Inglês","pais":"EUA","data_lancamento":"1999-10-15","genero":"Drama\r"}
-{"nome":"Interstellar","ano":2014,"imdb":8.6,"bilheteira":677471339,"duracao":169,"idioma":"Inglês","pais":"EUA","data_lancamento":"2014-11-07","genero":"Sci-Fi\r"}
-{"nome":"Gladiator","ano":2000,"imdb":8.5,"bilheteira":187705547,"duracao":155,"idioma":"Inglês","pais":"EUA","data_lancamento":"2000-05-05","genero":"Ação\r"}
-{"nome":"The Silence of the Lambs","ano":1991,"imdb":8.6,"bilheteira":272742922,"duracao":118,"idioma":"Inglês","pais":"EUA","data_lancamento":"1991-02-14","genero":"Thriller\r"}
-{"nome":"The Departed","ano":2006,"imdb":8.5,"bilheteira":291465134,"duracao":151,"idioma":"Inglês","pais":"EUA","data_lancamento":"2006-10-06","genero":"Crime\r"}
-{"nome":"Inglourious Basterds","ano":2009,"imdb":8.3,"bilheteira":321455689,"duracao":153,"idioma":"Inglês","pais":"EUA","data_lancamento":"2009-08-21","genero":"Ação\r"}
-{"nome":"Whiplash","ano":2014,"imdb":8.5,"bilheteira":49901821,"duracao":107,"idioma":"Inglês","pais":"EUA","data_lancamento":"2014-10-10","genero":"Drama\r"}
-{"nome":"The Revenant","ano":2015,"imdb":8,"bilheteira":53295521,"duracao":156,"idioma":"Inglês","pais":"EUA","data_lancamento":"2015-12-25","genero":"Aventura\r"}
-{"nome":"La La Land","ano":2016,"imdb":8,"bilheteira":44616986,"duracao":128,"idioma":"Inglês","pais":"EUA","data_lancamento":"2016-12-09","genero":"Musical\r"}
-{"nome":"Parasite","ano":2019,"imdb":8.6,"bilheteira":25868828,"duracao":132,"idioma":"Coreano","pais":"Coreia do Sul","data_lancamento":"2019-05-30","genero":"Drama\r"}
-{"nome":"Amélie","ano":2001,"imdb":8.3,"bilheteira":33474658,"duracao":122,"idioma":"Francês","pais":"França","data_lancamento":"2001-04-25","genero":"Comédia\r"}
-{"nome":"City of God","ano":2002,"imdb":8.6,"bilheteira":30524650,"duracao":130,"idioma":"Português","pais":"Brasil","data_lancamento":"2002-02-08","genero":"Crime\r"}
-{"nome":"Pan's Labyrinth","ano":2006,"imdb":8.2,"bilheteira":8351775,"duracao":118,"idioma":"Espanhol","pais":"México","data_lancamento":"2006-10-11","genero":"Fantasia\r"}
-{"nome":"Crouching Tiger, Hidden Dragon","ano":2000,"imdb":7.8,"bilheteira":128078872,"duracao":120,"idioma":"Mandarim","pais":"China","data_lancamento":"2000-12-08","genero":"Ação\r"}
-{"nome":"The Lives of Others","ano":2006,"imdb":8.4,"bilheteira":11351278,"duracao":137,"idioma":"Alemão","pais":"Alemanha","data_lancamento":"2006-03-23","genero":"Drama\r"}
-{"nome":"The Intouchables","ano":2011,"imdb":8.5,"bilheteira":42620023,"duracao":112,"idioma":"Francês","pais":"França","data_lancamento":"2011-11-02","genero":"Comédia\r"}
-{"nome":"Ringu","ano":1998,"imdb":7.3,"bilheteira":4355729,"duracao":96,"idioma":"Japonês","pais":"Japão","data_lancamento":"1998-01-31","genero":"Terror\r"}
-{"nome":"Spirited Away","ano":2001,"imdb":8.6,"bilheteira":39587100,"duracao":125,"idioma":"Japonês","pais":"Japão","data_lancamento":"2001-09-20","genero":"Animação\r"}
-{"nome":"The Hunt","ano":2012,"imdb":8.3,"bilheteira":5392851,"duracao":115,"idioma":"Dinamarquês","pais":"Dinamarca","data_lancamento":"2012-09-26","genero":"Drama\r"}
-{"nome":"The Secret in Their Eyes","ano":2009,"imdb":8.2,"bilheteira":4425385,"duracao":129,"idioma":"Espanhol","pais":"Argentina","data_lancamento":"2009-10-15","genero":"Mistério\r"}
-{"nome":"The Girl with the Dragon Tattoo","ano":2009,"imdb":7.8,"bilheteira":10480371,"duracao":152,"idioma":"Sueco","pais":"Suécia","data_lancamento":"2009-02-27","genero":"Crime\r"}
-{"nome":"A Separation","ano":2011,"imdb":8.2,"bilheteira":13707892,"duracao":123,"idioma":"Persa","pais":"Irã","data_lancamento":"2011-02-22","genero":"Drama\r"}
-{"nome":"Oldboy","ano":2003,"imdb":8.4,"bilheteira":3151863,"duracao":120,"idioma":"Coreano","pais":"Coreia do Sul","data_lancamento":"2003-11-21","genero":"Thriller\r"}
-{"nome":"Run Lola Run","ano":1998,"imdb":7.7,"bilheteira":1407865,"duracao":81,"idioma":"Alemão","pais":"Alemanha","data_lancamento":"1998-02-20","genero":"Thriller\r"}
-{"nome":"The Host","ano":2006,"imdb":7.1,"bilheteira":8915713,"duracao":120,"idioma":"Coreano","pais":"Coreia do Sul","data_lancamento":"2006-07-27","genero":"Terror\r"}
-{"nome":"The Sea Inside","ano":2004,"imdb":8,"bilheteira":2595796,"duracao":125,"idioma":"Espanhol","pais":"Espanha","data_lancamento":"2004-10-15","genero":"Drama\r"}
-{"nome":"Hable con Ella","ano":2002,"imdb":8,"bilheteira":12466365,"duracao":112,"idioma":"Espanhol","pais":"Espanha","data_lancamento":"2002-03-08","genero":"Drama\r"}
-{"nome":"Ladri di Biciclette","ano":1948,"imdb":8.3,"bilheteira":158241,"duracao":89,"idioma":"Italiano","pais":"Itália","data_lancamento":"1948-11-27","genero":"Drama\r"}
-{"nome":"The Diving Bell and the Butterfly","ano":2007,"imdb":8,"bilheteira":5737165,"duracao":112,"idioma":"Francês","pais":"França","data_lancamento":"2007-12-14","genero":"Drama\r"}
-{"nome":"The Great Beauty","ano":2013,"imdb":7.7,"bilheteira":3066909,"duracao":142,"idioma":"Italiano","pais":"Itália","data_lancamento":"2013-10-04","genero":"Drama\r"}
-{"nome":"Tropical Malady","ano":2004,"imdb":7.3,"bilheteira":52172,"duracao":118,"idioma":"Tailandês","pais":"Tailândia","data_lancamento":"2004-08-06","genero":"Drama\r"}
-{"nome":"The Kid with a Bike","ano":2011,"imdb":7.3,"bilheteira":57268,"duracao":87,"idioma":"Francês","pais":"França","data_lancamento":"2011-03-16","genero":"Drama\r"}
-{"nome":"Wings of Desire","ano":1987,"imdb":8,"bilheteira":22948,"duracao":128,"idioma":"Alemão","pais":"Alemanha","data_lancamento":"1987-06-05","genero":"Drama\r"}
-{"nome":"The Band's Visit","ano":2007,"imdb":7.7,"bilheteira":531047,"duracao":87,"idioma":"Hebraico","pais":"Israel","data_lancamento":"2007-11-09","genero":"Comédia\r"}
-{"nome":"Rashomon","ano":1950,"imdb":8.2,"bilheteira":47377,"duracao":88,"idioma":"Japonês","pais":"Japão","data_lancamento":"1950-09-26","genero":"Drama\r"}
-{"nome":"The Handmaiden","ano":2016,"imdb":8.1,"bilheteira":1322068,"duracao":144,"idioma":"Coreano","pais":"Coreia do Sul","data_lancamento":"2016-11-01","genero":"Thriller\r"}
-{"nome":"A Fantastic Woman","ano":2017,"imdb":7.8,"bilheteira":18125,"duracao":104,"idioma":"Espanhol","pais":"Chile","data_lancamento":"2018-03-02","genero":"Drama\r"}
-{"nome":"The Fall","ano":2006,"imdb":7.9,"bilheteira":3655597,"duracao":117,"idioma":"Inglês/Índia","pais":"Estados Unidos/Índia","data_lancamento":"2006-11-09","genero":"Aventura"}
+Inception#2010#8.8#829895144#148#Inglês#EUA#2010-07-16#Sci-Fi
+Avatar#2009#7.8#2847246203#162#Inglês#EUA#2009-12-18#Ação
+The Matrix#1999#8.7#463517383#136#Inglês#EUA#1999-03-31#Ação
+The Godfather#1972#9.2#246120974#175#Inglês#EUA#1972-03-24#Drama
+The Shawshank Redemption#1994#9.3#28341469#142#Inglês#EUA#1994-09-23#Drama
+Pulp Fiction#1994#8.9#213928762#154#Inglês#EUA#1994-10-14#Crime
+Forrest Gump#1994#8.8#67816865#142#Inglês#EUA#1994-07-06#Drama
+The Dark Knight#2008#9#1004558444#152#Inglês#EUA#2008-07-18#Ação
+Fight Club#1999#8.8#100853753#139#Inglês#EUA#1999-10-15#Drama
+Interstellar#2014#8.6#677471339#169#Inglês#EUA#2014-11-07#Sci-Fi
+Gladiator#2000#8.5#187705547#155#Inglês#EUA#2000-05-05#Ação
+The Silence of the Lambs#1991#8.6#272742922#118#Inglês#EUA#1991-02-14#Thriller
+The Departed#2006#8.5#291465134#151#Inglês#EUA#2006-10-06#Crime
+Inglourious Basterds#2009#8.3#321455689#153#Inglês#EUA#2009-08-21#Ação
+Whiplash#2014#8.5#49901821#107#Inglês#EUA#2014-10-10#Drama
+The Revenant#2015#8#53295521#156#Inglês#EUA#2015-12-25#Aventura
+La La Land#2016#8#44616986#128#Inglês#EUA#2016-12-09#Musical
+Parasite#2019#8.6#25868828#132#Coreano#Coreia do Sul#2019-05-30#Drama
+Amélie#2001#8.3#33474658#122#Francês#França#2001-04-25#Comédia
+City of God#2002#8.6#30524650#130#Português#Brasil#2002-02-08#Crime
+Pan's Labyrinth#2006#8.2#8351775#118#Espanhol#México#2006-10-11#Fantasia
+Crouching Tiger, Hidden Dragon#2000#7.8#128078872#120#Mandarim#China#2000-12-08#Ação
+The Lives of Others#2006#8.4#11351278#137#Alemão#Alemanha#2006-03-23#Drama
+The Intouchables#2011#8.5#42620023#112#Francês#França#2011-11-02#Comédia
+Ringu#1998#7.3#4355729#96#Japonês#Japão#1998-01-31#Terror
+Spirited Away#2001#8.6#39587100#125#Japonês#Japão#2001-09-20#Animação
+The Hunt#2012#8.3#5392851#115#Dinamarquês#Dinamarca#2012-09-26#Drama
+The Secret in Their Eyes#2009#8.2#4425385#129#Espanhol#Argentina#2009-10-15#Mistério
+The Girl with the Dragon Tattoo#2009#7.8#10480371#152#Sueco#Suécia#2009-02-27#Crime
+A Separation#2011#8.2#13707892#123#Persa#Irã#2011-02-22#Drama
+Oldboy#2003#8.4#3151863#120#Coreano#Coreia do Sul#2003-11-21#Thriller
+Run Lola Run#1998#7.7#1407865#81#Alemão#Alemanha#1998-02-20#Thriller
+The Host#2006#7.1#8915713#120#Coreano#Coreia do Sul#2006-07-27#Terror
+The Sea Inside#2004#8#2595796#125#Espanhol#Espanha#2004-10-15#Drama
+Hable con Ella#2002#8#12466365#112#Espanhol#Espanha#2002-03-08#Drama
+Ladri di Biciclette#1948#8.3#158241#89#Italiano#Itália#1948-11-27#Drama
+The Diving Bell and the Butterfly#2007#8#5737165#112#Francês#França#2007-12-14#Drama
+The Great Beauty#2013#7.7#3066909#142#Italiano#Itália#2013-10-04#Drama
+Tropical Malady#2004#7.3#52172#118#Tailandês#Tailândia#2004-08-06#Drama
+The Kid with a Bike#2011#7.3#57268#87#Francês#França#2011-03-16#Drama
+Wings of Desire#1987#8#22948#128#Alemão#Alemanha#1987-06-05#Drama
+The Band's Visit#2007#7.7#531047#87#Hebraico#Israel#2007-11-09#Comédia
+Rashomon#1950#8.2#47377#88#Japonês#Japão#1950-09-26#Drama
+The Handmaiden#2016#8.1#1322068#144#Coreano#Coreia do Sul#2016-11-01#Thriller
+A Fantastic Woman#2017#7.8#18125#104#Espanhol#Chile#2018-03-02#Drama
+Prova do Ezequias#2024#4#33333#120#nao sei matematica basica#ifpi#2024-09-16#matmeatica

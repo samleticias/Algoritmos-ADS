@@ -56,7 +56,7 @@ export function get_opcoes(opcoes, label='Escolha uma das opções a seguir:'){
 }
 
 export function escrever_filmes_arquivo(filmes) {
-    const caminho_arquivo = path.resolve(__dirname, 'filmes.txt')
+    const caminho_arquivo = path.resolve(__dirname, 'movies.txt')
     const linhas = filmes.map(filme => 
         `${filme.nome}#${filme.ano}#${filme.imdb}#${filme.bilheteira}#${filme.duracao}#${filme.idioma}#${filme.pais}#${filme.data_lancamento}#${filme.genero}`
     )
@@ -78,7 +78,7 @@ export function configurar_filme(nome, ano, imdb, bilheteira, duracao, idioma, p
 }
 
 export function inicializacao() {
-    const caminho_arquivo = path.resolve(__dirname, 'filmes.txt')
+    const caminho_arquivo = path.resolve(__dirname, 'movies.txt')
     const data = fs.readFileSync(caminho_arquivo, 'utf8')
 
     return data
@@ -88,27 +88,6 @@ export function inicializacao() {
             const [nome, ano, imdb, bilheteira, duracao, idioma, pais, data_lancamento, genero] = linha.split('#')
             return configurar_filme(nome, ano, imdb, bilheteira, duracao, idioma, pais, data_lancamento, genero)
         })
-}
-
-export function escreve_conteudo_em_arquivo(nome_arquivo, conteudo){
-    writeFileSync(nome_arquivo, conteudo)
-}
-
-export function converte_vetor_para_string(vetor, separador) {
-    let nova_string = ""
-    for (let elemento of vetor) {
-        nova_string += JSON.stringify(elemento) + separador
-    }
-    return nova_string
-}
-
-export function escreve_vetor_em_arquivo(vetor) {
-    if (get_size(vetor) < 1) {
-        console.log('\nVetor vazio!\n')
-        return
-    }
-    const conteudo_arquivo = converte_vetor_para_string(vetor, "\n")
-    escreve_conteudo_em_arquivo("movies.txt", conteudo_arquivo)
 }
 
 export function carregar_arquivo(nome_arquivo){
@@ -125,7 +104,7 @@ function linha_para_filme(linha) {
     return configurar_filme(nome, ano, imdb, bilheteira, duracao, idioma, pais, data_lancamento, genero)
 }
 
-export function cria_vetor_arquivo() {
+export function ler_vetor_arquivo() {
     try {
         const nome_arquivo = get_text('Qual o nome do arquivo?\n')
         const arquivo = carregar_arquivo(nome_arquivo)
@@ -139,4 +118,8 @@ export function cria_vetor_arquivo() {
         console.error(`Erro ao ler o arquivo: ${error.message}`)
         return []
     }
+}
+
+export function escreve_conteudo_em_arquivo(nome_arquivo, conteudo){
+    writeFileSync(nome_arquivo, conteudo)
 }
