@@ -1,5 +1,5 @@
-import { get_opcoes, menu_montadoras, configurar_montadora, escreve_vetor_em_arquivo, cria_vetor_arquivo } from "./patrocars_utils.js"
-import { atualizar_montadora, escrever_montadoras_arquivo, filtrar_montadoras, inicializa_montadoras, mostrar_montadoras, 
+import { get_opcoes, menu_montadoras, configurar_montadora, ler_vetor_arquivo, escrever_montadoras_arquivo } from "./patrocars_utils.js"
+import { atualizar_montadora, filtrar_montadoras, inicializa_montadoras, mostrar_montadoras, 
     mostrar_quantidade_montadoras_por_pais, obter_indice_montadora, ordenar_montadoras, remover_montadora } from './patrocars_funcionalidades.js'
 import { clear_screen, get_positive_number, get_texto, press_enter_to_continue, print } from "./util/my_entsai_utils.js"
 import { texto_para_caixa_alta, texto_para_caixa_baixa } from './util/my_string_utils.js'
@@ -16,7 +16,7 @@ function main(){
 
         // 0 - Sair
         if (opcao === 0){
-            escreve_vetor_em_arquivo(montadoras)
+            escrever_montadoras_arquivo(montadoras)
             clear_screen()
             print('Saindo ...')
             break
@@ -32,7 +32,6 @@ function main(){
             let montadora = configurar_montadora(id_montadora, nome, pais, ano_fundacao)
             meu_push(montadoras, montadora)
             print('\nMontadora cadastrada com sucesso!\n')
-            escrever_montadoras_arquivo(montadoras)
             press_enter_to_continue()
 
         // 2 - Listar montadoras
@@ -61,7 +60,7 @@ function main(){
             print('Escolha o atributo que deseja atualizar:')
             atualizar_montadora(indice, montadoras)
             escrever_montadoras_arquivo(montadoras)
-            print('Montadora atualizada com sucesso!')
+            print('\nMontadora atualizada com sucesso!\n')
             press_enter_to_continue()
 
         // 4 - Remover montadora da lista
@@ -108,7 +107,7 @@ function main(){
         // 8 - Carregar dados de um arquivo
         } else if (opcao === 8){
             clear_screen()
-            montadoras = cria_vetor_arquivo()
+            montadoras = ler_vetor_arquivo()
             print('\nArquivo lido com sucesso!\n')
             press_enter_to_continue()
         }

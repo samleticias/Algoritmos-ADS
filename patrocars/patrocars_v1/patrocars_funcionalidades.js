@@ -43,15 +43,6 @@ export function inicializa_montadoras() {
         })
 }
 
-// funcao para escrever montadoras em um arquivo
-export function escrever_montadoras_arquivo(montadoras) {
-    const caminho_arquivo = path.resolve(__dirname, 'montadoras.txt')
-    const linhas = montadoras.map(montadora => 
-        `${montadora.id}#${montadora.nome}#${montadora.pais}#${montadora.ano_fundacao}`
-    )
-    fs.writeFileSync(caminho_arquivo, linhas.join('\n') + '\n', 'utf8')
-}
-
 // funcao para obter indice da montadora na lista de montadoras
 export function obter_indice_montadora(montadoras){
     print('>>> Montadoras Cadastradas <<<')

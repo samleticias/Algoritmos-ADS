@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+// funcao para obter indice do filme em listagem para realizar operacoes do menu
 export function obter_indice_filme(filmes){
     print('>>> Filmes Cadastrados <<<')
     for (let i = 0; i < get_size(filmes); i++){
@@ -20,6 +21,7 @@ export function obter_indice_filme(filmes){
     return indice
 }
 
+// menu de opcoes do CRUD
 export function menu_filmes_crud(){
     const opcoes = [
         '--------------------------------------------',
@@ -46,6 +48,7 @@ export function menu_filmes_crud(){
     return opcoes
 }
 
+// funcao para obter opcoes de qualquer menu
 export function get_opcoes(opcoes, label='Escolha uma das opções a seguir:'){
     console.log(label)
     for (let i = 0; i < opcoes.length; i++){
@@ -55,6 +58,7 @@ export function get_opcoes(opcoes, label='Escolha uma das opções a seguir:'){
     return opcao_escolhida
 }
 
+// funcao para escrever objetos de filme no arquivo movies.txt 
 export function escrever_filmes_arquivo(filmes) {
     const caminho_arquivo = path.resolve(__dirname, 'movies.txt')
     const linhas = filmes.map(filme => 
@@ -63,6 +67,7 @@ export function escrever_filmes_arquivo(filmes) {
     fs.writeFileSync(caminho_arquivo, linhas.join('\n') + '\n', 'utf8')
 }
 
+// funcao para configurar atributos do filme
 export function configurar_filme(nome, ano, imdb, bilheteira, duracao, idioma, pais, data_lancamento, genero) {
     return {
         nome,
@@ -77,6 +82,7 @@ export function configurar_filme(nome, ano, imdb, bilheteira, duracao, idioma, p
     }
 }
 
+// funcao para inicializar filmes de arquivo movies.txt
 export function inicializacao() {
     const caminho_arquivo = path.resolve(__dirname, 'movies.txt')
     const data = fs.readFileSync(caminho_arquivo, 'utf8')
@@ -94,6 +100,7 @@ export function carregar_arquivo(nome_arquivo){
     return readFileSync(nome_arquivo, "utf-8")
 }
 
+// funcao utilizada quando se carrega dados de um arquivo para o programa, "mapeando" os atributos com o split para o objeto filme
 function linha_para_filme(linha) {
     const partes = linha.split('#')
     // console.log(`Partes: ${partes}`)
@@ -104,6 +111,7 @@ function linha_para_filme(linha) {
     return configurar_filme(nome, ano, imdb, bilheteira, duracao, idioma, pais, data_lancamento, genero)
 }
 
+// funcao para carregar dados de um arquivo para realizar operacoes no CRUD
 export function ler_vetor_arquivo() {
     try {
         const nome_arquivo = get_text('Qual o nome do arquivo?\n')

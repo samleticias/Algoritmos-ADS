@@ -1,9 +1,14 @@
 // PatroCars Utils
 import { question } from 'readline-sync'
 import { print, get_texto } from './util/my_entsai_utils.js'
-import { get_size } from './util/my_vetores_utils.js'
 import { writeFileSync, readFileSync } from 'fs'
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
+// funcao para exibir menu de montadoras
 export function menu_montadoras(){
     const opcoes = [
         '--------------------------------------------',
@@ -33,6 +38,15 @@ export function get_opcoes(opcoes, label = 'Escolha uma das opções a seguir:')
     return opcao_escolhida
 }
 
+// funcao para escrever montadoras em um arquivo
+export function escrever_montadoras_arquivo(montadoras) {
+    const caminho_arquivo = path.resolve(__dirname, 'montadoras.txt')
+    const linhas = montadoras.map(montadora => 
+        `${montadora.id}#${montadora.nome}#${montadora.pais}#${montadora.ano_fundacao}`
+    )
+    fs.writeFileSync(caminho_arquivo, linhas.join('\n') + '\n', 'utf8')
+}
+
 // cria um dicionario com os atributos informados
 export function configurar_montadora(id, nome, pais, ano_fundacao) {
     return {
@@ -46,25 +60,6 @@ export function configurar_montadora(id, nome, pais, ano_fundacao) {
 // funcao para escrever conteúdo em um arquivo
 export function escreve_conteudo_em_arquivo(nome_arquivo, conteudo){
     writeFileSync(nome_arquivo, conteudo)
-}
-
-// funcao para converter um vetor de objetos em uma string
-export function converte_vetor_para_string(vetor, separador) {
-    let nova_string = ""
-    for (let elemento of vetor) {
-        nova_string += JSON.stringify(elemento) + separador
-    }
-    return nova_string
-}
-
-// funcao para escrever dados de um vetor em um arquivo
-export function escreve_vetor_em_arquivo(vetor) {
-    if (get_size(vetor) < 1) {
-        console.log('\nVetor vazio!\n')
-        return
-    }
-    const conteudo_arquivo = converte_vetor_para_string(vetor, "\n")
-    escreve_conteudo_em_arquivo("patrocars-v1.txt", conteudo_arquivo)
 }
 
 // funcao para carregar arquivo desejado passando o nome do arquivo
@@ -82,8 +77,8 @@ function linha_para_montadora(linha) {
     return configurar_montadora(id, nome, pais, ano_fundacao)
 }
 
-// funcao para criar um vetor de montadoras a partir de um arquivo
-export function cria_vetor_arquivo() {
+// funcao para ler um vetor de montadoras a partir de um arquivo
+export function ler_vetor_arquivo() {
     try {
         const nome_arquivo = get_texto('Qual o nome do arquivo?\n')
         const arquivo = carregar_arquivo(nome_arquivo)
