@@ -115,6 +115,7 @@ export function listar_modelos(modelos, escolha){
         }
     } else if (escolha === 2) {
         const montadoras = inicializa_montadoras()
+        print('\nEscolha a montadora da qual deseja listar os modelos:\n')
         const indice = obter_indice_montadora(montadoras)
         const modelos_filtrados = modelos.filter(modelo => modelo['montadora_escolhida'] === montadoras[indice]['nome'])
         if (get_size(modelos_filtrados) < 1){
@@ -138,7 +139,7 @@ export function filtrar_modelos(modelos, criterio, valor) {
         } else if (criterio === 'automatico') {
             return texto_para_caixa_baixa(modelo.automatico).includes(texto_para_caixa_baixa(valor))
         } else if (criterio === 'motorizacao') {
-            return modelo.motorizacao === parseFloat(valor)
+            return modelo.motorizacao == valor
         } else if (criterio === 'montadora_escolhida') {
             return texto_para_caixa_baixa(modelo.montadora_escolhida).includes(texto_para_caixa_baixa(valor))
         }
@@ -146,16 +147,32 @@ export function filtrar_modelos(modelos, criterio, valor) {
     })
 }
 
-// funcao para ordenar modelos
+// funcao para ordenar modelos com bubble sort
 export function ordenar_modelos(modelos, atributo, ordem = 'ASC') {
-    return modelos.sort((a, b) => {
-        let valorA = texto_para_caixa_baixa(a[atributo])
-        let valorB = texto_para_caixa_baixa(b[atributo])
+    let reverse = ordem === 'DESC'
+    let criterio = x => texto_para_caixa_baixa(x[atributo])
+    
+    let ultima_pos_n_ordenada = get_size(modelos) - 1
+    let qtd_elementos_a_ordenar = get_size(modelos) - 1
 
-        if (valorA < valorB) return ordem === 'ASC' ? -1 : 1
-        if (valorA > valorB) return ordem === 'ASC' ? 1 : -1
-        return 0
-    })
+    while (qtd_elementos_a_ordenar > 0) {
+        for (let i = 0; i < ultima_pos_n_ordenada; i++) {
+            let valorA = criterio(modelos[i])
+            let valorB = criterio(modelos[i + 1])
+
+            if (!reverse) {
+                if (valorA > valorB) {
+                    [modelos[i], modelos[i + 1]] = [modelos[i + 1], modelos[i]]
+                }
+            } else {
+                if (valorA < valorB) {
+                    [modelos[i], modelos[i + 1]] = [modelos[i + 1], modelos[i]]
+                }
+            }
+        }
+        qtd_elementos_a_ordenar -= 1
+    }
+    return modelos
 }
 
 // funcao para mostrar modelos quando dizer operacoes de filtrar/listar
@@ -175,6 +192,23 @@ export function mostrar_modelos(modelos, label){
     }
 }
 
+// funcao para mostrar menu de opções de atributos de modelo para ordenar os modelos ao filtrar/listar
+export function get_atributos_para_ordenacao(){
+    print('\nEscolha o atributo pelo qual deseja ordenar os modelos:')
+    let texto = '----------------------------------\n1 - Nome do modelo\n2 - Nome da montadora\n3 - Valor de referência\n4 - Motorização\n----------------------------------\n> '
+    let escolha = get_number_in_range(texto, 1, 4)
+    let atributo
+    if (escolha === 1){
+        atributo = 'nome'
+    } else if (escolha === 2){
+        atributo = 'montadora_escolhida'
+    } else if (escolha === 3){
+        atributo = 'valor_referencia'
+    } else {
+        atributo = 'motorizacao'
+    }
+    return atributo
+}
 
 
 

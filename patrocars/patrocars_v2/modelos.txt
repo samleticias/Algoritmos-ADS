@@ -1,13 +1,20 @@
-01J7HA0DBCEB6PC7CZJS2DRSR1#Novissima#Sammya#21#6#Sim#Sim
-01J7HAGE1MAEJJE99JHY8DJ1ZT#Jujuba#er#12#5.7#Sim#Não
-01J7H61DWFB2JFJ0MMD4108R0S#Nina Gata Preta Cg#Sammya#2#4#Sim#Não
-01J7H9VAHBRR0T478GV9S05YA1#Voyage#sammya#300000#3#Sim#Não
-01F8K7M6A9JQZC4D7B6Z8YF6#Jeep Compass#Jeep#120000#2.0#Não#Sim
-01F8K7M6A9JQZC4D7B6Z8YF2#Toyota Corolla#Toyota#100000#2.0#Não#Sim
-01F8K7M6A9JQZC4D7B6Z8YF4#Ford Fiesta#Ford#70000#1.6#Não#Não
-01F8K7M6A9JQZC4D7B6Z8YF8#Nissan Kicks#Nissan#95000#1.6#Sim#Sim
-01F8K7M6A9JQZC4D7B6Z8YF7#Volkswagen Polo#Volkswagen#85000#1.6#Não#Não
-01F8K7M6A9JQZC4D7B6Z8YF3#Honda Civic#Honda#90000#1.5#Sim#Sim
-01F8K7M6A9JQZC4D7B6Z8YF5#Chevrolet Tracker#Chevrolet#110000#1.4#Sim#Sim
-01J7KKS12Q3VCB91K50YE2N3G1#Modelo de Teste#Montadora de Teste#200000#3#Sim#Sim
-01J7MAFJFQSMRJH5RQHTPS9VJR#Modelinho Teste#Minha Montadora Fera#100000#3#Sim#Sim
+Alfa Romeo#AR001#Alfa Romeo Giulia#50000#2.0#Sim#Sim
+Audi#AU001#Audi A4#55000#2.0#Sim#Sim
+BMW#BM001#BMW 3 Series#60000#3.0#Sim#Sim
+Chevrolet#CH001#Chevrolet Camaro#40000#6.2#Não#Sim
+Ferrari#FE001#Ferrari 488#250000#3.9#Sim#Sim
+Fiat#FI001#Fiat 500#20000#1.4#Não#Sim
+Ford#FO001#Ford Mustang#35000#5.0#Não#Sim
+Honda#HO001#Honda Civic#25000#2.0#Não#Sim
+Hyundai#HY001#Hyundai Elantra#23000#2.0#Não#Sim
+Kia#KI001#Kia Stinger#40000#2.0#Sim#Sim
+Lamborghini#LA001#Lamborghini Huracán#250000#5.2#Não#Sim
+Mazda#MA001#Mazda MX-5#30000#2.0#Não#Sim
+Mercedes-Benz#MB001#Mercedes-Benz C-Class#60000#2.0#Sim#Sim
+Mitsubishi#MI001#Mitsubishi Outlander#35000#2.4#Não#Sim
+Nissan#NI001#Nissan Altima#27000#2.5#Não#Sim
+Porsche#PO001#Porsche 911#100000#3.0#Sim#Sim
+Subaru#SU001#Subaru Impreza#23000#2.0#Não#Sim
+Toyota#TO001#Toyota Camry#30000#2.5#Não#Sim
+Toyota#TO002#Toyota Supra#50000#3.0#Sim#Sim
+01J7MKBBKKCGYXGM6WERQ0Q993#ModelOnly#Volkswagen#80000#3#Sim#Não

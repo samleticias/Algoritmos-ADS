@@ -46,7 +46,7 @@ function main(){
                 let tipo_ordenacao = texto_para_caixa_alta(get_texto('> Qual o tipo de ordenação desejado? (ASC/DESC)\n'))
                 let montadora_ordenadas = ordenar_montadoras(montadoras, atributo_ordenacao, tipo_ordenacao)
                 print('\nMontadoras Ordenadas:\n')
-                print(montadora_ordenadas)
+                mostrar_montadoras(montadora_ordenadas)
             } else {
                 mostrar_montadoras(montadoras)
             }
@@ -87,8 +87,8 @@ function main(){
             let atributo_ordenacao = texto_para_caixa_baixa(get_texto('> Por qual atributo você deseja ordenar as montadoras filtradas?\n'))
             let tipo_ordenacao = texto_para_caixa_alta(get_texto('> Qual o tipo de ordenação desejado? (ASC/DESC)\n'))
             let montadoras_filtradas = filtrar_montadoras(montadoras, 'nome', parte_nome)
-            let montadora_ordenadas = ordenar_montadoras(montadoras_filtradas, atributo_ordenacao, tipo_ordenacao)
-            print(montadora_ordenadas)
+            let montadoras_ordenadas = ordenar_montadoras(montadoras_filtradas, atributo_ordenacao, tipo_ordenacao)
+            mostrar_montadoras(montadoras_ordenadas)
             press_enter_to_continue()
 
         // 7 - Filtrar montadora por parte do nome do país
@@ -100,8 +100,8 @@ function main(){
             let atributo_ordenacao = texto_para_caixa_baixa(get_texto('> Por qual atributo você deseja ordenar as montadoras filtradas?\n'))
             let tipo_ordenacao = texto_para_caixa_alta(get_texto('> Qual o tipo de ordenação desejado? (ASC/DESC)\n'))
             let montadoras_filtradas = filtrar_montadoras(montadoras, 'pais', parte_nome_pais)
-            let montadora_ordenadas = ordenar_montadoras(montadoras_filtradas, atributo_ordenacao, tipo_ordenacao)
-            print(montadora_ordenadas)
+            let montadoras_ordenadas = ordenar_montadoras(montadoras_filtradas, atributo_ordenacao, tipo_ordenacao)
+            mostrar_montadoras(montadoras_ordenadas)
             press_enter_to_continue()
 
         // 8 - Carregar dados de um arquivo

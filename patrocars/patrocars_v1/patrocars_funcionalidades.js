@@ -105,18 +105,7 @@ export function mostrar_quantidade_montadoras_por_pais(montadoras){
     print('-----------------------------')
 }
 
-// Ao listar todas ou filtrar, sempre perguntar se desejar ordenar por qual atributo e ainda se ASC ou DESC (nome, pais, ano_funcacao)
-export function ordenar_montadoras(montadoras, atributo, ordem = 'ASC') {
-    return montadoras.sort((a, b) => {
-        let valorA = texto_para_caixa_baixa(a[atributo])
-        let valorB = texto_para_caixa_baixa(b[atributo])
-
-        if (valorA < valorB) return ordem === 'ASC' ? -1 : 1
-        if (valorA > valorB) return ordem === 'ASC' ? 1 : -1
-        return 0
-    })
-}
-
+// funcao para filtrar montadoras por chaves nome e pais do objeto
 export function filtrar_montadoras(montadoras, criterio, valor) {
     return montadoras.filter(montadora => {
         if (criterio === 'nome') {
@@ -126,6 +115,34 @@ export function filtrar_montadoras(montadoras, criterio, valor) {
         }
         return false
     })
+}
+
+// funcao para ordenar montadoras usando bubble sort
+export function ordenar_montadoras(montadoras, atributo, ordem = 'ASC') {
+    let reverse = ordem === 'DESC'
+    let criterio = x => texto_para_caixa_baixa(x[atributo])
+    
+    let ultima_pos_n_ordenada = get_size(montadoras) - 1
+    let qtd_elementos_a_ordenar = get_size(montadoras) - 1
+
+    while (qtd_elementos_a_ordenar > 0) {
+        for (let i = 0; i < ultima_pos_n_ordenada; i++) {
+            let valorA = criterio(montadoras[i])
+            let valorB = criterio(montadoras[i + 1])
+
+            if (!reverse) {
+                if (valorA > valorB) {
+                    [montadoras[i], montadoras[i + 1]] = [montadoras[i + 1], montadoras[i]]
+                }
+            } else {
+                if (valorA < valorB) {
+                    [montadoras[i], montadoras[i + 1]] = [montadoras[i + 1], montadoras[i]]
+                }
+            }
+        }
+        qtd_elementos_a_ordenar -= 1
+    }
+    return montadoras
 }
 
 

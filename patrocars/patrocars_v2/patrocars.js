@@ -1,9 +1,9 @@
 import { print, press_enter_to_continue, clear_screen, get_number_in_range, get_texto, get_number } from './util/my_entsai_utils.js'
 import { inicializa_modelos, get_opcoes, menu_modelos, escrever_modelos_arquivo } from './patrocars_utils.js'
-import { cadastrar_modelo, listar_modelos, filtrar_modelos, remover_modelo, obter_indice_modelo, atualizar_modelo } from './patrocars_funcionalidades.js'
-import { texto_para_caixa_alta, texto_para_caixa_baixa } from './util/my_string_utils.js'
+import { cadastrar_modelo, listar_modelos, filtrar_modelos, remover_modelo, obter_indice_modelo, atualizar_modelo, mostrar_modelos, ordenar_modelos, get_atributos_para_ordenacao } from './patrocars_funcionalidades.js'
 import { meu_push } from './util/my_vetores_utils.js'
 import { inicializa_montadoras } from '../patrocars_v1/patrocars_funcionalidades.js'
+import { texto_para_caixa_baixa, texto_para_caixa_alta } from './util/my_string_utils.js'
 
 function main(){
     let montadoras = inicializa_montadoras()
@@ -27,6 +27,7 @@ function main(){
             print('*** O id do modelo é gerado automaticamente ***\n')
             let novo_modelo = cadastrar_modelo(montadoras)
             meu_push(modelos, novo_modelo)
+            escrever_modelos_arquivo(modelos)
             print('\nModelo cadastrado com sucesso!\n')
             press_enter_to_continue()
 
@@ -36,11 +37,10 @@ function main(){
             print('Escolha uma das opções a seguir:')
             let texto = '----------------------------------\n1 - Listar todos\n2 - Listar modelos por montadora\n3 - Listar modelos ordenados\n----------------------------------\n> '
             let escolha = get_number_in_range(texto, 1, 3)
-            // print('\nEscolha a montadora da qual deseja listar os modelos:\n')
             listar_modelos(modelos, escolha)
             press_enter_to_continue()
 
-        // 3 - Filtrar modelos por critério
+        // 3 - Filtrar modelos por critério e ordenar ASC ou DESC
         } else if (opcao === 3){
             clear_screen()
             print('\nEscolha o critério pelo qual deseja filtrar os modelos:')
@@ -49,23 +49,35 @@ function main(){
 
             if (escolha === 1){
                 let parte_nome = get_texto('\n> Por qual parte do nome do modelo você deseja filtrar os modelos?\n')
+                let atributo = get_atributos_para_ordenacao()
+                let ordem = get_texto('\n> Qual o tipo de ordenação desejado? (ASC/DESC)?\n')
                 let modelos_filtrados = filtrar_modelos(modelos, 'nome', parte_nome)
-                print(modelos_filtrados)
+                let modelos_ordenados = ordenar_modelos(modelos_filtrados, atributo, ordem)
+                mostrar_modelos(modelos_ordenados, '\n> > > Modelos Cadastrados < < <')
 
             } else if (escolha === 2){
                 let automatico = get_texto('\n> Automático? (Sim/Não)\n')
+                let atributo = get_atributos_para_ordenacao()
+                let ordem = get_texto('\n> Qual o tipo de ordenação desejado? (ASC/DESC)?\n')
                 let modelos_filtrados = filtrar_modelos(modelos, 'automatico', automatico)
-                print(modelos_filtrados)
+                let modelos_ordenados = ordenar_modelos(modelos_filtrados, atributo, ordem)
+                mostrar_modelos(modelos_ordenados, '\n> > > Modelos Cadastrados < < <')
 
             } else if (escolha === 3){
                 let motorizacao = parseFloat(get_number('\n> Por qual valor de motorização você deseja filtrar?\n'))
+                let atributo = get_atributos_para_ordenacao()
+                let ordem = get_texto('\n> Qual o tipo de ordenação desejado? (ASC/DESC)?\n')
                 let modelos_filtrados = filtrar_modelos(modelos, 'motorizacao', motorizacao)
-                print(modelos_filtrados)
+                let modelos_ordenados = ordenar_modelos(modelos_filtrados, atributo, ordem)
+                mostrar_modelos(modelos_ordenados, '\n> > > Modelos Cadastrados < < <')
 
             } else {
                 let montadora = get_texto('\n> Por qual parte do nome da montadora você deseja filtrar os modelos?\n')
+                let atributo = get_atributos_para_ordenacao()
+                let ordem = get_texto('\n> Qual o tipo de ordenação desejado? (ASC/DESC)?\n')
                 let modelos_filtrados = filtrar_modelos(modelos, 'montadora_escolhida', montadora)
-                print(modelos_filtrados)
+                let modelos_ordenados = ordenar_modelos(modelos_filtrados, atributo, ordem)
+                mostrar_modelos(modelos_ordenados, '\n> > > Modelos Cadastrados < < <')
             }
             press_enter_to_continue()
 
@@ -89,6 +101,11 @@ function main(){
             escrever_modelos_arquivo(modelos)
             press_enter_to_continue()
 
+        // 6 - Atualizar cadastro de montadora
+        // Ao tentar remover a Montadora, se esta tiver Modelos cadastrados, informar ao usuário 
+        // e perguntar se deseja realmente remover, caso positivo, removerá a Montadora e todos os seus modelos.
+        } else if (opcao === 6){
+            clear_screen()
         }
     }
 

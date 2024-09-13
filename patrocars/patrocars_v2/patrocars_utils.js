@@ -2,7 +2,6 @@
 import { question } from "readline-sync"
 import { meu_push } from "./util/my_vetores_utils.js"
 import { print } from './util/my_entsai_utils.js'
-import { texto_para_caixa_baixa } from './util/my_string_utils.js'
 import fs from 'fs'
 import { writeFileSync } from 'fs'
 import path from 'path'
