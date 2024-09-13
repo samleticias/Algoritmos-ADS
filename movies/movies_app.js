@@ -67,8 +67,9 @@ function main(){
             let filmes_filtrados = filtrar_filmes(filmes, 'genero', genero_desejado)
             if (get_size(filmes_filtrados) < 1){
                 print('\nNenhum filme encontrado!\n')
+            } else {
+                listar_filmes(filmes_filtrados)
             }
-            print(filmes_filtrados)
             press_enter_to_continue()
 
         // 7 - Contar filmes por país
@@ -87,7 +88,7 @@ function main(){
             let tipo_ordenacao = texto_para_caixa_alta(get_text('> Qual o tipo de ordenação desejado? (ASC/DESC)\n'))
             let filmes_filtrados = filtrar_filmes(filmes, 'nome', parte_titulo)
             let filmes_ordenados = ordenar_filmes(filmes_filtrados, atributo_ordenacao, tipo_ordenacao)
-            print(filmes_ordenados)
+            listar_filmes(filmes_ordenados)
             press_enter_to_continue()
 
         // 9 - Contar filmes por gênero
@@ -105,8 +106,9 @@ function main(){
             let filmes_filtrados = filtrar_filmes(filmes, 'ano', ano_desejado)
             if (get_size(filmes_filtrados) < 1){
                 print('\nNenhum filme encontrado!\n')
+            } else {
+                listar_filmes(filmes_filtrados)
             }
-            print(filmes_filtrados)
             press_enter_to_continue()
 
         // 11 - Filme com maior bilheteria
@@ -138,8 +140,9 @@ function main(){
             let filmes_filtrados = filtrar_filmes(filmes, 'idioma', idioma_desejado)
             if (get_size(filmes_filtrados) < 1){
                 print('\nNenhum filme encontrado!\n')
+            } else {
+                listar_filmes(filmes_filtrados)
             }
-            print(filmes_filtrados)
             press_enter_to_continue()
         }
     }
