@@ -9,3 +9,5 @@
 01F8K7M6A9JQZC4D7B6Z8YF7#Volkswagen Polo#Volkswagen#85000#1.6#Não#Não
 01F8K7M6A9JQZC4D7B6Z8YF3#Honda Civic#Honda#90000#1.5#Sim#Sim
 01F8K7M6A9JQZC4D7B6Z8YF5#Chevrolet Tracker#Chevrolet#110000#1.4#Sim#Sim
+01J7KKS12Q3VCB91K50YE2N3G1#Modelo de Teste#Montadora de Teste#200000#3#Sim#Sim
+01J7MAFJFQSMRJH5RQHTPS9VJR#Modelinho Teste#Minha Montadora Fera#100000#3#Sim#Sim
