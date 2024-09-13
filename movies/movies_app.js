@@ -1,6 +1,6 @@
 import { clear_screen, press_enter_to_continue, print, get_text, get_number } from './util/my_entsai_utils.js'
 import { atualizar_filme, listar_filmes, cadastrar_filme, remover_filme, filtrar_filmes, mostra_quantidade_filmes_pais,
-    ordenar_filmes, mostra_quantidade_filmes_genero, calcula_media_avaliacoes_genero, mostra_quantidade_filmes_idioma,
+    ordenar_filmes, mostra_quantidade_filmes_genero, mostra_quantidade_filmes_idioma,
     filme_com_maior_bilheteira, filme_com_menor_bilheteira
 } from "./movies_features.js"
 import { obter_indice_filme, get_opcoes, menu_filmes_crud, escrever_filmes_arquivo, inicializacao, ler_vetor_arquivo } from './movies_utils.js'
@@ -97,17 +97,9 @@ function main(){
             print(`\nTemos ${quantidade_filmes} filmes cadastrados no total!\n`)
             mostra_quantidade_filmes_genero(filmes)
             press_enter_to_continue()      
-
-        // 10 - Média de avaliações por gênero
-        } else if (opcao === 10){
-            clear_screen()
-            let quantidade_filmes = get_size(filmes)
-            print(`\nTemos ${quantidade_filmes} filmes cadastrados no total!\n`)
-            calcula_media_avaliacoes_genero(filmes)
-            press_enter_to_continue()  
             
-        // 11 - Filtrar filmes por ano
-        } else if (opcao === 11){
+        // 10 - Filtrar filmes por ano
+        } else if (opcao === 10){
             clear_screen()
             let ano_desejado = get_number('> Por qual ano você deseja filtrar os filmes?\n')
             let filmes_filtrados = filtrar_filmes(filmes, 'ano', ano_desejado)
@@ -117,30 +109,30 @@ function main(){
             print(filmes_filtrados)
             press_enter_to_continue()
 
-        // 12 - Filme com maior bilheteria
-        } else if (opcao === 12){
+        // 11 - Filme com maior bilheteria
+        } else if (opcao === 11){
             clear_screen()
             let filme_maior_bilheteria = filme_com_maior_bilheteira(filmes)
             print(filme_maior_bilheteria)
             press_enter_to_continue()
 
-        // 13 - Filme com menor bilheteria
-        } else if (opcao === 13){
+        // 12 - Filme com menor bilheteria
+        } else if (opcao === 12){
             clear_screen()
             let filme_menor_bilheteria = filme_com_menor_bilheteira(filmes)
             print(filme_menor_bilheteria)
             press_enter_to_continue()
 
-        // 14 - Contar filmes por idioma
-        } else if (opcao === 14){
+        // 13 - Contar filmes por idioma
+        } else if (opcao === 13){
             clear_screen()
             let quantidade_filmes = get_size(filmes)
             print(`\nTemos ${quantidade_filmes} filmes cadastrados no total!\n`)
             mostra_quantidade_filmes_idioma(filmes)
             press_enter_to_continue()      
 
-        // 15 - Filtrar filmes por idioma
-        } else if (opcao === 15){
+        // 14 - Filtrar filmes por idioma
+        } else if (opcao === 14){
             clear_screen()
             let idioma_desejado = get_text('> Por qual idioma você deseja filtrar os filmes?\n')
             let filmes_filtrados = filtrar_filmes(filmes, 'idioma', idioma_desejado)

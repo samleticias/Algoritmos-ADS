@@ -173,51 +173,32 @@ export function filtrar_filmes(filmes, criterio, valor) {
     })
 }
 
-// funcao para ordenar filmes por atributo
+// Função para ordenar filmes usando bubble sort 
 export function ordenar_filmes(filmes, atributo, ordem = 'ASC') {
-    return filmes.sort((a, b) => {
-        let valorA = texto_para_caixa_baixa(a[atributo])
-        let valorB = texto_para_caixa_baixa(b[atributo])
+    let reverse = ordem === 'DESC'
+    let criterio = x => texto_para_caixa_baixa(x[atributo])
+    
+    let ultima_pos_n_ordenada = get_size(filmes) - 1
+    let qtd_elementos_a_ordenar = get_size(filmes) - 1
 
-        if (valorA < valorB) return ordem === 'ASC' ? -1 : 1
-        if (valorA > valorB) return ordem === 'ASC' ? 1 : -1
-        return 0
-    })
-}
+    while (qtd_elementos_a_ordenar > 0) {
+        for (let i = 0; i < ultima_pos_n_ordenada; i++) {
+            let valorA = criterio(filmes[i])
+            let valorB = criterio(filmes[i + 1])
 
-// funcao para calcular a media de avaliações por genero considerando o atributo de imdb
-export function calcula_media_avaliacoes_genero(filmes) {
-    let soma_avaliacoes_por_genero = {}
-    let contagem_filmes_por_genero = {}
-
-    // agrupa as avaliacoes por genero
-    for (let i = 0; i < get_size(filmes); i++) {
-        let genero_atual = filmes[i].genero.trim().replace(/\r|\n/g, '')
-        let avaliacao_atual = filmes[i].imdb
-
-        if (!soma_avaliacoes_por_genero[genero_atual]) {
-            soma_avaliacoes_por_genero[genero_atual] = 0
-            contagem_filmes_por_genero[genero_atual] = 0
+            if (!reverse) {
+                if (valorA > valorB) {
+                    [filmes[i], filmes[i + 1]] = [filmes[i + 1], filmes[i]]
+                }
+            } else {
+                if (valorA < valorB) {
+                    [filmes[i], filmes[i + 1]] = [filmes[i + 1], filmes[i]]
+                }
+            }
         }
-
-        soma_avaliacoes_por_genero[genero_atual] += avaliacao_atual
-        contagem_filmes_por_genero[genero_atual] += 1
+        qtd_elementos_a_ordenar -= 1
     }
-
-    // calcula a media de avaliacoes por genero
-    let media_avaliacoes_por_genero = {}
-    for (let genero in soma_avaliacoes_por_genero) {
-        media_avaliacoes_por_genero[genero] = soma_avaliacoes_por_genero[genero] / contagem_filmes_por_genero[genero]
-    }
-
-    print('Quantidade de filmes por gênero, gênero e média de avaliações:')
-    print('------------------------------------------------------------')
-    for (let genero in contagem_filmes_por_genero) {
-        let quantidade_filmes = contagem_filmes_por_genero[genero]
-        let media_avaliacao = media_avaliacoes_por_genero[genero].toFixed(2)
-        print(`${quantidade_filmes} filmes -> ${texto_para_caixa_alta(genero.charAt(0)) + genero.slice(1)} -> Média: ${media_avaliacao}`)
-    }
-    print('------------------------------------------------------------')
+    return filmes
 }
 
 // funcao para obter filme com maior bilheteria
@@ -235,6 +216,7 @@ export function filme_com_menor_bilheteira(filmes) {
         return filme.bilheteira < min.bilheteira ? filme : min;
     }, filmes[0])
 }
+
 
 
 

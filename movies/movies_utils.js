@@ -36,12 +36,11 @@ export function menu_filmes_crud(){
         '7 - Contar filmes por país',
         '8 - Filtrar filmes por parte do título',
         '9 - Contar filmes por gênero',
-        '10 - Média de avaliações por gênero',
-        '11 - Filtrar filmes por ano',
-        '12 - Filme com maior bilheteria',
-        '13 - Filme com menor bilheteria',
-        '14 - Contar filmes por idioma',
-        '15 - Filtrar filmes por idioma',
+        '10 - Filtrar filmes por ano',
+        '11 - Filme com maior bilheteria',
+        '12 - Filme com menor bilheteria',
+        '13 - Contar filmes por idioma',
+        '14 - Filtrar filmes por idioma',
         '0 - Sair',
         '=============================================',
     ]
@@ -68,7 +67,7 @@ export function escrever_filmes_arquivo(filmes) {
 }
 
 // funcao para configurar atributos do filme
-export function configurar_filme(nome, ano, imdb, bilheteira, duracao, idioma, pais, data_lancamento, genero) {
+export function configura_chaves_filme(nome, ano, imdb, bilheteira, duracao, idioma, pais, data_lancamento, genero) {
     return {
         nome,
         ano: parseInt(ano, 10),
@@ -92,7 +91,7 @@ export function inicializacao() {
         .filter(linha => linha.trim()) 
         .map(linha => {
             const [nome, ano, imdb, bilheteira, duracao, idioma, pais, data_lancamento, genero] = linha.split('#')
-            return configurar_filme(nome, ano, imdb, bilheteira, duracao, idioma, pais, data_lancamento, genero)
+            return configura_chaves_filme(nome, ano, imdb, bilheteira, duracao, idioma, pais, data_lancamento, genero)
         })
 }
 
@@ -100,7 +99,7 @@ export function carregar_arquivo(nome_arquivo){
     return readFileSync(nome_arquivo, "utf-8")
 }
 
-// funcao utilizada quando se carrega dados de um arquivo para o programa, "mapeando" os atributos com o split para o objeto filme
+// funcao utilizada quando se carrega dados de um arquivo para o programa, identificando as chaves com o split para o objeto filme
 function linha_para_filme(linha) {
     const partes = linha.split('#')
     // console.log(`Partes: ${partes}`)
@@ -108,7 +107,7 @@ function linha_para_filme(linha) {
         throw new Error(`Formato inválido na linha: ${linha}`)
     }
     const [nome, ano, imdb, bilheteira, duracao, idioma, pais, data_lancamento, genero] = partes
-    return configurar_filme(nome, ano, imdb, bilheteira, duracao, idioma, pais, data_lancamento, genero)
+    return configura_chaves_filme(nome, ano, imdb, bilheteira, duracao, idioma, pais, data_lancamento, genero)
 }
 
 // funcao para carregar dados de um arquivo para realizar operacoes no CRUD
