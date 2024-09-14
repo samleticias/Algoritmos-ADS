@@ -1,10 +1,9 @@
 import { print, press_enter_to_continue, clear_screen, get_number_in_range, get_texto, get_number } from './util/my_entsai_utils.js'
 import { inicializa_modelos, get_opcoes, menu_modelos, escrever_modelos_arquivo } from './patrocars_utils.js'
-import { cadastrar_modelo, listar_modelos, filtrar_modelos, remover_modelo, obter_indice_modelo, atualizar_modelo, mostrar_modelos, ordenar_modelos, get_atributos_para_ordenacao } from './patrocars_funcionalidades.js'
-import { meu_push } from './util/my_vetores_utils.js'
+import { cadastrar_modelo, listar_modelos, filtrar_modelos, remover_modelo, obter_indice_modelo, atualizar_modelo, mostrar_modelos, ordenar_modelos, get_atributos_para_ordenacao, obter_indice_montadora } from './patrocars_funcionalidades.js'
+import { get_size, meu_push } from './util/my_vetores_utils.js'
 import { inicializa_montadoras } from '../patrocars_v1/patrocars_funcionalidades.js'
-import { texto_para_caixa_baixa, texto_para_caixa_alta } from './util/my_string_utils.js'
-
+import { escrever_montadoras_arquivo } from '../patrocars_v1/patrocars_utils.js'
 function main(){
     let montadoras = inicializa_montadoras()
     let modelos = inicializa_modelos()
@@ -64,7 +63,7 @@ function main(){
                 mostrar_modelos(modelos_ordenados, '\n> > > Modelos Cadastrados < < <')
 
             } else if (escolha === 3){
-                let motorizacao = parseFloat(get_number('\n> Por qual valor de motorização você deseja filtrar?\n'))
+                let motorizacao = get_number('\n> Por qual valor de motorização você deseja filtrar?\n')
                 let atributo = get_atributos_para_ordenacao()
                 let ordem = get_texto('\n> Qual o tipo de ordenação desejado? (ASC/DESC)?\n')
                 let modelos_filtrados = filtrar_modelos(modelos, 'motorizacao', motorizacao)
@@ -104,8 +103,30 @@ function main(){
         // 6 - Atualizar cadastro de montadora
         // Ao tentar remover a Montadora, se esta tiver Modelos cadastrados, informar ao usuário 
         // e perguntar se deseja realmente remover, caso positivo, removerá a Montadora e todos os seus modelos.
+
+        // pedir indice da montadora -> filtrar modelos pelo atributo montadora_escolhida para verificar se o nome da montadora
+        // do indice escolhido é o mesmo nome
         } else if (opcao === 6){
             clear_screen()
+            print('\nEscolha a montadora a ser removida:\n')
+            let indice_montadora = obter_indice_montadora(montadoras)
+            let models = modelos.filter(modelo => modelo['montadora_escolhida'] === montadoras[indice_montadora]['nome'])
+            let nome_montadora = montadoras[indice_montadora]['nome']
+            // mostrar_modelos(models, `\n> > > Modelos Cadastrados na Montadora ${montadoras[indice_montadora]['nome']} < < <`)
+            if (get_size(models) >= 1){
+                let escolha = get_texto(`\nEssa montadora possui modelos cadastrados. Deseja mesmo removê-la? (S/N)\n`)
+
+                if (escolha === 'S' || escolha === 's'){
+                    montadoras.splice(indice_montadora, 1)
+                    print(`\nMontadora ${nome_montadora} removida com sucesso!\n`)    
+                    escrever_montadoras_arquivo(montadoras)            
+                }
+            } else {
+                montadoras.splice(indice_montadora, 1)
+                print(`\nMontadora ${nome_montadora} removida com sucesso!\n`)   
+                escrever_montadoras_arquivo(montadoras)            
+            }
+            press_enter_to_continue()
         }
     }
 

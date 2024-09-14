@@ -1,3 +1,0 @@
-Faltando V2:
-- Ordenar por atributo na filtragem -> arrumar motorizaçao no menu de atributos para filtragem
-- Atualizar cadastro de montadora

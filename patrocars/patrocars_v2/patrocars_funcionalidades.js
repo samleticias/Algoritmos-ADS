@@ -139,7 +139,7 @@ export function filtrar_modelos(modelos, criterio, valor) {
         } else if (criterio === 'automatico') {
             return texto_para_caixa_baixa(modelo.automatico).includes(texto_para_caixa_baixa(valor))
         } else if (criterio === 'motorizacao') {
-            return modelo.motorizacao == valor
+            return parseFloat(modelo.motorizacao) == parseFloat(valor)
         } else if (criterio === 'montadora_escolhida') {
             return texto_para_caixa_baixa(modelo.montadora_escolhida).includes(texto_para_caixa_baixa(valor))
         }
