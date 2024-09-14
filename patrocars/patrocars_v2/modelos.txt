@@ -21,3 +21,4 @@ Mercedes-Benz#MB001#Mercedes-Benz C-Class#60000#2.0#Sim#Sim
 01J7PY8191C6GBFKJP1SHFFH54#Modelo do Meu Teste#Montadora Teste da Silva#80000#3#Sim#Não
 01J7PYBW3TQD3Z4GYWWN0CKZYQ#Modelinho#Montadora Teste da Silva#90000#2#Não#Não
 01J7PZ5SA26ZVVT2M1DA3EA10S#Modelooooooo#Sexta#34#3#Sim#Não
+01J7Q06YMSKK1VXP6GY5CTQF71#Modelo da Sexta#Sexta à noite#30000#2#Sim#Não

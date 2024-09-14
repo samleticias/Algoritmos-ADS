@@ -23,6 +23,7 @@ function main(){
             let veiculo = cadastrar_veiculo()
             if (veiculo != null){
                 meu_push(veiculos, veiculo)
+                escrever_veiculos_arquivo(veiculos)
             }
             press_enter_to_continue()
 

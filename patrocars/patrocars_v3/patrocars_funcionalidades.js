@@ -6,28 +6,24 @@ import { obter_indice_montadora, obter_indice_modelo, obter_indice_veiculo } fro
 import { inicializa_modelos, inicializa_montadoras } from './patrocars_utils.js'
 
 // funcao para cadastrar veiculo pedindo a montadora, exibindo modelos da montadora e solicitando o modelo do veiculo
-export function cadastrar_veiculo(){
+export function cadastrar_veiculo() {
     print('\n*** Id é gerado automaticamente ***\n')
-    // filtrar montadora -> filtrar modelos da montadora 
-    // escolher montadora
     print('Escolha a montadora em que deseja cadastrar o veículo:')
     let id_veiculo = ulid()
     let montadoras = inicializa_montadoras()
     let index_montadora = obter_indice_montadora(montadoras)
-
-    // filtra modelos pela montadora
+    
     let modelos = inicializa_modelos()
     let modelos_filtrados = modelos.filter(modelo => modelo['montadora_escolhida'] === montadoras[index_montadora]['nome'])
     
-    if (get_size(modelos_filtrados) < 1){
+    if (get_size(modelos_filtrados) < 1) {
         print('\nNenhum modelo encontrado para essa montadora!\n')
         return
     } else {
         print('\nEscolha o modelo em que deseja cadastrar o veículo:')
-    
         let index_modelo = obter_indice_modelo(modelos_filtrados)
-        let modelo_id = modelos[index_modelo]['id_modelo']
-    
+        let modelo_id = modelos_filtrados[index_modelo]['id_modelo']
+        
         let cor = get_texto(`\nQual a cor do veículo?\n`)
         let ano_fabricacao = get_positive_number(`\nQual o ano de fabricação do veículo?\n`)
         let ano_modelo = get_positive_number(`\nQual o ano do modelo do veículo?\n`)
@@ -54,20 +50,27 @@ export function cadastrar_veiculo(){
 // Fazer Editar e Remover
 // Listar e Escolher
 // E então remover/editar conforme procedimento já dominados
-export function listar_veiculos(veiculos, label = '\n> > > Veículos Cadastrados < < <'){
+export function listar_veiculos(veiculos, label = '\n> > > Veículos Cadastrados < < <') {
     print(label)
-    for (let veiculo of veiculos){
-        const v = 
-        `\n
+    let modelos = inicializa_modelos()
+    for (let veiculo of veiculos) {
+        const modelo = modelos.find(m => m['id_modelo'] === veiculo['modelo_id'])
+        const modelo_nome = modelo ? modelo['nome'] : 'Desconhecido'
+        const modelo_id = modelo ? modelo['id_modelo'] : 'Desconhecido'
+        
+        const v = `
+        \n
         > Veículo: \n
         | ID Veículo: ${veiculo['id_veiculo']}\n
-        | ID Modelo: ${veiculo['modelo_id']}\n
+        | ID Modelo: ${modelo_id}\n
+        | Nome Modelo: ${modelo_nome}\n
         | Cor do Veículo: ${veiculo['cor']}\n
         | Ano de Fabricação: ${veiculo['ano_fabricacao']}\n
         | Ano do Modelo: ${veiculo['ano_modelo']}\n
-        | Valor do Véiculo R$: ${veiculo['valor']}\n
+        | Valor do Veículo R$: ${veiculo['valor']}\n
         | Placa: ${veiculo['placa']}\n
         | Status Vendido: ${veiculo['vendido']}`
+        
         print(v)
     }
 }
@@ -154,7 +157,7 @@ export function vender_veiculo(veiculos, escolha){
         let indice_modelo = obter_indice_modelo(modelos_filtrados)
 
         // filtra veiculos por modelo desejado 
-        let veiculos_filtrados = veiculos.filter(veiculo => veiculo['modelo_id'] === modelos_filtrados[indice_modelo]['id_veiculo'])
+        let veiculos_filtrados = veiculos.filter(veiculo => veiculo['modelo_id'] === modelos_filtrados[indice_modelo]['id_modelo'])
 
         if (get_size(veiculos_filtrados) === 0) {
             print('\nNenhum veículo encontrado para o modelo escolhido!\n')
