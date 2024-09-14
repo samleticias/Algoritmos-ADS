@@ -234,13 +234,13 @@ export function listar_veiculos(veiculos, label, escolha) {
             let vendido_status = get_texto('\nFiltrar veículos vendidos (Sim/Não)?\n')
             veiculos_filtrados = veiculos.filter(veiculo => veiculo['vendido'] === vendido_status)
         } else if (op === 5) {
-            let parte_nome_marca = get_texto('\nDigite a parte do nome da marca para filtrar os veículos:\n').toLowerCase()
+            let parte_nome_marca = texto_para_caixa_baixa(get_texto('\nDigite a parte do nome da marca para filtrar os veículos:\n'))
             let modelos = inicializa_modelos()
             let modelos_filtrados = modelos.filter(modelo => texto_para_caixa_baixa(modelo['montadora_escolhida']).includes(parte_nome_marca))
             let ids_modelos_filtrados = modelos_filtrados.map(modelo => modelo['id_modelo'])
             veiculos_filtrados = veiculos.filter(veiculo => ids_modelos_filtrados.includes(veiculo['modelo_id']))
         } else if (op === 6) {
-            let parte_nome_modelo = get_texto('\nDigite a parte do nome do modelo para filtrar os veículos:\n').toLowerCase()
+            let parte_nome_modelo = texto_para_caixa_baixa(get_texto('\nDigite a parte do nome do modelo para filtrar os veículos:\n'))
             let modelos = inicializa_modelos()
             let modelos_filtrados = modelos.filter(modelo => texto_para_caixa_baixa(modelo['nome']).includes(parte_nome_modelo))
             let ids_modelos_filtrados = modelos_filtrados.map(modelo => modelo['id_modelo'])
