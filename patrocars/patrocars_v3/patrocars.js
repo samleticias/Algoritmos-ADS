@@ -30,7 +30,10 @@ function main(){
         // 2 - Listar veículos
         } else if (opcao === 2){
             clear_screen()
-            listar_veiculos(veiculos)
+            print('Escolha uma das opções a seguir:')
+            let texto = '-----------------------\n1 - Listar todos\n2 - Listar com filtro\n-----------------------\n> '
+            let escolha = get_number_in_range(texto, 1, 2)
+            listar_veiculos(veiculos, '\n> > > Veículos Cadastrados < < <', escolha)
             press_enter_to_continue()
 
         // 3 - Editar/Remover veículo

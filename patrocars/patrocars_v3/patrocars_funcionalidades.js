@@ -1,9 +1,10 @@
 // PatroCars Funcionalidades
 import { ulid } from 'ulidx'
 import { get_size } from './util/my_vetores_utils.js'
-import { get_number_in_range, get_positive_number, get_texto, print } from './util/my_entsai_utils.js'
+import { get_number, get_number_in_range, get_positive_number, get_texto, print } from './util/my_entsai_utils.js'
 import { obter_indice_montadora, obter_indice_modelo, obter_indice_veiculo } from '../patrocars_v3/patrocars_utils.js'
 import { inicializa_modelos, inicializa_montadoras } from './patrocars_utils.js'
+import { texto_para_caixa_alta, texto_para_caixa_baixa } from './util/my_string_utils.js'
 
 // funcao para cadastrar veiculo pedindo a montadora, exibindo modelos da montadora e solicitando o modelo do veiculo
 export function cadastrar_veiculo() {
@@ -50,31 +51,6 @@ export function cadastrar_veiculo() {
 // Fazer Editar e Remover
 // Listar e Escolher
 // E então remover/editar conforme procedimento já dominados
-export function listar_veiculos(veiculos, label = '\n> > > Veículos Cadastrados < < <') {
-    print(label)
-    let modelos = inicializa_modelos()
-    for (let veiculo of veiculos) {
-        const modelo = modelos.find(m => m['id_modelo'] === veiculo['modelo_id'])
-        const modelo_nome = modelo ? modelo['nome'] : 'Desconhecido'
-        const modelo_id = modelo ? modelo['id_modelo'] : 'Desconhecido'
-        
-        const v = `
-        \n
-        > Veículo: \n
-        | ID Veículo: ${veiculo['id_veiculo']}\n
-        | ID Modelo: ${modelo_id}\n
-        | Nome Modelo: ${modelo_nome}\n
-        | Cor do Veículo: ${veiculo['cor']}\n
-        | Ano de Fabricação: ${veiculo['ano_fabricacao']}\n
-        | Ano do Modelo: ${veiculo['ano_modelo']}\n
-        | Valor do Veículo R$: ${veiculo['valor']}\n
-        | Placa: ${veiculo['placa']}\n
-        | Status Vendido: ${veiculo['vendido']}`
-        
-        print(v)
-    }
-}
-
 // funcao para editar ou remover veiculo de acordo com a escolha do usuario no menu
 export function mostrar_veiculos(veiculos, escolha){
     // Atualizar veiculo
@@ -197,7 +173,6 @@ export function vender_veiculo(veiculos, escolha){
     }
 }
 
-
 // funcao para filtrar veiculos com criterio
 export function filtrar_veiculos(veiculos, criterio, valor) {
     return veiculos.filter(veiculo => {
@@ -205,10 +180,149 @@ export function filtrar_veiculos(veiculos, criterio, valor) {
             return veiculo['modelo_id'].includes(valor)
         } else if (criterio === 'placa') {
             return veiculo['placa'].includes(valor)
-        }
+        } else if (criterio === 'nome')
         return false
     })
 }
+
+// funcao para listar veiculos com filtros e ordenacao
+export function listar_veiculos(veiculos, label, escolha) {
+    if (escolha === 1) {
+        // listar todos
+        print(label)
+        let modelos = inicializa_modelos()
+        for (let veiculo of veiculos) {
+            const modelo = modelos.find(m => m['id_modelo'] === veiculo['modelo_id'])
+            const modelo_nome = modelo ? modelo['nome'] : 'Desconhecido'
+            const modelo_id = modelo ? modelo['id_modelo'] : 'Desconhecido'
+            
+            const v = `
+            \n
+            > Veículo: \n
+            | ID Veículo: ${veiculo['id_veiculo']}\n
+            | ID Modelo: ${modelo_id}\n
+            | Nome Modelo: ${modelo_nome}\n
+            | Cor do Veículo: ${veiculo['cor']}\n
+            | Ano de Fabricação: ${veiculo['ano_fabricacao']}\n
+            | Ano do Modelo: ${veiculo['ano_modelo']}\n
+            | Valor do Veículo R$: ${veiculo['valor']}\n
+            | Placa: ${veiculo['placa']}\n
+            | Status Vendido: ${veiculo['vendido']}`
+            
+            print(v)
+        }
+    } else {
+        // listar com filtro em atributos e ordenacao
+        print('\nEscolha um dos critérios para filtrar os veículos:')
+        let texto = '---------------------------------------\n1 - Ano de fabricação (mínimo e máximo)\n2 - Ano do modelo (mínimo e máximo)\n3 - Valor\n4 - Vendido\n5 - Parte do nome da marca\n6 - Parte do nome do modelo\n---------------------------------------\n> '
+        let op = get_number_in_range(texto, 1, 6)
+
+        let veiculos_filtrados = veiculos
+        if (op === 1) {
+            let ano_minimo = get_number('\nQual o ano de fabricação mínimo para filtrar os veículos?\n')
+            let ano_maximo = get_number('\nQual o ano de fabricação máximo para filtrar os veículos?\n')
+            veiculos_filtrados = veiculos.filter(veiculo => veiculo['ano_fabricacao'] >= ano_minimo && veiculo['ano_fabricacao'] <= ano_maximo)
+        } else if (op === 2) {
+            let ano_modelo_minimo = get_number('\nQual o ano do modelo mínimo para filtrar os veículos?\n')
+            let ano_modelo_maximo = get_number('\nQual o ano do modelo máximo para filtrar os veículos?\n')
+            veiculos_filtrados = veiculos.filter(veiculo => veiculo['ano_modelo'] >= ano_modelo_minimo && veiculo['ano_modelo'] <= ano_modelo_maximo)
+        } else if (op === 3) {
+            let valor_minimo = parseFloat(get_positive_number('\nQual o valor mínimo para filtrar os veículos? (R$)\n'))
+            let valor_maximo = parseFloat(get_positive_number('\nQual o valor máximo para filtrar os veículos? (R$)\n'))
+            veiculos_filtrados = veiculos.filter(veiculo => veiculo['valor'] >= valor_minimo && veiculo['valor'] <= valor_maximo)
+        } else if (op === 4) {
+            let vendido_status = get_texto('\nFiltrar veículos vendidos (Sim/Não)?\n')
+            veiculos_filtrados = veiculos.filter(veiculo => veiculo['vendido'] === vendido_status)
+        } else if (op === 5) {
+            let parte_nome_marca = get_texto('\nDigite a parte do nome da marca para filtrar os veículos:\n').toLowerCase()
+            let modelos = inicializa_modelos()
+            let modelos_filtrados = modelos.filter(modelo => texto_para_caixa_baixa(modelo['montadora_escolhida']).includes(parte_nome_marca))
+            let ids_modelos_filtrados = modelos_filtrados.map(modelo => modelo['id_modelo'])
+            veiculos_filtrados = veiculos.filter(veiculo => ids_modelos_filtrados.includes(veiculo['modelo_id']))
+        } else if (op === 6) {
+            let parte_nome_modelo = get_texto('\nDigite a parte do nome do modelo para filtrar os veículos:\n').toLowerCase()
+            let modelos = inicializa_modelos()
+            let modelos_filtrados = modelos.filter(modelo => texto_para_caixa_baixa(modelo['nome']).includes(parte_nome_modelo))
+            let ids_modelos_filtrados = modelos_filtrados.map(modelo => modelo['id_modelo'])
+            veiculos_filtrados = veiculos.filter(veiculo => ids_modelos_filtrados.includes(veiculo['modelo_id']))
+        }
+
+        let ordem = get_texto('\nDeseja ordenar ASC ou DESC?\n')
+        print('\NEscolha um dos atributos para ordenar os veículos:')
+        let texto_ordem = '--------------------\n1 - Nome do modelo\n2 - Ano\n3 - Valor\n--------------------\n> '
+        let op_ord = get_number_in_range(texto_ordem, 1, 3)
+
+        if (op_ord === 1) {
+            veiculos_filtrados = ordenar_veiculos(veiculos_filtrados, 'nome_modelo', ordem)
+        } else if (op_ord === 2) {
+            veiculos_filtrados = ordenar_veiculos(veiculos_filtrados, 'ano_fabricacao', ordem)
+        } else if (op_ord === 3) {
+            veiculos_filtrados = ordenar_veiculos(veiculos_filtrados, 'valor', ordem)
+        }
+
+        print(label)
+        for (let veiculo of veiculos_filtrados) {
+            const modelo = inicializa_modelos().find(m => m['id_modelo'] === veiculo['modelo_id'])
+            const modelo_nome = modelo ? modelo['nome'] : 'Desconhecido'
+            const modelo_id = modelo ? modelo['id_modelo'] : 'Desconhecido'
+            
+            const v = `
+            \n
+            > Veículo: \n
+            | ID Veículo: ${veiculo['id_veiculo']}\n
+            | ID Modelo: ${modelo_id}\n
+            | Nome Modelo: ${modelo_nome}\n
+            | Cor do Veículo: ${veiculo['cor']}\n
+            | Ano de Fabricação: ${veiculo['ano_fabricacao']}\n
+            | Ano do Modelo: ${veiculo['ano_modelo']}\n
+            | Valor do Veículo R$: ${veiculo['valor']}\n
+            | Placa: ${veiculo['placa']}\n
+            | Status Vendido: ${veiculo['vendido']}`
+            
+            print(v)
+        }
+    }
+}
+
+// funcao para ordenar veiculos com bubble sort
+export function ordenar_veiculos(veiculos, atributo, ordem = 'ASC') {
+    let reverse = ordem === 'DESC'
+    let criterio = x => {
+        switch (atributo) {
+            case 'nome_modelo':
+                let modelos = inicializa_modelos()
+                let modelo = modelos.find(m => m['id_modelo'] === x['modelo_id'])
+                return modelo ? texto_para_caixa_baixa(modelo['nome']) : ''
+            case 'ano_fabricacao':
+                return x['ano_fabricacao']
+            case 'valor':
+                return x['valor']
+        }
+    }
+    
+    let ultima_pos_n_ordenada = get_size(veiculos) - 1
+    let qtd_elementos_a_ordenar = get_size(veiculos) - 1
+
+    while (qtd_elementos_a_ordenar > 0) {
+        for (let i = 0; i < ultima_pos_n_ordenada; i++) {
+            let valorA = criterio(veiculos[i])
+            let valorB = criterio(veiculos[i + 1])
+
+            if (!reverse) {
+                if (valorA > valorB) {
+                    [veiculos[i], veiculos[i + 1]] = [veiculos[i + 1], veiculos[i]]
+                }
+            } else {
+                if (valorA < valorB) {
+                    [veiculos[i], veiculos[i + 1]] = [veiculos[i + 1], veiculos[i]]
+                }
+            }
+        }
+        qtd_elementos_a_ordenar -= 1
+    }
+    return veiculos
+}
+
 
 
 
