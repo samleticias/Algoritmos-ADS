@@ -188,24 +188,24 @@ export function media_nacional_por_area(escolas) {
     }
 
     for (let escola of escolas) {
-        if (escola.nota_linguagens) {
-            soma_notas.linguagens += parseFloat(escola.nota_linguagens.replace(',', '.'))
+        if (escola[7]) {
+            soma_notas.linguagens += parseFloat(escola[7].replace(',', '.'))
             contagem.linguagens++
         }
-        if (escola.nota_matematica) {
-            soma_notas.matematica += parseFloat(escola.nota_matematica.replace(',', '.'))
+        if (escola[8]) { 
+            soma_notas.matematica += parseFloat(escola[8].replace(',', '.'))
             contagem.matematica++
         }
-        if (escola.nota_naturezas) {
-            soma_notas.ciencias_natureza += parseFloat(escola.nota_naturezas.replace(',', '.'))
+        if (escola[9]) {
+            soma_notas.ciencias_natureza += parseFloat(escola[9].replace(',', '.'))
             contagem.ciencias_natureza++
         }
-        if (escola.nota_humanas) {
-            soma_notas.humanas += parseFloat(escola.nota_humanas.replace(',', '.'))
-            contagem.humanas++
+        if (escola[10]) { 
+            soma_notas.humanas += parseFloat(escola[10].replace(',', '.'))
+            contagem.humanas++;
         }
-        if (escola.nota_redacao) {
-            soma_notas.redacao += parseFloat(escola.nota_redacao.replace(',', '.'))
+        if (escola[11]) { 
+            soma_notas.redacao += parseFloat(escola[11].replace(',', '.'))
             contagem.redacao++
         }
     }
