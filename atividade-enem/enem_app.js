@@ -1,14 +1,9 @@
 import { melhor_escola_por_estado, top_n_brasil_todas_areas, mostrar_ranking_estados_por_media, top_n_escolas_estado_rede,
     mostrar_dados_melhor_escola, mostrar_top_n_escolas_por_area, media_nacional_por_area, obter_melhor_escola_por_area_e_estado, 
-    listar_escolas_por_estado_e_renda, ranking_enem_por_regiao, busca_escola_especifica_por_parte_nome,
-    media_por_tipo_escola,
-    conta_escolas_por_renda
- } from "./enem_features.js"
+    listar_escolas_por_estado_e_renda, ranking_enem_por_regiao, busca_escola_especifica_por_parte_nome, media_por_tipo_escola,
+    conta_escolas_por_renda } from "./enem_features.js"
 import { get_opcoes, inicializa_escolas, menu_enem, mostrar_escolas, mostrar_melhor_escola_por_estado, obter_indice_estados,
-    mostrar_escola,
-    mostrar_medias_por_tipo,
-    exibir_contagem_escolas_por_renda
- } from "./enem_utils.js"
+    mostrar_escola, mostrar_medias_por_tipo, exibir_contagem_escolas_por_renda } from "./enem_utils.js"
 import { clear_screen, get_number_in_range, get_positive_number, get_texto, press_enter_to_continue, print } from "./util/my_entsai_utils.js"
 
 function main(){
@@ -119,7 +114,7 @@ function main(){
             let qtd_escolas_por_renda = conta_escolas_por_renda(escolas)
             exibir_contagem_escolas_por_renda(qtd_escolas_por_renda)
             press_enter_to_continue()
-            
+
         } else {
             clear_screen()
             print('Opção inválida!')
