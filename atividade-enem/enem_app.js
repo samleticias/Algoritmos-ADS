@@ -119,6 +119,7 @@ function main(){
             let qtd_escolas_por_renda = conta_escolas_por_renda(escolas)
             exibir_contagem_escolas_por_renda(qtd_escolas_por_renda)
             press_enter_to_continue()
+            
         } else {
             clear_screen()
             print('Opção inválida!')
