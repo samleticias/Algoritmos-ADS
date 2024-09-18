@@ -173,5 +173,3 @@ export function exibir_contagem_escolas_por_renda(contagem) {
     print('------------------------------------------')
 }
 
-
-
