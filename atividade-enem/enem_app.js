@@ -1,9 +1,15 @@
 import { melhor_escola_por_estado, top_n_brasil_todas_areas, mostrar_ranking_estados_por_media, top_n_escolas_estado_rede,
-    melhor_escola_por_area_e_estado, mostrar_top_n_escolas_por_area, media_nacional_por_area } from "./enem_features.js"
-import { get_opcoes, inicializa_escolas, menu_enem, mostrar_escolas, mostrar_melhor_escola_por_estado, obter_estados,
-    obter_indice_estados
+    mostrar_dados_melhor_escola, mostrar_top_n_escolas_por_area, media_nacional_por_area, obter_melhor_escola_por_area_e_estado, 
+    listar_escolas_por_estado_e_renda, ranking_enem_por_regiao, busca_escola_especifica_por_parte_nome,
+    media_por_tipo_escola,
+    conta_escolas_por_renda
+ } from "./enem_features.js"
+import { get_opcoes, inicializa_escolas, menu_enem, mostrar_escolas, mostrar_melhor_escola_por_estado, obter_indice_estados,
+    mostrar_escola,
+    mostrar_medias_por_tipo,
+    exibir_contagem_escolas_por_renda
  } from "./enem_utils.js"
-import { clear_screen, get_number_in_range, get_positive_number, press_enter_to_continue, print } from "./util/my_entsai_utils.js"
+import { clear_screen, get_number_in_range, get_positive_number, get_texto, press_enter_to_continue, print } from "./util/my_entsai_utils.js"
 
 function main(){
     let escolas = inicializa_escolas()
@@ -72,18 +78,51 @@ function main(){
         } else if (opcao === 7){
             clear_screen()
             let indice_estado = obter_indice_estados(escolas)
-            let estados = obter_estados(escolas)
-            let estado_escolhido = estados[indice_estado]
             print('\nEscolha uma das áreas a seguir:')
             let texto = '\t1 - Linguagens\n\t2 - Matemática\n\t3 - Ciências da Natureza\n\t4 - Ciências Humanas\n\t5 - Redação\n> '
             let area_escolhida = get_number_in_range(texto, 1, 5)
-            let melhor_escola = melhor_escola_por_area_e_estado(escolas, estado_escolhido, area_escolhida)
-            mostrar_dados_melhor_escola(melhor_escola, area_escolhida, estado_escolhido)
+            let melhor_escola = obter_melhor_escola_por_area_e_estado(escolas, area_escolhida, indice_estado)
+            mostrar_dados_melhor_escola(melhor_escola, area_escolhida)
             press_enter_to_continue()
 
         // 8 - Listas de Escolas por Estado Ordenada por Renda
         } else if (opcao === 8){
             clear_screen()
+            let indice_estado = obter_indice_estados(escolas)
+            listar_escolas_por_estado_e_renda(escolas, indice_estado)
+            press_enter_to_continue()
+
+        // 9 - Ranking ENEM por Região do País
+        } else if (opcao === 9){
+            clear_screen()
+            ranking_enem_por_regiao(escolas)
+            press_enter_to_continue()
+
+        // 10 - Busca Escola Específica por Parte do Nome
+        } else if (opcao === 10){
+            clear_screen()
+            let parte_nome = get_texto('Por qual parte do nome de escola você deseja filtrar a escola procurada?\n')
+            let escola = busca_escola_especifica_por_parte_nome(escolas, parte_nome)
+            mostrar_escola(escola)
+            press_enter_to_continue()
+
+        // 11 - Compara Média por tipos de escola
+        } else if (opcao === 11){
+            clear_screen()
+            let media_tipos = media_por_tipo_escola(escolas)
+            mostrar_medias_por_tipo(media_tipos)
+            press_enter_to_continue()
+
+        // 12 - Quantidade de Escolas por Renda
+        } else if (opcao === 12){
+            clear_screen()
+            let qtd_escolas_por_renda = conta_escolas_por_renda(escolas)
+            exibir_contagem_escolas_por_renda(qtd_escolas_por_renda)
+            press_enter_to_continue()
+        } else {
+            clear_screen()
+            print('Opção inválida!')
+            press_enter_to_continue()
         }
     }
 }

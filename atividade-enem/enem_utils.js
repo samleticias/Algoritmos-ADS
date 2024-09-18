@@ -31,8 +31,8 @@ export function menu_enem(){
         '8 - Listas de Escolas por Estado Ordenada por Renda',
         '9 - Ranking ENEM por Região do País',
         '10 - Busca Escola Específica por Parte do Nome',
-        '11 - Top 10 Escolas com Melhor Crescimento em Nota do ENEM',
-        '12 - Top 5 Escolas por Área em Cada Estado',
+        '11 - Média por Tipos de Escola',
+        '12 - Quantidade de Escolas por Renda',
         '0 - Sair',
         '-----------------------------------------------------------',
     ]
@@ -146,6 +146,38 @@ export function obter_estados(escolas) {
     return estados
 }
 
+// funcao para mostrar uma escola
+export function mostrar_escola(escola){
+    const e = `
+    Escola: ${escola.nome}
+    | Código: ${escola.codigo}
+    | Cidade: ${escola.cidade}
+    | Estado: ${escola.estado}
+    | Tipo: ${escola.tipo}
+    | Nível: ${escola.nivel}
+    | Média: ${escola.media_obj.replace(',', '.')}`
+    print(e)
+}
+
+// funcao para mostrar medias por tipo de escola
+export function mostrar_medias_por_tipo(media_tipos){
+    print('>>> Médias Por Tipo de Escola <<<')
+    print('---------------------------------')
+    for (let m of media_tipos){
+        print(`Tipo: ${m.tipo} - Média: ${m.media}`)
+    }
+    print('---------------------------------')
+}
+
+export function exibir_contagem_escolas_por_renda(contagem) {
+    print('------------------------------------------')
+    print('>>>> Quantidade de Escolas Por Renda <<<<')
+    print('------------------------------------------')
+    for (const renda in contagem) {
+        print(`> Renda: ${renda} - Qtd. Escolas: ${contagem[renda]}`)
+    }
+    print('------------------------------------------')
+}
 
 
 

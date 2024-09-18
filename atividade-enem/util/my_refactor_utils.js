@@ -1,6 +1,7 @@
 // Refatoração Utils
 import { meu_push } from "./my_vetores_utils.js"
 
+// meu map
 export function mapear(colecao, funcao_transformadora) {
     const resultado = []
     for (let i = 0; i < colecao.length; i++) {
@@ -9,6 +10,7 @@ export function mapear(colecao, funcao_transformadora) {
     return resultado
 }
 
+// meu filter
 export function filtrar(colecao, predicado) {
     const resultado = []
     for (let i = 0; i < colecao.length; i++) {
@@ -19,6 +21,7 @@ export function filtrar(colecao, predicado) {
     return resultado
 }
 
+// meu reduce
 export function reduzir(colecao, funcao, inicial) {
     let acumulador = inicial !== undefined ? inicial : colecao[0]
     const inicio = inicial !== undefined ? 0 : 1
@@ -28,6 +31,7 @@ export function reduzir(colecao, funcao, inicial) {
     return acumulador
 }
 
+// buscar sequencial
 export function buscar_sequencial(elemento, colecao, criterio = (x, y) => x === y) {
     for (let i = 0; i < colecao.length; i++) {
         if (criterio(colecao[i], elemento)) {
@@ -37,6 +41,7 @@ export function buscar_sequencial(elemento, colecao, criterio = (x, y) => x === 
     return -1
 }
 
+// buscar binaria
 export function buscar_binaria(elemento, colecao, criterio = (x, y) => x - y) {
     let esquerda = 0
     let direita = colecao.length - 1
@@ -50,24 +55,29 @@ export function buscar_binaria(elemento, colecao, criterio = (x, y) => x - y) {
     return -1
 }
 
+// bubble sort
 export function bubble_sort(colecao, criterio = (a, b) => a - b) {
-    const arr = [...colecao]
-    const n = arr.length
-    let trocado
-    do {
-        trocado = false
-        for (let i = 0; i < n - 1; i++) {
-            if (criterio(arr[i], arr[i + 1]) > 0) {
-                const temp = arr[i]
-                arr[i] = arr[i + 1]
-                arr[i + 1] = temp
+    const array = [...colecao]
+    const n = array.length
+
+    for (let i = 0; i < n - 1; i++) {
+        let trocado = false
+        for (let j = 0; j < n - 1 - i; j++) {
+            if (criterio(array[j], array[j + 1]) > 0) {
+                const aux = array[j]
+                array[j] = array[j + 1]
+                array[j + 1] = aux
                 trocado = true
             }
         }
-    } while (trocado)
-    return arr
+        if (!trocado) {
+            break
+        }
+    }
+    return array
 }
 
+// quick sort
 export function quick_sort(colecao, criterio = (a, b) => a - b) {
     if (colecao.length <= 1) return colecao
     const pivot = colecao[0]
