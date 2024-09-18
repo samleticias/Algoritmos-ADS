@@ -70,31 +70,42 @@ export function melhor_escola_por_estado(escolas) {
 
 // funcao para agrupar escolas por estado e calcular a media das notas
 function agrupar_escolas_por_estado_e_calcular_media(escolas) {
-    const agrupamento = {}
+    const agrupamento = []
+
     for (let i = 0; i < get_size(escolas); i++) {
         const escola = escolas[i]
         const estado = escola.estado
         const media = parseFloat(escola.media_obj)
 
-        if (!agrupamento[estado]) {
-            agrupamento[estado] = { total_notas: 0, quantidade: 0 }
+        let estado_ja_encontrado = false
+
+        for (let j = 0; j < get_size(agrupamento); j++) {
+            if (agrupamento[j][0] === estado) {
+                agrupamento[j][1] += media
+                agrupamento[j][2] += 1
+                estado_ja_encontrado = true
+                break
+            }
         }
-        agrupamento[estado].total_notas += media
-        agrupamento[estado].quantidade += 1
+
+        if (!estado_ja_encontrado) {
+            meu_push(agrupamento, [estado, media, 1])
+        }
     }
 
-    const medias_notas_por_estado = []
-    for (let estado in agrupamento) {
-        const { total_notas, quantidade } = agrupamento[estado]
-        meu_push(medias_notas_por_estado, { estado, media: total_notas / quantidade })
-    }
+    const medias_notas_por_estado = mapear(agrupamento, linha => {
+        const [estado, total_notas, quantidade] = linha
+        return { estado, media: (total_notas / quantidade).toFixed(2) }
+    })
+
     return medias_notas_por_estado
 }
 
 // funcao para exibir o ranking de estados por media das notas
 export function mostrar_ranking_estados_por_media(escolas, label = '\n>>> Ranking ENEM por Estado <<<\n') {
     const medias_notas_por_estado = agrupar_escolas_por_estado_e_calcular_media(escolas)
-    const estados_ordenados_por_media = bubble_sort(medias_notas_por_estado, (a, b) => b.media_obj - a.media_obj)
+    
+    const estados_ordenados_por_media = bubble_sort(medias_notas_por_estado, (a, b) => b.media - a.media)
 
     print(label)
     let resultado = '---------------------------------\n'
@@ -103,7 +114,7 @@ export function mostrar_ranking_estados_por_media(escolas, label = '\n>>> Rankin
     
     for (let i = 0; i < get_size(estados_ordenados_por_media); i++) {
         const { estado, media } = estados_ordenados_por_media[i]
-        resultado += `|    ${estado}      |      ${media.toFixed(2)}      |\n`
+        resultado += `|    ${estado}      |      ${media}      |\n`
     }
     resultado += '---------------------------------\n'
 
