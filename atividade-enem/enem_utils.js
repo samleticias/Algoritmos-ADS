@@ -6,14 +6,8 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
-import { mapear } from './util/my_refactor_utils.js'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
-// Top 10 Escolas com Melhor Crescimento em Nota do ENEM
-// Descrição: Lista as 10 escolas com maior crescimento nas notas do ENEM em um período específico.
-
-// Top 5 Escolas por Área em Cada Estado
-// Descrição: Lista as 5 melhores escolas em uma área específica para cada estado.
 
 // funcao para exibir opcoes do menu principal
 export function menu_enem(){
