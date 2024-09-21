@@ -1,7 +1,7 @@
 // Hanói RGB Utils
 // Funcionalidades do Jogo
-import { print, exibir_opcoes, clear_screen, press_enter_to_continue } from "./my_entsai_utils.js"
-import { exibe_elementos_vetor, gerar_vetor, get_size, meu_unshift } from "./my_vetores_utils.js"
+import { print, exibir_opcoes, clear_screen, press_enter_to_continue } from "./util/my_entsai_utils.js"
+import { exibe_elementos_vetor, gerar_vetor, get_size, meu_unshift } from "./util/my_vetores_utils.js"
 
 // funcao para exibir menu de niveis do jogo
 export function menu_niveis_jogo() {

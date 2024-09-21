@@ -1,7 +1,6 @@
 import { menu_niveis_jogo, jogar_rodada_com_torres, inicializar_torres, exibir_resultado_jogo, exibe_cabecalho_rodadas_jogador_2,
-    exibe_cabecalho_niveis
-} from './hanoi_rgb_utils.js'
-import {clear_screen, exibir_opcoes, print, press_enter_to_continue} from './my_entsai_utils.js'
+    exibe_cabecalho_niveis } from './hanoi_rgb_utils.js'
+import {clear_screen, exibir_opcoes, print, press_enter_to_continue} from './util/my_entsai_utils.js'
 
 function main(){
     let opcao = -1
