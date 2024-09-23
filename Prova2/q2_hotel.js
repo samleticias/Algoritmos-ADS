@@ -3,88 +3,67 @@ import { question } from "readline-sync";
 function main(){
     let idade = get_number('Idade: ')
 
-    let contador = 1
+    // 1. Estado anterior
+    let quarto_atual = 0
 
-    while (idade >= 18 && idade <= 100 && contador < 4){
-        contador++
+    let soma_quartos_single = 0
+    let soma_quartos_duplo = 0
+    let soma_quartos_triplo = 0
+    let soma_quartos_quadruplo = 0
 
+    const valor_dia_single = 200
+    const valor_dia_duplo = 280
+    const valor_dia_triplo = 360
+    const valor_dia_quadruplo = 200
+
+    // 2. Condição de continuidade
+    while (idade > 0 || (idade == 0 && quarto_atual > 0)){
+
+        // 3. Trabalho
+        if (idade > 0){
+            quarto_atual++
+        }
+
+        if (idade == 0 || quarto_atual == 4){
+            quarto_atual = 0
+        }
+
+        if (quarto_atual == 1){
+            soma_quartos_single++
+        } else if (quarto_atual == 2){
+            soma_quartos_duplo++
+        } else if (quarto_atual == 3){
+            soma_quartos_triplo++
+        } else {
+            soma_quartos_quadruplo++
+        }
+
+        // 4. Convergência de dados
         idade = get_number('Idade: ')
     }
 
-    let categoria = get_text('Categoria do Quarto (S/D/T/Q): ')
-    let qtd_noites_reserva = get_number('Quantidade de noites da reserva: ')
-    let valor_diaria = obter_valor_diaria(categoria)
-    let valor_total_reserva = obter_valor_total_reserva(valor_diaria, qtd_noites_reserva)
-    let forma_pagamento = get_text('Forma de pagamento (pix/credito): ')
-    let parcelas = get_number('Se for no credito, quantas parcelas? ')
+    // Ao final, pergunte para quantas noites será a reserva. Mostre então valor total por dia, e o valor
+    // total da reserva para todos os dias. Informe que pagamento via PIX tem 5% de desconto (mostre
+    // o valor). E no Crédito em até 3x é sem juros. E que pode parcelar de 3x a 12x, porém com Juros
+    // Fixos Simples de 10,5% (mostre o valor).
 
-    let valor_com_desconto = obter_valor_com_desconto(forma_pagamento, valor_total_reserva, parcelas)
+    let qtd_noites = get_number('Quantidade de noites: ')
+    
+    let valor_diaria_single = obter_valor_dia(qtd_noites, valor_dia_single)
+    let valor_diaria_duplo = obter_valor_dia(qtd_noites, valor_dia_duplo)
+    let valor_diaria_triplo = obter_valor_dia(qtd_noites, valor_dia_triplo)
+    let valor_diaria_quadruplo = obter_valor_dia(qtd_noites, valor_dia_quadruplo)
 
-    let resultado = `
-    ----------------------------------------------------------------------
-    Valor Total Por Dia R$ = ${valor_diaria.toFixed(2)}
-    Quantidade de Noites = ${qtd_noites_reserva}
-    Valor Total da Reserva R$ = ${valor_total_reserva.toFixed(2)}
-    Forma de Pagamento: ${forma_pagamento}
-    Categoria: ${categoria}
-    Valor com Desconto R$ = ${valor_com_desconto.toFixed(2)}
-    ----------------------------------------------------------------------
-    `
 
-    console.log(resultado)
 }
 
-function obter_valor_com_desconto(forma_pagamento, valor_total_reserva, parcelas){
-    let valor_com_desconto = 0
-
-    if (forma_pagamento == 'pix'){
-        valor_com_desconto = obter_valor_pagamento_pix(valor_total_reserva)
-    } else {
-        valor_com_desconto = obter_valor_pagamento_credito(valor_total_reserva, parcelas)
-    }
-
-    return valor_com_desconto
-}
-
-function obter_valor_pagamento_credito(valor_total, quantidade_parcelas){
-    let valor_juros = (valor_total * 10.5 * quantidade_parcelas) / 100
-    return valor_juros
-}
-
-function obter_valor_pagamento_pix(valor_total){
-    let valor_com_desconto = valor_total - (valor_total * (5/100))
-    return valor_com_desconto
-}
-
-function obter_valor_total_reserva(valor_diaria, noites){
-    let valor_total_reserva = valor_diaria * noites
-    return valor_total_reserva
-}
-
-function obter_valor_diaria(categoria){
-    let valor_diaria = 0
-
-    if (categoria == 'S'){
-        valor_diaria = 200
-    } else if (categoria == 'D'){
-        valor_diaria = 280
-    } else if (categoria == 'T'){
-        valor_diaria = 360
-    } else {
-        valor_diaria = 440
-    }
-
-    return valor_diaria
+function obter_valor_dia(noites, valor_diaria){
+    return noites * valor_diaria
 }
 
 function get_number(texto){
-    let numero = Number(question(texto))
+    const numero = Number(question(texto))
     return numero
-}
-
-function get_text(mensagem){
-    let texto = question(mensagem)
-    return texto
 }
 
 main()
